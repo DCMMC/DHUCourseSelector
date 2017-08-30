@@ -22,6 +22,11 @@
 * 查看已选课程
 * 删除课程
 
+# Dependent Libraries
+
+* [HttpClient](https://hc.apache.org/httpclient-3.x/)
+* [Jsoup](https://jsoup.org/)
+
 # Author
 
 DCMMC
