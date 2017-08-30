@@ -1,4 +1,12 @@
 # DHUCourseSelecter
+
+![StillCoding](https://img.shields.io/badge/Still-Coding-green.svg)
+![License](https://img.shields.io/badge/License-GPLv2-brightgreen.svg)
+![build passing](https://img.shields.io/travis/rust-lang/rust.svg)
+![Author](https://img.shields.io/badge/Author-DCMMC-blue.svg)
+![WeChatID](https://img.shields.io/badge/WeChat-Kevin--0220-red.svg)
+
+
 东华大学教务处选课助手 ver. 0.1 Alpha
 
 > Still coding...
