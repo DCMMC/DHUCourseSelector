@@ -33,4 +33,4 @@ DCMMC
 
 # License
 
-GPL v2
+[GPL v2](./LICENSE)
