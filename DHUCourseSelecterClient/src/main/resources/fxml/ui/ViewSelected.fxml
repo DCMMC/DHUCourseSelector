@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.validation.ValidationFacade?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.layout.StackPane?>
+<StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+    <BorderPane>
+        <top>
+            <VBox spacing="30" fx:id="mainVBox">
+                <AnchorPane prefHeight="55" style="-fx-background-color: #00AA8D">
+                    <Label  style="-fx-font-family: msyh;
+                -fx-font-size: 35.0px; -fx-padding: 14.0px;
+                -fx-font-weight: bold;
+                -fx-text-fill: white;"
+                            AnchorPane.leftAnchor="25" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="12">
+                        查看已选课程
+                    </Label>
+                </AnchorPane>
+                <HBox fx:id="weekSelect" prefHeight="25" alignment="CENTER" spacing="20">
+                    <Label style="-fx-font-family: msyh; -fx-padding: 2.0px; -fx-font-size: 18px">
+                        周次
+                    </Label>
+                    <ValidationFacade>
+                        <control>
+                            <JFXComboBox fx:id="viewWeek" prefWidth="200">
+                                <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                        <Label>
+                                            1
+                                        </Label>
+                                        <Label>
+                                            2
+                                        </Label>
+                                        <Label>
+                                            3
+                                        </Label>
+                                        <Label>
+                                            4
+                                        </Label>
+                                        <Label>
+                                            5
+                                        </Label>
+                                        <Label>
+                                            6
+                                        </Label>
+                                        <Label>
+                                            7
+                                        </Label>
+                                        <Label>
+                                            8
+                                        </Label>
+                                        <Label>
+                                            9
+                                        </Label>
+                                        <Label>
+                                            10
+                                        </Label>
+                                        <Label>
+                                            11
+                                        </Label>
+                                        <Label>
+                                            12
+                                        </Label>
+                                        <Label>
+                                            13
+                                        </Label>
+                                        <Label>
+                                            14
+                                        </Label>
+                                        <Label>
+                                            15
+                                        </Label>
+                                        <Label>
+                                            16
+                                        </Label>
+                                        <Label>
+                                            17
+                                        </Label>
+                                        <Label>
+                                            18
+                                        </Label>
+                                    </FXCollections>
+                                </items>
+                            </JFXComboBox>
+                        </control>
+                    </ValidationFacade>
+                </HBox>
+                <AnchorPane fx:id="mainAnchorPane">
+                    <ScrollPane fx:id="courseCalendar" AnchorPane.topAnchor="5" AnchorPane.bottomAnchor="80" AnchorPane.leftAnchor="15">
+                    </ScrollPane>
+                    <VBox prefWidth="140" spacing="15" AnchorPane.topAnchor="5" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="15.0">
+                        <Label style="-fx-font-family: msyh; -fx-font-size: 16px">
+                            已录取课程
+                        </Label>
+                        <JFXListView fx:id="matriculatedCourses" minHeight="10" prefWidth="100">
+                        </JFXListView>
+                        <Label style="-fx-font-family: msyh; -fx-font-size: 16px">
+                            已选择但未录取课程
+                        </Label>
+                        <JFXListView fx:id="selectedCourses" minHeight="10" prefWidth="100">
+                        </JFXListView>
+                    </VBox>
+                </AnchorPane>
+            </VBox>
+        </top>
+        <bottom>
+            <AnchorPane prefHeight="100">
+                <HBox spacing="30">
+                    <HBox fx:id="operates" spacing="15" prefHeight="35" AnchorPane.bottomAnchor="65" AnchorPane.leftAnchor="20">
+                    </HBox>
+                    <JFXButton AnchorPane.bottomAnchor="70" AnchorPane.rightAnchor="90"
+                               fx:id="confirmBtn" style="-fx-padding: 0.7em 0.57em;
+                       -fx-font-family: msyh;
+                       -fx-font-size: 18;
+                       -fx-font-weight: bold;
+                       -jfx-button-type: RAISED;
+                       -fx-background-color: rgb(77, 102, 204);
+                       -fx-min-width: 100;
+                       -fx-min-height: 25;
+                       -fx-text-fill: WHITE;" text="确认">
+                    </JFXButton>
+                </HBox>
+            </AnchorPane>
+        </bottom>
+    </BorderPane>
+</StackPane>

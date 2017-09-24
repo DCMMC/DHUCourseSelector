@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.StackPane?>
+<?import java.lang.String?>
+<StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+    <styleClass>
+        <String fx:value="side-menu"/>
+    </styleClass>
+    <JFXListView fx:id="sideList" >
+        <Label fx:id="session" prefHeight="50" style="-fx-font-size:18px;">
+            选课
+        </Label>
+        <Label fx:id="setting" prefHeight="50" style="-fx-font-size:18px;">
+            设置
+        </Label>
+        <Label fx:id="about" prefHeight="50" style="-fx-font-size:18px;">
+            关于
+        </Label>
+        <Label fx:id="exit" prefHeight="50" style="-fx-font-size:18px;">
+            退出
+        </Label>
+    </JFXListView>
+</StackPane>

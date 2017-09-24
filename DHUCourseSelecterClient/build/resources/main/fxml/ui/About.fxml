@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXScrollPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1"
+           xmlns="http://javafx.com/javafx/2.2">
+    <JFXScrollPane fx:id="scroll">
+        <bottomBar>
+            <children>
+                <Label style="-fx-text-fill:WHITE; -fx-font-size: 40; -fx-font-weight: bold">
+                    关于
+                    <StackPane.alignment>CENTER_LEFT</StackPane.alignment>
+                    <StackPane.margin>
+                        <Insets>
+                            <left>
+                                80
+                            </left>
+                        </Insets>
+                    </StackPane.margin>
+                </Label>
+            </children>
+        </bottomBar>
+        <content>
+            <StackPane style="-fx-padding:24;">
+                <VBox fx:id="aboutVBox">
+                    <children>
+                        <Label style="-fx-text-fill: #bb162c; -fx-font-size: 40; -fx-font-weight: bold">
+                            作者
+                            <StackPane.alignment>CENTER</StackPane.alignment>
+                        </Label>
+                        <Label style="-fx-text-fill: #212121; -fx-font-size: 26;">
+                            DCMMC
+                        </Label>
+                        <Label style="-fx-text-fill: #bb162c; -fx-font-size: 40; -fx-font-weight: bold">
+                            感谢
+                            <StackPane.alignment>CENTER</StackPane.alignment>
+                        </Label>
+                        <Label style="-fx-text-fill: #212121; -fx-font-size: 26;">
+                            本软件的开发离不开以下开源项目:
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                        <Label style="-fx-text-fill: #1b5e20; -fx-font-size: 26; -fx-font-weight: bold">
+                            1. JFoenix
+                        </Label>
+                    </children>
+                </VBox>
+            </StackPane>
+        </content>
+    </JFXScrollPane>
+</StackPane>

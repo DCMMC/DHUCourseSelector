@@ -1,0 +1,1984 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>FindBugs Report</title>
+<style type="text/css">
+		.tablerow0 {
+			background: #EEEEEE;
+		}
+
+		.tablerow1 {
+			background: white;
+		}
+
+		.detailrow0 {
+			background: #EEEEEE;
+		}
+
+		.detailrow1 {
+			background: white;
+		}
+
+		.tableheader {
+			background: #b9b9fe;
+			font-size: larger;
+		}
+
+		.tablerow0:hover, .tablerow1:hover {
+			background: #aaffaa;
+		}
+
+		.priority-1 {
+		    color: red;
+		    font-weight: bold;
+		}
+		.priority-2 {
+		    color: orange;
+		    font-weight: bold;
+		}
+		.priority-3 {
+		    color: green;
+		    font-weight: bold;
+		}
+		.priority-4 {
+		    color: blue;
+		    font-weight: bold;
+		}
+		</style>
+<script type="text/javascript">
+			function toggleRow(elid) {
+				if (document.getElementById) {
+					element = document.getElementById(elid);
+					if (element) {
+						if (element.style.display == 'none') {
+							element.style.display = 'block';
+							//window.status = 'Toggle on!';
+						} else {
+							element.style.display = 'none';
+							//window.status = 'Toggle off!';
+						}
+					}
+				}
+			}
+		</script>
+</head>
+<body>
+<h1>
+<a href="http://findbugs.sourceforge.net">FindBugs</a> Report</h1>
+<h2>Project Information</h2>
+<p>Project: 
+		</p>
+<p>FindBugs version: 3.0.1</p>
+<p>Code analyzed:</p>
+<ul>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\jp\uphy\javafx\console\ConsoleApplication.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\jp\uphy\javafx\console\ConsoleView.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\jp\uphy\javafx\console\KeyBindingUtils$1.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\jp\uphy\javafx\console\KeyBindingUtils.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\jp\uphy\javafx\console\TextInputControlStream$TextInputControlInputStream.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\jp\uphy\javafx\console\TextInputControlStream$TextInputControlOutputStream.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\jp\uphy\javafx\console\TextInputControlStream.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\jp\uphy\javafx\example\JavaFXMyCliApplication.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\jp\uphy\javafx\example\MyCliApplication.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\datafx\ClassesData.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\datafx\CourseClassRequestQueue$1.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\datafx\CourseClassRequestQueue$2.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\datafx\CourseClassRequestQueue.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\datafx\CourseData.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\datafx\ExtendedAnimatedFlowContainer.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\datafx\SettingData.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\gui\main\MainController$1.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\gui\main\MainController$InputController$1.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\gui\main\MainController$InputController.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\gui\main\MainController$LoginTask.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\gui\main\MainController.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\gui\sidemenu\SideMenuController.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\gui\uicomponents\AboutController.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\gui\uicomponents\EditCourseClassRequestQueueController.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\gui\uicomponents\ExitController.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\gui\uicomponents\SessionController$1.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\gui\uicomponents\SessionController.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\gui\uicomponents\SettingController$1.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\gui\uicomponents\SettingController$2.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\gui\uicomponents\SettingController.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\gui\uicomponents\ViewSelectedCoursesStage.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\Main.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\utils\ExceptionDialog.class</li>
+<li>E:\DCMMC\Java\Project\DHUCourseSelecter\DHUCourseSelecterClient\build\classes\main\tk\dcmmcc\utils\LoggerUtil.class</li>
+</ul>
+<p>
+<br/>
+<br/>
+</p>
+<h2>Metrics</h2>
+<p>1645 lines of code analyzed,
+	in 34 classes, 
+	in 8 packages.</p>
+<table width="500" cellpadding="5" cellspacing="2">
+<tr class="tableheader">
+<th align="left">Metric</th>
+<th align="right">Total</th>
+<th align="right">Density*</th>
+</tr>
+<tr class="tablerow0">
+<td>High Priority Warnings</td>
+<td align="right">15</td>
+<td align="right">9.12</td>
+</tr>
+<tr class="tablerow1">
+<td>Medium Priority Warnings</td>
+<td align="right">30</td>
+<td align="right">18.24</td>
+</tr>
+<tr class="tablerow1">
+<td>Low Priority Warnings</td>
+<td align="right">46</td>
+<td align="right">27.96</td>
+</tr>
+<tr class="$totalClass">
+<td>
+<b>Total Warnings</b>
+</td>
+<td align="right">
+<b>91</b>
+</td>
+<td align="right">
+<b>55.32</b>
+</td>
+</tr>
+</table>
+<p>
+<i>(* Defects per Thousand lines of non-commenting source statements)</i>
+</p>
+<p>
+<br/>
+<br/>
+</p>
+<h2>Contents</h2>
+<ul>
+<li>
+<a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+</li>
+<li>
+<a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
+</li>
+<li>
+<a href="#Warnings_I18N">Internationalization Warnings</a>
+</li>
+<li>
+<a href="#Warnings_MT_CORRECTNESS">Multithreaded correctness Warnings</a>
+</li>
+<li>
+<a href="#Warnings_PERFORMANCE">Performance Warnings</a>
+</li>
+<li>
+<a href="#Warnings_STYLE">Dodgy code Warnings</a>
+</li>
+<li>
+<a href="#Details">Details</a>
+</li>
+</ul>
+<h1>Summary</h1>
+<table width="500" cellpadding="5" cellspacing="2">
+<tr class="tableheader">
+<th align="left">Warning Type</th>
+<th align="right">Number</th>
+</tr>
+<tr class="tablerow0">
+<td>
+<a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+</td>
+<td align="right">1</td>
+</tr>
+<tr class="tablerow1">
+<td>
+<a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
+</td>
+<td align="right">16</td>
+</tr>
+<tr class="tablerow0">
+<td>
+<a href="#Warnings_I18N">Internationalization Warnings</a>
+</td>
+<td align="right">2</td>
+</tr>
+<tr class="tablerow1">
+<td>
+<a href="#Warnings_MT_CORRECTNESS">Multithreaded correctness Warnings</a>
+</td>
+<td align="right">4</td>
+</tr>
+<tr class="tablerow0">
+<td>
+<a href="#Warnings_PERFORMANCE">Performance Warnings</a>
+</td>
+<td align="right">23</td>
+</tr>
+<tr class="tablerow1">
+<td>
+<a href="#Warnings_STYLE">Dodgy code Warnings</a>
+</td>
+<td align="right">45</td>
+</tr>
+<tr class="tablerow0">
+<td>
+<b>Total</b>
+</td>
+<td align="right">
+<b>91</b>
+</td>
+</tr>
+</table>
+<h1>Warnings</h1>
+<p>Click on a warning row to see full context information.</p>
+<h2>
+<a name="Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N65759');">
+<td>
+<span class="priority-1">UI</span>
+</td>
+<td>Usage of GetResource in jp.uphy.javafx.console.ConsoleApplication.getStyleSheetUrl() may be unsafe if class is extended</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N65759" style="display: none;">
+<a href="#UI_INHERITANCE_UNSAFE_GETRESOURCE">Bug type UI_INHERITANCE_UNSAFE_GETRESOURCE (click for details)</a>
+<br/>In class jp.uphy.javafx.console.ConsoleApplication<br/>In method jp.uphy.javafx.console.ConsoleApplication.getStyleSheetUrl()<br/>At ConsoleApplication.java:[line 79]</p>
+</td>
+</tr>
+</table>
+<h2>
+<a name="Warnings_CORRECTNESS">Correctness Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66832');">
+<td>
+<span class="priority-1">BC</span>
+</td>
+<td>Impossible downcast of toArray() result to tk.dcmmcc.datafx.CourseData[] in tk.dcmmcc.datafx.CourseClassRequestQueue.startAll(Date)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66832" style="display: none;">
+<a href="#BC_IMPOSSIBLE_DOWNCAST_OF_TOARRAY">Bug type BC_IMPOSSIBLE_DOWNCAST_OF_TOARRAY (click for details)</a>
+<br/>In class tk.dcmmcc.datafx.CourseClassRequestQueue<br/>In method tk.dcmmcc.datafx.CourseClassRequestQueue.startAll(Date)<br/>Actual type Object[]<br/>Expected tk.dcmmcc.datafx.CourseData[]<br/>Return value of java.util.Collection.toArray() of type Object[]<br/>At CourseClassRequestQueue.java:[line 130]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66908');">
+<td>
+<span class="priority-1">BC</span>
+</td>
+<td>Impossible downcast of toArray() result to tk.dcmmcc.datafx.CourseData[] in tk.dcmmcc.datafx.CourseClassRequestQueue.startAll(Date)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66908" style="display: none;">
+<a href="#BC_IMPOSSIBLE_DOWNCAST_OF_TOARRAY">Bug type BC_IMPOSSIBLE_DOWNCAST_OF_TOARRAY (click for details)</a>
+<br/>In class tk.dcmmcc.datafx.CourseClassRequestQueue<br/>In method tk.dcmmcc.datafx.CourseClassRequestQueue.startAll(Date)<br/>Actual type Object[]<br/>Expected tk.dcmmcc.datafx.CourseData[]<br/>Return value of java.util.Collection.toArray() of type Object[]<br/>At CourseClassRequestQueue.java:[line 133]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67349');">
+<td>
+<span class="priority-1">BC</span>
+</td>
+<td>Impossible downcast of toArray() result to tk.dcmmcc.datafx.CourseData[] in tk.dcmmcc.datafx.CourseClassRequestQueue$1.run()</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67349" style="display: none;">
+<a href="#BC_IMPOSSIBLE_DOWNCAST_OF_TOARRAY">Bug type BC_IMPOSSIBLE_DOWNCAST_OF_TOARRAY (click for details)</a>
+<br/>In class tk.dcmmcc.datafx.CourseClassRequestQueue$1<br/>In method tk.dcmmcc.datafx.CourseClassRequestQueue$1.run()<br/>Actual type Object[]<br/>Expected tk.dcmmcc.datafx.CourseData[]<br/>Return value of java.util.Collection.toArray() of type Object[]<br/>At CourseClassRequestQueue.java:[line 160]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66214');">
+<td>
+<span class="priority-2">BED</span>
+</td>
+<td>Non derivable method jp.uphy.javafx.console.TextInputControlStream$TextInputControlOutputStream.clear() declares throwing an exception that isn't thrown</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66214" style="display: none;">
+<a href="#BED_BOGUS_EXCEPTION_DECLARATION">Bug type BED_BOGUS_EXCEPTION_DECLARATION (click for details)</a>
+<br/>In class jp.uphy.javafx.console.TextInputControlStream$TextInputControlOutputStream<br/>In method jp.uphy.javafx.console.TextInputControlStream$TextInputControlOutputStream.clear()<br/>At TextInputControlStream.java:[line 276]<br/>Value java.io.IOException</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66271');">
+<td>
+<span class="priority-2">BED</span>
+</td>
+<td>Non derivable method jp.uphy.javafx.console.TextInputControlStream$TextInputControlOutputStream.flush() declares throwing an exception that isn't thrown</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66271" style="display: none;">
+<a href="#BED_BOGUS_EXCEPTION_DECLARATION">Bug type BED_BOGUS_EXCEPTION_DECLARATION (click for details)</a>
+<br/>In class jp.uphy.javafx.console.TextInputControlStream$TextInputControlOutputStream<br/>In method jp.uphy.javafx.console.TextInputControlStream$TextInputControlOutputStream.flush()<br/>At TextInputControlStream.java:[line 240]<br/>Value java.io.IOException</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66328');">
+<td>
+<span class="priority-2">BED</span>
+</td>
+<td>Non derivable method jp.uphy.javafx.console.TextInputControlStream$TextInputControlOutputStream.write(int) declares throwing an exception that isn't thrown</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66328" style="display: none;">
+<a href="#BED_BOGUS_EXCEPTION_DECLARATION">Bug type BED_BOGUS_EXCEPTION_DECLARATION (click for details)</a>
+<br/>In class jp.uphy.javafx.console.TextInputControlStream$TextInputControlOutputStream<br/>In method jp.uphy.javafx.console.TextInputControlStream$TextInputControlOutputStream.write(int)<br/>At TextInputControlStream.java:[line 227]<br/>Value java.io.IOException</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66984');">
+<td>
+<span class="priority-2">CLI</span>
+</td>
+<td>Method tk.dcmmcc.datafx.CourseClassRequestQueue.startAll(Date) accesses list or array with constant index</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66984" style="display: none;">
+<a href="#CLI_CONSTANT_LIST_INDEX">Bug type CLI_CONSTANT_LIST_INDEX (click for details)</a>
+<br/>In class tk.dcmmcc.datafx.CourseClassRequestQueue<br/>In method tk.dcmmcc.datafx.CourseClassRequestQueue.startAll(Date)<br/>At CourseClassRequestQueue.java:[line 134]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N67037');">
+<td>
+<span class="priority-2">CLI</span>
+</td>
+<td>Method tk.dcmmcc.datafx.CourseClassRequestQueue.startAll(Date) accesses list or array with constant index</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N67037" style="display: none;">
+<a href="#CLI_CONSTANT_LIST_INDEX">Bug type CLI_CONSTANT_LIST_INDEX (click for details)</a>
+<br/>In class tk.dcmmcc.datafx.CourseClassRequestQueue<br/>In method tk.dcmmcc.datafx.CourseClassRequestQueue.startAll(Date)<br/>At CourseClassRequestQueue.java:[line 141]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68479');">
+<td>
+<span class="priority-2">FCBL</span>
+</td>
+<td>Class tk.dcmmcc.gui.uicomponents.AboutController defines fields that are used only as locals</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68479" style="display: none;">
+<a href="#FCBL_FIELD_COULD_BE_LOCAL">Bug type FCBL_FIELD_COULD_BE_LOCAL (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.AboutController<br/>Field tk.dcmmcc.gui.uicomponents.AboutController.contentList<br/>In AboutController.java</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68526');">
+<td>
+<span class="priority-2">FCBL</span>
+</td>
+<td>Class tk.dcmmcc.gui.uicomponents.EditCourseClassRequestQueueController defines fields that are used only as locals</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68526" style="display: none;">
+<a href="#FCBL_FIELD_COULD_BE_LOCAL">Bug type FCBL_FIELD_COULD_BE_LOCAL (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.EditCourseClassRequestQueueController<br/>Field tk.dcmmcc.gui.uicomponents.EditCourseClassRequestQueueController.context<br/>In EditCourseClassRequestQueueController.java</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68573');">
+<td>
+<span class="priority-2">FCBL</span>
+</td>
+<td>Class tk.dcmmcc.gui.uicomponents.EditCourseClassRequestQueueController defines fields that are used only as locals</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68573" style="display: none;">
+<a href="#FCBL_FIELD_COULD_BE_LOCAL">Bug type FCBL_FIELD_COULD_BE_LOCAL (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.EditCourseClassRequestQueueController<br/>Field tk.dcmmcc.gui.uicomponents.EditCourseClassRequestQueueController.root<br/>In EditCourseClassRequestQueueController.java</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68620');">
+<td>
+<span class="priority-2">FCBL</span>
+</td>
+<td>Class tk.dcmmcc.gui.uicomponents.EditCourseClassRequestQueueController defines fields that are used only as locals</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68620" style="display: none;">
+<a href="#FCBL_FIELD_COULD_BE_LOCAL">Bug type FCBL_FIELD_COULD_BE_LOCAL (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.EditCourseClassRequestQueueController<br/>Field tk.dcmmcc.gui.uicomponents.EditCourseClassRequestQueueController.scrollPane<br/>In EditCourseClassRequestQueueController.java</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68667');">
+<td>
+<span class="priority-2">FCBL</span>
+</td>
+<td>Class tk.dcmmcc.gui.uicomponents.EditCourseClassRequestQueueController defines fields that are used only as locals</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68667" style="display: none;">
+<a href="#FCBL_FIELD_COULD_BE_LOCAL">Bug type FCBL_FIELD_COULD_BE_LOCAL (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.EditCourseClassRequestQueueController<br/>Field tk.dcmmcc.gui.uicomponents.EditCourseClassRequestQueueController.vboxRoot<br/>In EditCourseClassRequestQueueController.java</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69903');">
+<td>
+<span class="priority-3">MDM</span>
+</td>
+<td>Method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.generateCoursePane(Course, int) creates an insecure Random object, which may be a security risk</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69903" style="display: none;">
+<a href="#MDM_RANDOM_SEED">Bug type MDM_RANDOM_SEED (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage<br/>In method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.generateCoursePane(Course, int)<br/>Called method new java.util.Random()<br/>At ViewSelectedCoursesStage.java:[line 284]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67570');">
+<td>
+<span class="priority-2">PCOA</span>
+</td>
+<td>Constructor new tk.dcmmcc.datafx.CourseData(CourseType, ClassesData) makes call to non-final method</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67570" style="display: none;">
+<a href="#PCOA_PARTIALLY_CONSTRUCTED_OBJECT_ACCESS">Bug type PCOA_PARTIALLY_CONSTRUCTED_OBJECT_ACCESS (click for details)</a>
+<br/>In class tk.dcmmcc.datafx.CourseData<br/>In method new tk.dcmmcc.datafx.CourseData(CourseType, ClassesData)<br/>At CourseData.java:[line 70]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N67623');">
+<td>
+<span class="priority-2">PCOA</span>
+</td>
+<td>Constructor new tk.dcmmcc.datafx.CourseData(CourseType, ClassesData[]) makes call to non-final method</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N67623" style="display: none;">
+<a href="#PCOA_PARTIALLY_CONSTRUCTED_OBJECT_ACCESS">Bug type PCOA_PARTIALLY_CONSTRUCTED_OBJECT_ACCESS (click for details)</a>
+<br/>In class tk.dcmmcc.datafx.CourseData<br/>In method new tk.dcmmcc.datafx.CourseData(CourseType, ClassesData[])<br/>At CourseData.java:[line 91]</p>
+</td>
+</tr>
+</table>
+<h2>
+<a name="Warnings_I18N">Internationalization Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N65687');">
+<td>
+<span class="priority-3">Dm</span>
+</td>
+<td>Found reliance on default encoding in jp.uphy.javafx.console.ConsoleApplication.lambda$start$0(String[]): new java.io.InputStreamReader(InputStream)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N65687" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class jp.uphy.javafx.console.ConsoleApplication<br/>In method jp.uphy.javafx.console.ConsoleApplication.lambda$start$0(String[])<br/>Called method new java.io.InputStreamReader(InputStream)<br/>At ConsoleApplication.java:[line 65]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N70668');">
+<td>
+<span class="priority-1">Dm</span>
+</td>
+<td>Found reliance on default encoding in tk.dcmmcc.utils.LoggerUtil.invokeMain(String[]): new java.util.Scanner(InputStream)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N70668" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class tk.dcmmcc.utils.LoggerUtil<br/>In method tk.dcmmcc.utils.LoggerUtil.invokeMain(String[])<br/>Called method new java.util.Scanner(InputStream)<br/>At LoggerUtil.java:[line 18]</p>
+</td>
+</tr>
+</table>
+<h2>
+<a name="Warnings_MT_CORRECTNESS">Multithreaded correctness Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66385');">
+<td>
+<span class="priority-2">IS</span>
+</td>
+<td>Inconsistent synchronization of jp.uphy.javafx.console.TextInputControlStream$TextInputControlOutputStream.buf; locked 87% of time</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66385" style="display: none;">
+<a href="#IS2_INCONSISTENT_SYNC">Bug type IS2_INCONSISTENT_SYNC (click for details)</a>
+<br/>In class jp.uphy.javafx.console.TextInputControlStream$TextInputControlOutputStream<br/>Field jp.uphy.javafx.console.TextInputControlStream$TextInputControlOutputStream.buf<br/>Synchronized 87% of the time<br/>Unsynchronized access at TextInputControlStream.java:[line 276]<br/>Synchronized access at TextInputControlStream.java:[line 228]<br/>Synchronized access at TextInputControlStream.java:[line 231]<br/>Synchronized access at TextInputControlStream.java:[line 229]<br/>Synchronized access at TextInputControlStream.java:[line 251]<br/>Synchronized access at TextInputControlStream.java:[line 255]<br/>Synchronized access at TextInputControlStream.java:[line 261]<br/>Synchronized access at TextInputControlStream.java:[line 261]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66679');">
+<td>
+<span class="priority-3">MDM</span>
+</td>
+<td>Method jp.uphy.javafx.example.MyCliApplication.main(String[]) attempts to manually schedule threads by calling method Thread.sleep(long)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66679" style="display: none;">
+<a href="#MDM_THREAD_YIELD">Bug type MDM_THREAD_YIELD (click for details)</a>
+<br/>In class jp.uphy.javafx.example.MyCliApplication<br/>In method jp.uphy.javafx.example.MyCliApplication.main(String[])<br/>Called method Thread.sleep(long)<br/>At MyCliApplication.java:[line 25]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68357');">
+<td>
+<span class="priority-3">MDM</span>
+</td>
+<td>Method tk.dcmmcc.gui.sidemenu.SideMenuController.lambda$init$0(FlowHandler, ObservableValue, Label, Label) attempts to manually schedule threads by calling method Thread.sleep(long)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68357" style="display: none;">
+<a href="#MDM_THREAD_YIELD">Bug type MDM_THREAD_YIELD (click for details)</a>
+<br/>In class tk.dcmmcc.gui.sidemenu.SideMenuController<br/>In method tk.dcmmcc.gui.sidemenu.SideMenuController.lambda$init$0(FlowHandler, ObservableValue, Label, Label)<br/>Called method Thread.sleep(long)<br/>At SideMenuController.java:[line 64]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N67790');">
+<td>
+<span class="priority-1">Ru</span>
+</td>
+<td>tk.dcmmcc.datafx.CourseData.startAll() explicitly invokes run on a thread (did you mean to start it instead?)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N67790" style="display: none;">
+<a href="#RU_INVOKE_RUN">Bug type RU_INVOKE_RUN (click for details)</a>
+<br/>In class tk.dcmmcc.datafx.CourseData<br/>In method tk.dcmmcc.datafx.CourseData.startAll()<br/>At CourseData.java:[line 167]<br/>Another occurrence at CourseData.java:[line 192]<br/>Another occurrence at CourseData.java:[line 206]</p>
+</td>
+</tr>
+</table>
+<h2>
+<a name="Warnings_PERFORMANCE">Performance Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N69250');">
+<td>
+<span class="priority-3">Bx</span>
+</td>
+<td>Boxing/unboxing to parse a primitive tk.dcmmcc.gui.uicomponents.SettingController.lambda$init$6(JFXSnackbar, MouseEvent)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N69250" style="display: none;">
+<a href="#DM_BOXED_PRIMITIVE_FOR_PARSING">Bug type DM_BOXED_PRIMITIVE_FOR_PARSING (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.SettingController<br/>In method tk.dcmmcc.gui.uicomponents.SettingController.lambda$init$6(JFXSnackbar, MouseEvent)<br/>Called method Integer.intValue()<br/>Should call Integer.parseInt(String) instead<br/>At SettingController.java:[line 124]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69330');">
+<td>
+<span class="priority-3">Bx</span>
+</td>
+<td>Boxing/unboxing to parse a primitive tk.dcmmcc.gui.uicomponents.SettingController.lambda$init$6(JFXSnackbar, MouseEvent)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69330" style="display: none;">
+<a href="#DM_BOXED_PRIMITIVE_FOR_PARSING">Bug type DM_BOXED_PRIMITIVE_FOR_PARSING (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.SettingController<br/>In method tk.dcmmcc.gui.uicomponents.SettingController.lambda$init$6(JFXSnackbar, MouseEvent)<br/>Called method Long.longValue()<br/>Should call Long.parseLong(String) instead<br/>At SettingController.java:[line 123]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N69410');">
+<td>
+<span class="priority-2">NAB</span>
+</td>
+<td>Method tk.dcmmcc.gui.uicomponents.SettingController.lambda$init$6(JFXSnackbar, MouseEvent) converts String to primitive using excessive boxing</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N69410" style="display: none;">
+<a href="#NAB_NEEDLESS_BOXING_PARSE">Bug type NAB_NEEDLESS_BOXING_PARSE (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.SettingController<br/>In method tk.dcmmcc.gui.uicomponents.SettingController.lambda$init$6(JFXSnackbar, MouseEvent)<br/>At SettingController.java:[line 123]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69463');">
+<td>
+<span class="priority-2">NAB</span>
+</td>
+<td>Method tk.dcmmcc.gui.uicomponents.SettingController.lambda$init$6(JFXSnackbar, MouseEvent) converts String to primitive using excessive boxing</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69463" style="display: none;">
+<a href="#NAB_NEEDLESS_BOXING_PARSE">Bug type NAB_NEEDLESS_BOXING_PARSE (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.SettingController<br/>In method tk.dcmmcc.gui.uicomponents.SettingController.lambda$init$6(JFXSnackbar, MouseEvent)<br/>At SettingController.java:[line 124]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67239');">
+<td>
+<span class="priority-2">PRMC</span>
+</td>
+<td>Method tk.dcmmcc.datafx.CourseClassRequestQueue.startAll(Date) appears to call the same method on the same object redundantly</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67239" style="display: none;">
+<a href="#PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS">Bug type PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS (click for details)</a>
+<br/>In class tk.dcmmcc.datafx.CourseClassRequestQueue<br/>In method tk.dcmmcc.datafx.CourseClassRequestQueue.startAll(Date)<br/>At CourseClassRequestQueue.java:[line 118]<br/>Value getP()Ljava/lang/Object;</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N67676');">
+<td>
+<span class="priority-1">PRMC</span>
+</td>
+<td>Method tk.dcmmcc.datafx.CourseData.startAll() appears to call the same method on the same object redundantly</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N67676" style="display: none;">
+<a href="#PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS">Bug type PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS (click for details)</a>
+<br/>In class tk.dcmmcc.datafx.CourseData<br/>In method tk.dcmmcc.datafx.CourseData.startAll()<br/>At CourseData.java:[line 168]<br/>Value get(I)Ljava/lang/Object;</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67733');">
+<td>
+<span class="priority-3">PRMC</span>
+</td>
+<td>Method tk.dcmmcc.datafx.CourseData.addClassData(ClassesData) appears to call the same method on the same object redundantly</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67733" style="display: none;">
+<a href="#PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS">Bug type PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS (click for details)</a>
+<br/>In class tk.dcmmcc.datafx.CourseData<br/>In method tk.dcmmcc.datafx.CourseData.addClassData(ClassesData)<br/>At CourseData.java:[line 118]<br/>Value getCourse()Ltk/dcmmcc/Course;</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68035');">
+<td>
+<span class="priority-3">PRMC</span>
+</td>
+<td>Method tk.dcmmcc.gui.main.MainController$InputController.submit() appears to call the same method on the same object redundantly</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68035" style="display: none;">
+<a href="#PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS">Bug type PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS (click for details)</a>
+<br/>In class tk.dcmmcc.gui.main.MainController$InputController<br/>In method tk.dcmmcc.gui.main.MainController$InputController.submit()<br/>At MainController.java:[line 311]<br/>Value getDhuCurrentUser()Ltk/dcmmcc/DHUCurrentUser;</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68873');">
+<td>
+<span class="priority-3">PRMC</span>
+</td>
+<td>Method tk.dcmmcc.gui.uicomponents.SessionController.init() appears to call the same method on the same object redundantly</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68873" style="display: none;">
+<a href="#PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS">Bug type PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.SessionController<br/>In method tk.dcmmcc.gui.uicomponents.SessionController.init()<br/>At SessionController.java:[line 118]<br/>Value getSelectedCoursesNumberProperty()Ljavafx/beans/property/IntegerProperty;</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68930');">
+<td>
+<span class="priority-3">PRMC</span>
+</td>
+<td>Method tk.dcmmcc.gui.uicomponents.SessionController.init() appears to call the same method on the same object redundantly</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68930" style="display: none;">
+<a href="#PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS">Bug type PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.SessionController<br/>In method tk.dcmmcc.gui.uicomponents.SessionController.init()<br/>At SessionController.java:[line 131]<br/>Value getQueueCoursesNumberProperty()Ljavafx/beans/property/IntegerProperty;</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68987');">
+<td>
+<span class="priority-3">PRMC</span>
+</td>
+<td>Method tk.dcmmcc.gui.uicomponents.SessionController.init() appears to call the same method on the same object redundantly</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68987" style="display: none;">
+<a href="#PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS">Bug type PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.SessionController<br/>In method tk.dcmmcc.gui.uicomponents.SessionController.init()<br/>At SessionController.java:[line 144]<br/>Value getCourseRequestCountProperty()Ljavafx/beans/property/IntegerProperty;</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69044');">
+<td>
+<span class="priority-3">PRMC</span>
+</td>
+<td>Method tk.dcmmcc.gui.uicomponents.SessionController.init() appears to call the same method on the same object redundantly</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69044" style="display: none;">
+<a href="#PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS">Bug type PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.SessionController<br/>In method tk.dcmmcc.gui.uicomponents.SessionController.init()<br/>At SessionController.java:[line 205]<br/>Value getLoginFlagProperty()Ljavafx/beans/property/BooleanProperty;</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N69101');">
+<td>
+<span class="priority-3">PRMC</span>
+</td>
+<td>Method tk.dcmmcc.gui.uicomponents.SessionController.init() appears to call the same method on the same object redundantly</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N69101" style="display: none;">
+<a href="#PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS">Bug type PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.SessionController<br/>In method tk.dcmmcc.gui.uicomponents.SessionController.init()<br/>At SessionController.java:[line 347]<br/>Value getStartedProperty()Ljavafx/beans/property/BooleanProperty;</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69158');">
+<td>
+<span class="priority-3">PRMC</span>
+</td>
+<td>Method tk.dcmmcc.gui.uicomponents.SessionController.lambda$null$6(JFXTimePicker, CourseClassRequestQueue, HBox, ObservableValue, Boolean, Boolean) appears to call the same method on the same object redundantly</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69158" style="display: none;">
+<a href="#PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS">Bug type PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.SessionController<br/>In method tk.dcmmcc.gui.uicomponents.SessionController.lambda$null$6(JFXTimePicker, CourseClassRequestQueue, HBox, ObservableValue, Boolean, Boolean)<br/>At SessionController.java:[line 461]<br/>Value getStartAfterSecondsProperty()Ljavafx/beans/property/IntegerProperty;</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N69972');">
+<td>
+<span class="priority-3">PRMC</span>
+</td>
+<td>Method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.launch(Stage, String) appears to call the same method on the same object redundantly</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N69972" style="display: none;">
+<a href="#PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS">Bug type PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage<br/>In method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.launch(Stage, String)<br/>At ViewSelectedCoursesStage.java:[line 64]<br/>Value getNamespace()Ljavafx/collections/ObservableMap;</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N70029');">
+<td>
+<span class="priority-3">PRMC</span>
+</td>
+<td>Method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.launch(Stage, String) appears to call the same method on the same object redundantly</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N70029" style="display: none;">
+<a href="#PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS">Bug type PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage<br/>In method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.launch(Stage, String)<br/>At ViewSelectedCoursesStage.java:[line 66]<br/>Value getNamespace()Ljavafx/collections/ObservableMap;</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N70086');">
+<td>
+<span class="priority-3">PRMC</span>
+</td>
+<td>Method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.launch(Stage, String) appears to call the same method on the same object redundantly</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N70086" style="display: none;">
+<a href="#PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS">Bug type PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage<br/>In method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.launch(Stage, String)<br/>At ViewSelectedCoursesStage.java:[line 79]<br/>Value getNamespace()Ljavafx/collections/ObservableMap;</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69215');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class tk.dcmmcc.gui.uicomponents.SessionController$1 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69215" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.SessionController$1<br/>At SessionController.java:[lines 375-389]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N69516');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class tk.dcmmcc.gui.uicomponents.SettingController$1 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N69516" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.SettingController$1<br/>At SettingController.java:[lines 45-68]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69551');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class tk.dcmmcc.gui.uicomponents.SettingController$2 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69551" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.SettingController$2<br/>At SettingController.java:[lines 78-101]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68092');">
+<td>
+<span class="priority-3">UPM</span>
+</td>
+<td>Private method tk.dcmmcc.gui.main.MainController$InputController.submit() is never called</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68092" style="display: none;">
+<a href="#UPM_UNCALLED_PRIVATE_METHOD">Bug type UPM_UNCALLED_PRIVATE_METHOD (click for details)</a>
+<br/>In class tk.dcmmcc.gui.main.MainController$InputController<br/>In method tk.dcmmcc.gui.main.MainController$InputController.submit()<br/>At MainController.java:[lines 200-324]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N70249');">
+<td>
+<span class="priority-3">UPM</span>
+</td>
+<td>Private method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.generateCoursePane(Course, int) is never called</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N70249" style="display: none;">
+<a href="#UPM_UNCALLED_PRIVATE_METHOD">Bug type UPM_UNCALLED_PRIVATE_METHOD (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage<br/>In method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.generateCoursePane(Course, int)<br/>At ViewSelectedCoursesStage.java:[lines 276-293]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N70302');">
+<td>
+<span class="priority-3">UPM</span>
+</td>
+<td>Private method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.populateCalendar(GridPane, String, int) is never called</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N70302" style="display: none;">
+<a href="#UPM_UNCALLED_PRIVATE_METHOD">Bug type UPM_UNCALLED_PRIVATE_METHOD (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage<br/>In method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.populateCalendar(GridPane, String, int)<br/>At ViewSelectedCoursesStage.java:[lines 269-273]</p>
+</td>
+</tr>
+</table>
+<h2>
+<a name="Warnings_STYLE">Dodgy code Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N70526');">
+<td>
+<span class="priority-3">BC</span>
+</td>
+<td>Unchecked/unconfirmed cast from javafx.stage.Window to javafx.stage.Stage of return value in tk.dcmmcc.utils.ExceptionDialog.launch(Exception, String, String)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N70526" style="display: none;">
+<a href="#BC_UNCONFIRMED_CAST_OF_RETURN_VALUE">Bug type BC_UNCONFIRMED_CAST_OF_RETURN_VALUE (click for details)</a>
+<br/>In class tk.dcmmcc.utils.ExceptionDialog<br/>In method tk.dcmmcc.utils.ExceptionDialog.launch(Exception, String, String)<br/>Actual type javafx.stage.Window<br/>Expected javafx.stage.Stage<br/>At ExceptionDialog.java:[line 53]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N70605');">
+<td>
+<span class="priority-2">CFS</span>
+</td>
+<td>Method tk.dcmmcc.utils.LoggerUtil.initLogger(Logger) returns modified parameter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N70605" style="display: none;">
+<a href="#CFS_CONFUSING_FUNCTION_SEMANTICS">Bug type CFS_CONFUSING_FUNCTION_SEMANTICS (click for details)</a>
+<br/>In class tk.dcmmcc.utils.LoggerUtil<br/>In method tk.dcmmcc.utils.LoggerUtil.initLogger(Logger)<br/>At LoggerUtil.java:[line 52]<br/>At LoggerUtil.java:[line 37]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N69586');">
+<td>
+<span class="priority-2">DLS</span>
+</td>
+<td>Dead store to color in tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.generateCoursePane(Course, int)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N69586" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage<br/>In method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.generateCoursePane(Course, int)<br/>Local variable named color<br/>At ViewSelectedCoursesStage.java:[line 284]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69656');">
+<td>
+<span class="priority-2">DLS</span>
+</td>
+<td>Dead store to matriculated in tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.populateCalendar(GridPane, String, int)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69656" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage<br/>In method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.populateCalendar(GridPane, String, int)<br/>Local variable named matriculated<br/>At ViewSelectedCoursesStage.java:[line 269]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N69726');">
+<td>
+<span class="priority-2">DLS</span>
+</td>
+<td>Dead store to selected in tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.populateCalendar(GridPane, String, int)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N69726" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage<br/>In method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.populateCalendar(GridPane, String, int)<br/>Local variable named selected<br/>At ViewSelectedCoursesStage.java:[line 270]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N65857');">
+<td>
+<span class="priority-1">EXS</span>
+</td>
+<td>Unconstrained method new jp.uphy.javafx.console.ConsoleView(Charset) converts checked exception to unchecked</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N65857" style="display: none;">
+<a href="#EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS">Bug type EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS (click for details)</a>
+<br/>In class jp.uphy.javafx.console.ConsoleView<br/>In method new jp.uphy.javafx.console.ConsoleView(Charset)<br/>At ConsoleView.java:[line 53]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66002');">
+<td>
+<span class="priority-1">EXS</span>
+</td>
+<td>Unconstrained method new jp.uphy.javafx.console.TextInputControlStream$TextInputControlInputStream(TextInputControlStream, TextInputControl) converts checked exception to unchecked</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66002" style="display: none;">
+<a href="#EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS">Bug type EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS (click for details)</a>
+<br/>In class jp.uphy.javafx.console.TextInputControlStream$TextInputControlInputStream<br/>In method new jp.uphy.javafx.console.TextInputControlStream$TextInputControlInputStream(TextInputControlStream, TextInputControl)<br/>At TextInputControlStream.java:[line 109]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66055');">
+<td>
+<span class="priority-1">EXS</span>
+</td>
+<td>Unconstrained method jp.uphy.javafx.console.TextInputControlStream$TextInputControlInputStream.enterKeyPressed() converts checked exception to unchecked</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66055" style="display: none;">
+<a href="#EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS">Bug type EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS (click for details)</a>
+<br/>In class jp.uphy.javafx.console.TextInputControlStream$TextInputControlInputStream<br/>In method jp.uphy.javafx.console.TextInputControlStream$TextInputControlInputStream.enterKeyPressed()<br/>At TextInputControlStream.java:[line 139]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66626');">
+<td>
+<span class="priority-1">EXS</span>
+</td>
+<td>Unconstrained method jp.uphy.javafx.example.MyCliApplication.main(String[]) converts checked exception to unchecked</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66626" style="display: none;">
+<a href="#EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS">Bug type EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS (click for details)</a>
+<br/>In class jp.uphy.javafx.example.MyCliApplication<br/>In method jp.uphy.javafx.example.MyCliApplication.main(String[])<br/>At MyCliApplication.java:[line 27]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69796');">
+<td>
+<span class="priority-3">ICAST</span>
+</td>
+<td>Result of integer multiplication cast to long in tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.generateCalendar(ScrollPane, int, Scene)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69796" style="display: none;">
+<a href="#ICAST_INTEGER_MULTIPLY_CAST_TO_LONG">Bug type ICAST_INTEGER_MULTIPLY_CAST_TO_LONG (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage<br/>In method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.generateCalendar(ScrollPane, int, Scene)<br/>At ViewSelectedCoursesStage.java:[line 108]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N65967');">
+<td>
+<span class="priority-3">IMC</span>
+</td>
+<td>Class jp.uphy.javafx.console.TextInputControlStream does not implement a toString method</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N65967" style="display: none;">
+<a href="#IMC_IMMATURE_CLASS_NO_TOSTRING">Bug type IMC_IMMATURE_CLASS_NO_TOSTRING (click for details)</a>
+<br/>In class jp.uphy.javafx.console.TextInputControlStream<br/>At TextInputControlStream.java:[lines 41-85]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66797');">
+<td>
+<span class="priority-3">IMC</span>
+</td>
+<td>Class tk.dcmmcc.datafx.ClassesData does not implement a toString method</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66797" style="display: none;">
+<a href="#IMC_IMMATURE_CLASS_NO_TOSTRING">Bug type IMC_IMMATURE_CLASS_NO_TOSTRING (click for details)</a>
+<br/>In class tk.dcmmcc.datafx.ClassesData<br/>At ClassesData.java:[lines 22-75]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67090');">
+<td>
+<span class="priority-3">IMC</span>
+</td>
+<td>Class tk.dcmmcc.datafx.CourseClassRequestQueue does not implement a toString method</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67090" style="display: none;">
+<a href="#IMC_IMMATURE_CLASS_NO_TOSTRING">Bug type IMC_IMMATURE_CLASS_NO_TOSTRING (click for details)</a>
+<br/>In class tk.dcmmcc.datafx.CourseClassRequestQueue<br/>At CourseClassRequestQueue.java:[lines 21-214]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N67425');">
+<td>
+<span class="priority-3">IMC</span>
+</td>
+<td>Class tk.dcmmcc.datafx.CourseData does not implement a toString method</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N67425" style="display: none;">
+<a href="#IMC_IMMATURE_CLASS_NO_TOSTRING">Bug type IMC_IMMATURE_CLASS_NO_TOSTRING (click for details)</a>
+<br/>In class tk.dcmmcc.datafx.CourseData<br/>At CourseData.java:[lines 26-272]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67919');">
+<td>
+<span class="priority-3">IMC</span>
+</td>
+<td>Class tk.dcmmcc.datafx.ExtendedAnimatedFlowContainer does not implement a toString method</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67919" style="display: none;">
+<a href="#IMC_IMMATURE_CLASS_NO_TOSTRING">Bug type IMC_IMMATURE_CLASS_NO_TOSTRING (click for details)</a>
+<br/>In class tk.dcmmcc.datafx.ExtendedAnimatedFlowContainer<br/>At ExtendedAnimatedFlowContainer.java:[lines 23-132]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68000');">
+<td>
+<span class="priority-3">IMC</span>
+</td>
+<td>Class tk.dcmmcc.gui.main.MainController does not implement a toString method</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68000" style="display: none;">
+<a href="#IMC_IMMATURE_CLASS_NO_TOSTRING">Bug type IMC_IMMATURE_CLASS_NO_TOSTRING (click for details)</a>
+<br/>In class tk.dcmmcc.gui.main.MainController<br/>At MainController.java:[lines 43-135]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68251');">
+<td>
+<span class="priority-2">IMC</span>
+</td>
+<td>Method tk.dcmmcc.gui.sidemenu.SideMenuController.lambda$init$0(FlowHandler, ObservableValue, Label, Label) prints the stack trace to the console</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68251" style="display: none;">
+<a href="#IMC_IMMATURE_CLASS_PRINTSTACKTRACE">Bug type IMC_IMMATURE_CLASS_PRINTSTACKTRACE (click for details)</a>
+<br/>In class tk.dcmmcc.gui.sidemenu.SideMenuController<br/>In method tk.dcmmcc.gui.sidemenu.SideMenuController.lambda$init$0(FlowHandler, ObservableValue, Label, Label)<br/>At SideMenuController.java:[line 70]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68714');">
+<td>
+<span class="priority-2">IMC</span>
+</td>
+<td>Method tk.dcmmcc.gui.uicomponents.SessionController.lambda$init$0(JFXButton, MouseEvent) prints the stack trace to the console</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68714" style="display: none;">
+<a href="#IMC_IMMATURE_CLASS_PRINTSTACKTRACE">Bug type IMC_IMMATURE_CLASS_PRINTSTACKTRACE (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.SessionController<br/>In method tk.dcmmcc.gui.uicomponents.SessionController.lambda$init$0(JFXButton, MouseEvent)<br/>At SessionController.java:[line 189]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68767');">
+<td>
+<span class="priority-2">IMC</span>
+</td>
+<td>Method tk.dcmmcc.gui.uicomponents.SessionController.lambda$null$2() prints the stack trace to the console</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68767" style="display: none;">
+<a href="#IMC_IMMATURE_CLASS_PRINTSTACKTRACE">Bug type IMC_IMMATURE_CLASS_PRINTSTACKTRACE (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.SessionController<br/>In method tk.dcmmcc.gui.uicomponents.SessionController.lambda$null$2()<br/>At SessionController.java:[line 312]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69850');">
+<td>
+<span class="priority-2">IMC</span>
+</td>
+<td>Method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.launch(Stage, String) prints the stack trace to the console</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69850" style="display: none;">
+<a href="#IMC_IMMATURE_CLASS_PRINTSTACKTRACE">Bug type IMC_IMMATURE_CLASS_PRINTSTACKTRACE (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage<br/>In method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.launch(Stage, String)<br/>At ViewSelectedCoursesStage.java:[line 89]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66744');">
+<td>
+<span class="priority-2">IMC</span>
+</td>
+<td>Method tk.dcmmcc.Main.lambda$start$0() prints the stack trace to the console</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66744" style="display: none;">
+<a href="#IMC_IMMATURE_CLASS_PRINTSTACKTRACE">Bug type IMC_IMMATURE_CLASS_PRINTSTACKTRACE (click for details)</a>
+<br/>In class tk.dcmmcc.Main<br/>In method tk.dcmmcc.Main.lambda$start$0()<br/>At Main.java:[line 39]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N70737');">
+<td>
+<span class="priority-2">IMC</span>
+</td>
+<td>Method tk.dcmmcc.utils.LoggerUtil.initLogger(Logger) prints the stack trace to the console</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N70737" style="display: none;">
+<a href="#IMC_IMMATURE_CLASS_PRINTSTACKTRACE">Bug type IMC_IMMATURE_CLASS_PRINTSTACKTRACE (click for details)</a>
+<br/>In class tk.dcmmcc.utils.LoggerUtil<br/>In method tk.dcmmcc.utils.LoggerUtil.initLogger(Logger)<br/>At LoggerUtil.java:[line 48]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67460');">
+<td>
+<span class="priority-1">LSC</span>
+</td>
+<td>Method tk.dcmmcc.datafx.CourseData.addClassData(ClassesData) makes literal string comparisons passing the literal as an argument</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67460" style="display: none;">
+<a href="#LSC_LITERAL_STRING_COMPARISON">Bug type LSC_LITERAL_STRING_COMPARISON (click for details)</a>
+<br/>In class tk.dcmmcc.datafx.CourseData<br/>In method tk.dcmmcc.datafx.CourseData.addClassData(ClassesData)<br/>At CourseData.java:[line 115]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68145');">
+<td>
+<span class="priority-1">LSC</span>
+</td>
+<td>Method tk.dcmmcc.gui.main.MainController$InputController$1.call() makes literal string comparisons passing the literal as an argument</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68145" style="display: none;">
+<a href="#LSC_LITERAL_STRING_COMPARISON">Bug type LSC_LITERAL_STRING_COMPARISON (click for details)</a>
+<br/>In class tk.dcmmcc.gui.main.MainController$InputController$1<br/>In method tk.dcmmcc.gui.main.MainController$InputController$1.call()<br/>At MainController.java:[line 243]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68304');">
+<td>
+<span class="priority-1">LSC</span>
+</td>
+<td>Method tk.dcmmcc.gui.sidemenu.SideMenuController.lambda$init$0(FlowHandler, ObservableValue, Label, Label) makes literal string comparisons passing the literal as an argument</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68304" style="display: none;">
+<a href="#LSC_LITERAL_STRING_COMPARISON">Bug type LSC_LITERAL_STRING_COMPARISON (click for details)</a>
+<br/>In class tk.dcmmcc.gui.sidemenu.SideMenuController<br/>In method tk.dcmmcc.gui.sidemenu.SideMenuController.lambda$init$0(FlowHandler, ObservableValue, Label, Label)<br/>At SideMenuController.java:[line 60]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68820');">
+<td>
+<span class="priority-1">LSC</span>
+</td>
+<td>Method tk.dcmmcc.gui.uicomponents.SessionController.lambda$init$7(JFXListView, CourseClassRequestQueue, JFXTimePicker, HBox, MouseEvent) makes literal string comparisons passing the literal as an argument</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68820" style="display: none;">
+<a href="#LSC_LITERAL_STRING_COMPARISON">Bug type LSC_LITERAL_STRING_COMPARISON (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.SessionController<br/>In method tk.dcmmcc.gui.uicomponents.SessionController.lambda$init$7(JFXListView, CourseClassRequestQueue, JFXTimePicker, HBox, MouseEvent)<br/>At SessionController.java:[line 406]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66108');">
+<td>
+<span class="priority-3">NOS</span>
+</td>
+<td>Class jp.uphy.javafx.console.TextInputControlStream$TextInputControlInputStream uses non owned variables to synchronize on</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66108" style="display: none;">
+<a href="#NOS_NON_OWNED_SYNCHRONIZATION">Bug type NOS_NON_OWNED_SYNCHRONIZATION (click for details)</a>
+<br/>In class jp.uphy.javafx.console.TextInputControlStream$TextInputControlInputStream<br/>In method jp.uphy.javafx.console.TextInputControlStream$TextInputControlInputStream.enterKeyPressed()<br/>At TextInputControlStream.java:[line 122]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66161');">
+<td>
+<span class="priority-3">NOS</span>
+</td>
+<td>Class jp.uphy.javafx.console.TextInputControlStream$TextInputControlInputStream uses non owned variables to synchronize on</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66161" style="display: none;">
+<a href="#NOS_NON_OWNED_SYNCHRONIZATION">Bug type NOS_NON_OWNED_SYNCHRONIZATION (click for details)</a>
+<br/>In class jp.uphy.javafx.console.TextInputControlStream$TextInputControlInputStream<br/>In method jp.uphy.javafx.console.TextInputControlStream$TextInputControlInputStream.getLastLine()<br/>At TextInputControlStream.java:[line 150]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66520');">
+<td>
+<span class="priority-3">NOS</span>
+</td>
+<td>Class jp.uphy.javafx.console.TextInputControlStream$TextInputControlOutputStream uses non owned variables to synchronize on</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66520" style="display: none;">
+<a href="#NOS_NON_OWNED_SYNCHRONIZATION">Bug type NOS_NON_OWNED_SYNCHRONIZATION (click for details)</a>
+<br/>In class jp.uphy.javafx.console.TextInputControlStream$TextInputControlOutputStream<br/>In method jp.uphy.javafx.console.TextInputControlStream$TextInputControlOutputStream.flushImpl()<br/>At TextInputControlStream.java:[line 250]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66573');">
+<td>
+<span class="priority-3">NOS</span>
+</td>
+<td>Class jp.uphy.javafx.console.TextInputControlStream$TextInputControlOutputStream uses non owned variables to synchronize on</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66573" style="display: none;">
+<a href="#NOS_NON_OWNED_SYNCHRONIZATION">Bug type NOS_NON_OWNED_SYNCHRONIZATION (click for details)</a>
+<br/>In class jp.uphy.javafx.console.TextInputControlStream$TextInputControlOutputStream<br/>In method jp.uphy.javafx.console.TextInputControlStream$TextInputControlOutputStream.write(int)<br/>At TextInputControlStream.java:[line 227]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N65910');">
+<td>
+<span class="priority-3">OPM</span>
+</td>
+<td>This method new jp.uphy.javafx.console.ConsoleView(Charset) is declared more permissively than is used in the code base</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N65910" style="display: none;">
+<a href="#OPM_OVERLY_PERMISSIVE_METHOD">Bug type OPM_OVERLY_PERMISSIVE_METHOD (click for details)</a>
+<br/>In class jp.uphy.javafx.console.ConsoleView<br/>In method new jp.uphy.javafx.console.ConsoleView(Charset)<br/>Value - Method declared public but could be declared private<br/>At ConsoleView.java:[lines 42-70]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N67125');">
+<td>
+<span class="priority-3">OPM</span>
+</td>
+<td>This method tk.dcmmcc.datafx.CourseClassRequestQueue.cancelAll() is declared more permissively than is used in the code base</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N67125" style="display: none;">
+<a href="#OPM_OVERLY_PERMISSIVE_METHOD">Bug type OPM_OVERLY_PERMISSIVE_METHOD (click for details)</a>
+<br/>In class tk.dcmmcc.datafx.CourseClassRequestQueue<br/>In method tk.dcmmcc.datafx.CourseClassRequestQueue.cancelAll()<br/>Value - Method declared public but could be declared private<br/>At CourseClassRequestQueue.java:[lines 186-189]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67182');">
+<td>
+<span class="priority-3">OPM</span>
+</td>
+<td>This method tk.dcmmcc.datafx.CourseClassRequestQueue.existCourse(CourseData) is declared more permissively than is used in the code base</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67182" style="display: none;">
+<a href="#OPM_OVERLY_PERMISSIVE_METHOD">Bug type OPM_OVERLY_PERMISSIVE_METHOD (click for details)</a>
+<br/>In class tk.dcmmcc.datafx.CourseClassRequestQueue<br/>In method tk.dcmmcc.datafx.CourseClassRequestQueue.existCourse(CourseData)<br/>Value - Method declared public but could be declared private<br/>At CourseClassRequestQueue.java:[line 91]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N67513');">
+<td>
+<span class="priority-3">OPM</span>
+</td>
+<td>This method tk.dcmmcc.datafx.CourseData.addClassData(ClassesData) is declared more permissively than is used in the code base</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N67513" style="display: none;">
+<a href="#OPM_OVERLY_PERMISSIVE_METHOD">Bug type OPM_OVERLY_PERMISSIVE_METHOD (click for details)</a>
+<br/>In class tk.dcmmcc.datafx.CourseData<br/>In method tk.dcmmcc.datafx.CourseData.addClassData(ClassesData)<br/>Value - Method declared public but could be declared private<br/>At CourseData.java:[lines 110-129]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67954');">
+<td>
+<span class="priority-3">RI</span>
+</td>
+<td>Class tk.dcmmcc.datafx.ExtendedAnimatedFlowContainer implements same interface as superclass</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67954" style="display: none;">
+<a href="#RI_REDUNDANT_INTERFACES">Bug type RI_REDUNDANT_INTERFACES (click for details)</a>
+<br/>In class tk.dcmmcc.datafx.ExtendedAnimatedFlowContainer<br/>Interface io.datafx.controller.flow.FlowContainer<br/>At ExtendedAnimatedFlowContainer.java:[lines 23-132]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N70143');">
+<td>
+<span class="priority-3">UCF</span>
+</td>
+<td>Useless control flow in tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.generateCoursePane(Course, int)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N70143" style="display: none;">
+<a href="#UCF_USELESS_CONTROL_FLOW">Bug type UCF_USELESS_CONTROL_FLOW (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage<br/>In method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.generateCoursePane(Course, int)<br/>At ViewSelectedCoursesStage.java:[line 288]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N70196');">
+<td>
+<span class="priority-3">UCF</span>
+</td>
+<td>Useless control flow in tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.getStartTimeByCourseNum(int, int)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N70196" style="display: none;">
+<a href="#UCF_USELESS_CONTROL_FLOW">Bug type UCF_USELESS_CONTROL_FLOW (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage<br/>In method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.getStartTimeByCourseNum(int, int)<br/>At ViewSelectedCoursesStage.java:[line 261]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68422');">
+<td>
+<span class="priority-2">UP</span>
+</td>
+<td>Static or private method tk.dcmmcc.gui.sidemenu.SideMenuController.bindNodeToController(Node, Class, Flow, FlowHandler) has unused parameters</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68422" style="display: none;">
+<a href="#UP_UNUSED_PARAMETER">Bug type UP_UNUSED_PARAMETER (click for details)</a>
+<br/>In class tk.dcmmcc.gui.sidemenu.SideMenuController<br/>In method tk.dcmmcc.gui.sidemenu.SideMenuController.bindNodeToController(Node, Class, Flow, FlowHandler)<br/>Value Parameter 4: flowHandler<br/>At SideMenuController.java:[lines 85-86]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N70355');">
+<td>
+<span class="priority-2">UP</span>
+</td>
+<td>Static or private method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.launch(Stage, String) has unused parameters</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N70355" style="display: none;">
+<a href="#UP_UNUSED_PARAMETER">Bug type UP_UNUSED_PARAMETER (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage<br/>In method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.launch(Stage, String)<br/>Value Parameter 2: userCookie<br/>At ViewSelectedCoursesStage.java:[lines 60-93]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N70412');">
+<td>
+<span class="priority-2">UP</span>
+</td>
+<td>Static or private method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.populateCalendar(GridPane, String, int) has unused parameters</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N70412" style="display: none;">
+<a href="#UP_UNUSED_PARAMETER">Bug type UP_UNUSED_PARAMETER (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage<br/>In method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.populateCalendar(GridPane, String, int)<br/>Value Parameter 1: calendar<br/>At ViewSelectedCoursesStage.java:[lines 269-273]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N70469');">
+<td>
+<span class="priority-2">UP</span>
+</td>
+<td>Static or private method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.populateCalendar(GridPane, String, int) has unused parameters</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N70469" style="display: none;">
+<a href="#UP_UNUSED_PARAMETER">Bug type UP_UNUSED_PARAMETER (click for details)</a>
+<br/>In class tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage<br/>In method tk.dcmmcc.gui.uicomponents.ViewSelectedCoursesStage.populateCalendar(GridPane, String, int)<br/>Value Parameter 3: week<br/>At ViewSelectedCoursesStage.java:[lines 269-273]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N65812');">
+<td>
+<span class="priority-3">UVA</span>
+</td>
+<td>Method jp.uphy.javafx.console.ConsoleApplication.invokeMain(String[]) defines parameter list with array as last argument, rather than vararg</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N65812" style="display: none;">
+<a href="#UVA_USE_VAR_ARGS">Bug type UVA_USE_VAR_ARGS (click for details)</a>
+<br/>In class jp.uphy.javafx.console.ConsoleApplication<br/>In method jp.uphy.javafx.console.ConsoleApplication.invokeMain(String[])<br/>In ConsoleApplication.java</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67296');">
+<td>
+<span class="priority-3">UVA</span>
+</td>
+<td>Method new tk.dcmmcc.datafx.CourseClassRequestQueue(CourseData[]) defines parameter list with array as last argument, rather than vararg</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67296" style="display: none;">
+<a href="#UVA_USE_VAR_ARGS">Bug type UVA_USE_VAR_ARGS (click for details)</a>
+<br/>In class tk.dcmmcc.datafx.CourseClassRequestQueue<br/>In method new tk.dcmmcc.datafx.CourseClassRequestQueue(CourseData[])<br/>At CourseClassRequestQueue.java:[lines 62-66]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N67866');">
+<td>
+<span class="priority-3">UVA</span>
+</td>
+<td>Method new tk.dcmmcc.datafx.CourseData(CourseType, ClassesData[]) defines parameter list with array as last argument, rather than vararg</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N67866" style="display: none;">
+<a href="#UVA_USE_VAR_ARGS">Bug type UVA_USE_VAR_ARGS (click for details)</a>
+<br/>In class tk.dcmmcc.datafx.CourseData<br/>In method new tk.dcmmcc.datafx.CourseData(CourseType, ClassesData[])<br/>At CourseData.java:[lines 76-94]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68198');">
+<td>
+<span class="priority-3">WEM</span>
+</td>
+<td>Method tk.dcmmcc.gui.main.MainController$InputController$1.call() throws exception with static message string</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68198" style="display: none;">
+<a href="#WEM_WEAK_EXCEPTION_MESSAGING">Bug type WEM_WEAK_EXCEPTION_MESSAGING (click for details)</a>
+<br/>In class tk.dcmmcc.gui.main.MainController$InputController$1<br/>In method tk.dcmmcc.gui.main.MainController$InputController$1.call()<br/>At MainController.java:[line 244]</p>
+</td>
+</tr>
+</table>
+<h1>
+<a name="Details">Details</a>
+</h1>
+<h2>
+<a name="BC_IMPOSSIBLE_DOWNCAST_OF_TOARRAY">BC_IMPOSSIBLE_DOWNCAST_OF_TOARRAY: Impossible downcast of toArray() result</a>
+</h2>
+
+<p>
+This code is casting the result of calling <code>toArray()</code> on a collection
+to a type more specific than <code>Object[]</code>, as in:</p>
+<pre>
+String[] getAsArray(Collection&lt;String&gt; c) {
+  return (String[]) c.toArray();
+  }
+</pre>
+<p>This will usually fail by throwing a ClassCastException. The <code>toArray()</code>
+of almost all collections return an <code>Object[]</code>. They can't really do anything else,
+since the Collection object has no reference to the declared generic type of the collection.
+<p>The correct way to do get an array of a specific type from a collection is to use
+  <code>c.toArray(new String[]);</code>
+  or <code>c.toArray(new String[c.size()]);</code> (the latter is slightly more efficient).
+<p>There is one common/known exception exception to this. The <code>toArray()</code>
+method of lists returned by <code>Arrays.asList(...)</code> will return a covariantly
+typed array. For example, <code>Arrays.asArray(new String[] { "a" }).toArray()</code>
+will return a <code>String []</code>. FindBugs attempts to detect and suppress
+such cases, but may miss some.
+</p>
+
+    
+<h2>
+<a name="BC_UNCONFIRMED_CAST_OF_RETURN_VALUE">BC_UNCONFIRMED_CAST_OF_RETURN_VALUE: Unchecked/unconfirmed cast of return value from method</a>
+</h2>
+
+<p>
+This code performs an unchecked cast of the return value of a method.
+The code might be calling the method in such a way that the cast is guaranteed to be
+safe, but FindBugs is unable to verify that the cast is safe.  Check that your program logic ensures that this
+cast will not fail.
+</p>
+
+    
+<h2>
+<a name="BED_BOGUS_EXCEPTION_DECLARATION">BED_BOGUS_EXCEPTION_DECLARATION: Non derivable method declares throwing an exception that isn't thrown</a>
+</h2>
+			
+			<p>This method declares that it throws a checked exception that it does not throw. As this method is
+			either a constructor, static method or private method, there is no reason for this method to declare
+			the exception in its throws clause, and just causes calling methods to unnecessarily handle an exception
+			that will never be thrown. The exception in question should be removed from the throws clause.</p>
+			
+		
+<h2>
+<a name="DM_BOXED_PRIMITIVE_FOR_PARSING">DM_BOXED_PRIMITIVE_FOR_PARSING: Boxing/unboxing to parse a primitive</a>
+</h2>
+
+  <p>A boxed primitive is created from a String, just to extract the unboxed primitive value.
+  It is more efficient to just call the static parseXXX method.</p>
+
+    
+<h2>
+<a name="CFS_CONFUSING_FUNCTION_SEMANTICS">CFS_CONFUSING_FUNCTION_SEMANTICS: Method returns modified parameter</a>
+</h2>
+			
+			<p>This method appears to modify a parameter, and then return this parameter as the
+			method's return value. This will be confusing to callers of this method, as it won't be
+			apparent that the 'original' passed in parameter will be changed as well. If the purpose
+			of this method is to change the parameter, it would be more clear to change the method to
+			a have a void return value. If a return type is required due to interface or superclass contract,
+			perhaps a clone of the parameter should be made.</p>
+			
+		
+<h2>
+<a name="CLI_CONSTANT_LIST_INDEX">CLI_CONSTANT_LIST_INDEX: Method accesses list or array with constant index</a>
+</h2>
+			
+			<p>This method accesses an array or list using a constant integer index. Often,
+			this is a typo where a loop variable is intended to be used. If however, specific
+			list indices mean different specific things, then perhaps replacing the list with
+			a first-class object with meaningful accessors would make the code less brittle.</p>
+			
+		
+<h2>
+<a name="DLS_DEAD_LOCAL_STORE">DLS_DEAD_LOCAL_STORE: Dead store to local variable</a>
+</h2>
+
+<p>
+This instruction assigns a value to a local variable,
+but the value is not read or used in any subsequent instruction.
+Often, this indicates an error, because the value computed is never
+used.
+</p>
+<p>
+Note that Sun's javac compiler often generates dead stores for
+final local variables.  Because FindBugs is a bytecode-based tool,
+there is no easy way to eliminate these false positives.
+</p>
+
+    
+<h2>
+<a name="DM_DEFAULT_ENCODING">DM_DEFAULT_ENCODING: Reliance on default encoding</a>
+</h2>
+
+<p> Found a call to a method which will perform a byte to String (or String to byte) conversion, and will assume that the default platform encoding is suitable. This will cause the application behaviour to vary between platforms. Use an alternative API and specify a charset name or Charset object explicitly.  </p>
+
+      
+<h2>
+<a name="EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS">EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS: Unconstrained method converts checked exception to unchecked</a>
+</h2>
+			
+			<p>This method is not constrained by an interface or superclass, but converts a caught checked exception
+			to unchecked exception and thrown. It would be more appropriate just to throw the checked exception, adding
+			the exception to the throws clause of the method.</p>
+			
+		
+<h2>
+<a name="FCBL_FIELD_COULD_BE_LOCAL">FCBL_FIELD_COULD_BE_LOCAL: Class defines fields that are used only as locals</a>
+</h2>
+			
+			<p>This class defines fields that are used in a locals only fashion,
+			specifically private fields or protected fields in final classes that are accessed
+			first in each method with a store vs. a load. This field could be replaced by one
+			or more local variables.</p>
+			
+		
+<h2>
+<a name="ICAST_INTEGER_MULTIPLY_CAST_TO_LONG">ICAST_INTEGER_MULTIPLY_CAST_TO_LONG: Result of integer multiplication cast to long</a>
+</h2>
+
+<p>
+This code performs integer multiply and then converts the result to a long,
+as in:</p>
+<pre>
+    long convertDaysToMilliseconds(int days) { return 1000*3600*24*days; }
+</pre>
+<p>
+If the multiplication is done using long arithmetic, you can avoid
+the possibility that the result will overflow. For example, you
+could fix the above code to:</p>
+<pre>
+    long convertDaysToMilliseconds(int days) { return 1000L*3600*24*days; }
+</pre>
+or
+<pre>
+    static final long MILLISECONDS_PER_DAY = 24L*3600*1000;
+    long convertDaysToMilliseconds(int days) { return days * MILLISECONDS_PER_DAY; }
+</pre>
+
+    
+<h2>
+<a name="IMC_IMMATURE_CLASS_NO_TOSTRING">IMC_IMMATURE_CLASS_NO_TOSTRING: Class does not implement a toString method</a>
+</h2>
+    		
+    		<p>This class, which has instance fields, has no toString() method which will make debugging with this
+    		class more difficult than it could be. Consider adding a toString() method. Using libraries like commons-lang3 
+    		ToStringBuilder makes this process easy.
+    		</p>
+    		
+    	
+<h2>
+<a name="IMC_IMMATURE_CLASS_PRINTSTACKTRACE">IMC_IMMATURE_CLASS_PRINTSTACKTRACE: Method prints the stack trace to the console</a>
+</h2>
+    		
+    		<p>This method prints a stack trace to the console. This is non configurable, and causes an 
+    		application to look unprofessional. Switch to using loggers so that users can control what 
+    		is logged and where.</p>
+    		
+    	
+<h2>
+<a name="IS2_INCONSISTENT_SYNC">IS2_INCONSISTENT_SYNC: Inconsistent synchronization</a>
+</h2>
+
+  <p> The fields of this class appear to be accessed inconsistently with respect
+  to synchronization.&nbsp; This bug report indicates that the bug pattern detector
+  judged that
+  </p>
+  <ul>
+  <li> The class contains a mix of locked and unlocked accesses,</li>
+  <li> The class is <b>not</b> annotated as javax.annotation.concurrent.NotThreadSafe,</li>
+  <li> At least one locked access was performed by one of the class's own methods, and</li>
+  <li> The number of unsynchronized field accesses (reads and writes) was no more than
+       one third of all accesses, with writes being weighed twice as high as reads</li>
+  </ul>
+
+  <p> A typical bug matching this bug pattern is forgetting to synchronize
+  one of the methods in a class that is intended to be thread-safe.</p>
+
+  <p> You can select the nodes labeled "Unsynchronized access" to show the
+  code locations where the detector believed that a field was accessed
+  without synchronization.</p>
+
+  <p> Note that there are various sources of inaccuracy in this detector;
+  for example, the detector cannot statically detect all situations in which
+  a lock is held.&nbsp; Also, even when the detector is accurate in
+  distinguishing locked vs. unlocked accesses, the code in question may still
+  be correct.</p>
+
+
+    
+<h2>
+<a name="LSC_LITERAL_STRING_COMPARISON">LSC_LITERAL_STRING_COMPARISON: Method makes literal string comparisons passing the literal as an argument</a>
+</h2>
+			
+			<p>This line is in the form of <br/>
+<pre><code>String str = ...
+str.equals("someOtherString");
+//or
+str.compareTo("someOtherString");</code></pre>
+		    </p>
+			<p>A <code>NullPointerException</code> may occur if the String variable <code>str</code> is <code>null</code>. If instead the code was restructured to<br/>
+<pre><code>String str = ...
+"someOtherString".equals(str);
+//or
+"someOtherString".compareTo(str);</code></pre><br/>
+			that is, call <code>equals()</code> or <code>compareTo()</code> on the string literal, passing the 
+			variable as an argument, this exception could never happen as both <code>equals()</code> and 
+			<code>compareTo()</code> check for <code>null</code>.</p>
+			
+		
+<h2>
+<a name="MDM_THREAD_YIELD">MDM_THREAD_YIELD: Method attempts to manually schedule threads</a>
+</h2>
+			
+			<p>Manual thread scheduling with <code>Thread.sleep()</code> or <code>Thread.yield()</code> has no guaranteed semantics and is often used to mask race conditions.
+			These methods exist for supporting early processors when java was first released, and are not advised for modern processors. The operating system will take care
+			of yielding threads for you.</p>
+			
+		
+<h2>
+<a name="MDM_RANDOM_SEED">MDM_RANDOM_SEED: Method creates insecure Random object</a>
+</h2>
+			
+			<p><code>Random()</code> constructor without a seed is insecure because it defaults to an easily guessable seed: 
+			<code>System.currentTimeMillis()</code>. Initialize a seed like <code>new Random(SecureRandom.getInstance("SHA1PRNG").nextLong())</code> 
+			or replace <code>Random()</code> with <code>SecureRandom.getInstance("SHA1PRNG")</code> instead.
+			"SHA1PRNG" is the random algorithm supported on all platforms.
+		</p>
+
+			<p>
+				As of Java 6, you may use <code>new Random(new SecureRandom().nextLong())</code> or <code>new SecureRandom()</code> instead.
+			</p>
+			
+		
+<h2>
+<a name="NAB_NEEDLESS_BOXING_PARSE">NAB_NEEDLESS_BOXING_PARSE: Method converts String to primitive using excessive boxing</a>
+</h2>
+			
+			<p>This method passes a String to a wrapped primitive object's valueOf method, which in turn calls
+			the boxedValue() method to convert to a primitive. When it is desired to convert from a String
+			to a primitive value, it is simpler to use the BoxedPrimitive.parseBoxedPrimitive(String)
+			method. </p>
+			
+			<p>Instead of something like:<br/>
+<pre><code>
+public int someMethod(String data) {
+long l = Long.valueOf(data).longValue();
+float f = Float.valueOf(data).floatValue();
+return Integer.valueOf(data); // There is an implicit .intValue() call
+}
+</code></pre>
+			Simply do: <br/>
+<pre><code>
+public int someMethod(String data) {
+	long l = Long.parseLong(data);
+	float f = Float.parseFloat(data);
+	return Integer.parseInt(data);
+}
+</code></pre>
+			</p>
+			
+			
+		
+<h2>
+<a name="NOS_NON_OWNED_SYNCHRONIZATION">NOS_NON_OWNED_SYNCHRONIZATION: Class uses non owned variables to synchronize on</a>
+</h2>
+			
+			<p>This method uses a synchronize block where the object that is being synchronized on,
+			is not owned by this current instance. This means that other instances may use this same
+			object for synchronization for their own purposes, causing synchronization confusion. It is
+			always cleaner and safer to only synchronize on private fields of this class. Note that 'this'
+			is not owned by the current instance, but is owned by whomever assigns it to a field of its
+			class. Synchronizing on 'this' is also not a good idea.</p>
+			
+		
+<h2>
+<a name="OPM_OVERLY_PERMISSIVE_METHOD">OPM_OVERLY_PERMISSIVE_METHOD: This method is declared more permissively than is used in the code base</a>
+</h2>
+    		
+    		<p>This method is declared more permissively than the code is using. Having this method be more
+			permissive than is needed limits your ability to make observations about this method, like
+    		parameter usage, refactorability, and derivability. It is possible that this detector will report 
+    		erroneously if:
+    		<ul>
+    			<li>The method is called from code not being scanned, such as unit tests</li>
+				<li>The method is an API method, expected to be used by unknown client code</li>
+    			<li>The method is called through reflection
+    		</ul>	
+    		</p>
+    		
+    	
+<h2>
+<a name="PCOA_PARTIALLY_CONSTRUCTED_OBJECT_ACCESS">PCOA_PARTIALLY_CONSTRUCTED_OBJECT_ACCESS: Constructor makes call to non-final method</a>
+</h2>
+			
+			<p>This constructor makes a call to a non-final method. Since this method can be overridden, a subclasses
+			implementation will be executing against an object that has not been initialized at the subclass level.
+			You should mark all methods called from the constructor as final to avoid this problem.</p>
+			
+		
+<h2>
+<a name="PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS">PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS: Method appears to call the same method on the same object redundantly</a>
+</h2>
+			
+			<p>This method makes two consecutive calls to the same method using the same constant
+			parameters, on the same instance without any intervening changes to the objects. If this
+			method does not make changes to the object, which it appears it doesn't, then making
+			two calls is just a waste. These method calls could be combined by assigning the
+			result into a temporary variable, and using the variable the second time.</p>
+			
+		
+<h2>
+<a name="RI_REDUNDANT_INTERFACES">RI_REDUNDANT_INTERFACES: Class implements same interface as superclass</a>
+</h2>
+   
+    <p>
+    This class declares that it implements an interface that is also implemented by a superclass.
+    This is redundant because once a superclass implements an interface, all subclasses by default also
+    implement this interface. It may point out that the inheritance hierarchy has changed since
+    this class was created, and consideration should be given to the ownership of
+    the interface's implementation.
+    </p>
+    
+     
+<h2>
+<a name="RU_INVOKE_RUN">RU_INVOKE_RUN: Invokes run on a thread (did you mean to start it instead?)</a>
+</h2>
+
+  <p> This method explicitly invokes <code>run()</code> on an object.&nbsp;
+  In general, classes implement the <code>Runnable</code> interface because
+  they are going to have their <code>run()</code> method invoked in a new thread,
+  in which case <code>Thread.start()</code> is the right method to call.</p>
+
+    
+<h2>
+<a name="SIC_INNER_SHOULD_BE_STATIC_ANON">SIC_INNER_SHOULD_BE_STATIC_ANON: Could be refactored into a named static inner class</a>
+</h2>
+
+  <p> This class is an inner class, but does not use its embedded reference
+  to the object which created it.&nbsp; This reference makes the instances
+  of the class larger, and may keep the reference to the creator object
+  alive longer than necessary.&nbsp; If possible, the class should be
+  made into a <em>static</em> inner class. Since anonymous inner
+classes cannot be marked as static, doing this will require refactoring
+the inner class so that it is a named inner class.</p>
+
+    
+<h2>
+<a name="UCF_USELESS_CONTROL_FLOW">UCF_USELESS_CONTROL_FLOW: Useless control flow</a>
+</h2>
+
+<p> This method contains a useless control flow statement, where
+control flow continues onto the same place regardless of whether or not
+the branch is taken. For example,
+this is caused by having an empty statement
+block for an <code>if</code> statement:</p>
+<pre>
+    if (argv.length == 0) {
+    // TODO: handle this case
+    }
+</pre>
+
+    
+<h2>
+<a name="UI_INHERITANCE_UNSAFE_GETRESOURCE">UI_INHERITANCE_UNSAFE_GETRESOURCE: Usage of GetResource may be unsafe if class is extended</a>
+</h2>
+
+<p>Calling <code>this.getClass().getResource(...)</code> could give
+results other than expected if this class is extended by a class in
+another package.</p>
+
+    
+<h2>
+<a name="UP_UNUSED_PARAMETER">UP_UNUSED_PARAMETER: Static or private method has unused parameters</a>
+</h2>
+	       
+	       <p>This method defines parameters that are never used. As this method is either static or private,
+	       and can't be derived from, it is safe to remove these parameters and simplify your method.
+	       You should consider, while unlikely, that this method may be used reflectively, and thus you will
+	       want to change that call as well. In this case, it is likely that once you remove the parameter,
+	       there will be a chain of method calls that have spent time creating this parameter and passing it
+	       down the line. All of this may be able to be removed.</p>
+	       
+	   
+<h2>
+<a name="UPM_UNCALLED_PRIVATE_METHOD">UPM_UNCALLED_PRIVATE_METHOD: Private method is never called</a>
+</h2>
+
+<p> This private method is never called. Although it is
+possible that the method will be invoked through reflection,
+it is more likely that the method is never used, and should be
+removed.
+</p>
+
+
+<h2>
+<a name="UVA_USE_VAR_ARGS">UVA_USE_VAR_ARGS: Method defines parameter list with array as last argument, rather than vararg</a>
+</h2>
+			
+			<p>This method defines a parameter list that ends with an array. As this class is compiled with
+			Java 1.5 or better, this parameter could be defined as a vararg parameter instead, which can be
+			more convenient for client developers to use. This is not a bug, per se, just an improvement.</p>
+			
+		
+<h2>
+<a name="WEM_WEAK_EXCEPTION_MESSAGING">WEM_WEAK_EXCEPTION_MESSAGING: Method throws exception with static message string</a>
+</h2>
+			
+			<p>This method creates and throws an exception using a static string as the exceptions message.
+			Without any specific context of this particular exception invocation, such as the value of parameters,
+			key member variables, or local variables, it may be difficult to infer how this exception occurred. Consider
+			adding context to the exception message.</p>
+			
+		</body>
+</html>

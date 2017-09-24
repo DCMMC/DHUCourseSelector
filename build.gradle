@@ -1,0 +1,90 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+}
+
+plugins {
+    id 'com.jfrog.bintray' version '1.7.3' apply false
+    id 'com.github.ben-manes.versions' version '0.14.0' apply false
+    id 'me.tatarka.retrolambda' version '3.6.0' apply false
+    id 'com.github.hierynomus.license' version '0.13.1' apply false
+    id 'net.nemerosa.versioning' version '2.6.0' apply false
+    id "org.sonarqube" version "2.2"
+}
+
+allprojects {
+    apply plugin: 'idea'
+    apply plugin: "java"
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+}
+
+subprojects {
+    apply plugin: 'com.github.ben-manes.versions'
+    apply plugin: 'net.nemerosa.versioning'
+
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url 'http://sevntu-checkstyle.github.com/sevntu.checkstyle/maven2' }
+    }
+
+    if (JavaVersion.current().isJava8Compatible()) {
+        tasks.withType(Javadoc) {
+            options.addStringOption('Xdoclint:none', '-quiet')
+        }
+    }
+
+    apply from: rootProject.file('gradle/code-coverage.gradle')
+    apply from: rootProject.file('gradle/checkstyle.gradle')
+    apply from: rootProject.file('gradle/findbugs.gradle')
+    apply from: rootProject.file('gradle/javafx.gradle')
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    tasks.withType(JavaCompile) {
+        options.incremental = true
+    }
+}
+
+project(':libDHUCourseSelecter') {
+    //just for test
+    //apply plugin: 'application'
+
+    //mainClassName = 'tk.dcmmcc.DHUCourseSelecterCLI'
+    
+    dependencies {
+        //本地libs
+        compile files('libs/commons-codec-1.9.jar',
+                'libs/commons-httpclient-3.1.jar',
+                'libs/commons-logging-1.2.jar',
+                'libs/jsoup-1.10.3.jar')
+    }
+}
+
+project(':DHUCourseSelecterClient') {
+    apply plugin: 'application'
+
+    mainClassName = 'tk.dcmmcc.Main'
+
+    dependencies {
+        compile project(':libDHUCourseSelecter')
+
+        //本地libs
+        compile files('libs/jfoenix.jar', 
+                'libs/controlsfx-8.40.13.jar',
+                'libs/tilesfx-1.4.4.jar')
+
+        // NOTE: the latest version _is_ 8.0.1!
+        // 8.0.7 was published by mistake
+        compile 'io.datafx:datafx:8.0.1'
+        compile 'io.datafx:flow:8.0.1'
+
+        // FontAwesome (Bintray)
+        compile 'de.jensd:fontawesomefx-fontawesome:4.7.0-5'
+    }
+}
