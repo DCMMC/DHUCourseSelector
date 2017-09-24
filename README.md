@@ -38,6 +38,24 @@
 * [Jsoup](https://jsoup.org/)
 * Still coding...
 
+# Build
+
+本项目用Gradle构建, 要运行GUI主程序, 请在项目根目录执行: 
+
+Windows下:
+
+```
+$ gradlew run
+```
+
+*nix下:
+
+```
+$ ./gradlew.sh run
+```
+
+其他`tasks`请执行`gradlew tasks`查看.
+
 # Author
 
 DCMMC
