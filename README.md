@@ -11,10 +11,16 @@
 
 > Still coding...
 
-> 暂时只是实现了功能, 还没做GUI
+> CLI界面简单的实现了队列选课, GUI只完成了主界面, 设置界面, 关于界面(Partial), 查看选课界面, 修改选课界面正在施工...
+
+# Changelog
+
+> Still coding...
 
 # Features
 
+* 已选课程课表预览
+* 自定义选课请求的间隔时间和最大选课次数
 * 多线程选课, 并且可以使用Listener
 * 从教务处选课首页导入当前学期推荐选择的课程
 * 搜索课程
@@ -22,10 +28,15 @@
 * 查看已选课程
 * 删除课程
 
+# Screenshot
+
+> Still coding...
+
 # Dependent Libraries
 
 * [HttpClient](https://hc.apache.org/httpclient-3.x/)
 * [Jsoup](https://jsoup.org/)
+* Still coding...
 
 # Author
 
