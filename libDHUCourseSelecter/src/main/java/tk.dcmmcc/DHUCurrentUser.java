@@ -307,11 +307,9 @@ public class DHUCurrentUser {
             //处理转跳事件, 比如课程冲突的时候会转跳到冲突提示界面
             if (tmpLine.contains("The URL has moved")) {
                 //debug
-                logger.warning("所选课程与已选课程有冲突或者已经选了!");
+                logger.info("转跳");
 
-                //debug
-                //logger.info(tmpLine);
-                // FIXME 发现bug: 在选择相同的一门课程(已经选过这个课程相同时间的其他班级)的时候, 会提示已经选了这门课程了
+                // FIXME 发现: 在选择相同的一门课程(已经选过这个课程相同时间的其他班级)的时候, 会提示已经选了这门课程了
                 // FIXME 怀疑教务处是按照courseId来判断的
                 String redirect = tmpLine.replace("The URL has moved <a href=\"", "")
                         .replace("\">here</a>", "");
@@ -323,90 +321,102 @@ public class DHUCurrentUser {
                 bis = new BufferedInputStream(redirectPage.getResponseBodyAsStream());
                 scanner = new Scanner(bis, "GBK");
 
-                keys = ("doWhat,studentId,courseId,courseNo,yearTerm,selectCourseStatus").split(",");
-                cnt = 0;
-                headers = new Header[keys.length];
+                if (redirect.contains("selectcourseconflict")) {
+                    //课程冲突
+                    keys = ("doWhat,studentId,courseId,courseNo,yearTerm,selectCourseStatus").split(",");
+                    cnt = 0;
+                    headers = new Header[keys.length];
 
-                //获取Headers
-                while (scanner.hasNextLine()) {
-                    line = scanner.nextLine();
+                    //获取Headers
+                    int headCnt = 0;
+                    while (scanner.hasNextLine()) {
+                        line = scanner.nextLine();
 
-                    if (line.contains("这门课已经选了")) {
-                        //你这门课已经选了,不允许再次选择了！
-                        logger.info("已经选上了该课程.");
+                        if (line.contains("这门课已经选了")) {
+                            //你这门课已经选了,不允许再次选择了！
+                            logger.info("courseId" + courseId + "已经选上了该课程.");
+                            return true;
+                        }
+
+                        if (line.contains("<input")) {
+                            for (String s : keys)
+                                if (line.contains(s)) {
+                                    ++headCnt;
+                                    for (int i = line.indexOf(s) + s.length() + 9; line.charAt(i) != '\"' && i < line.length(); i++)
+                                        value += line.charAt(i);
+                                    value = value.replaceAll("[\\s\r\n]*", "");
+                                    headers[cnt++] = new Header(s, value);
+                                    value = "";
+                                    break;
+                                }
+                        }
+                    }
+
+                    if (headCnt == 6) {
+                        //确认提交选课请求
+                        confirmSelect = new PostMethod(prefixCourseController);
+                        //set bodies
+                        confirmSelect.setRequestBody(headers);
+                        //set Cookie
+                        confirmSelect.setRequestHeader("cookie", userCookie);
+                        //post!
+                        //超时4s
+                        httpClient0.getParams().setConnectionManagerTimeout(4000);
+
+                        //debug
+                        //System.out.println(confirmSelect.getURI());
+
+                        httpClient0.executeMethod(confirmSelect);
+
+                        //如果满了, 返回的页面是一个值alert弹窗提示: 录取人数已满，请重选其它课程！
+                        scanner = new Scanner(new BufferedInputStream(confirmSelect.getResponseBodyAsStream()), "gbk");
+
+                        //如果原来就已经录取了或者这次选课成功了, 就是返回到教务处选课首页
+                        tmpLine = scanner.nextLine();
+                        if (tmpLine.contains("err.jsp?errMsg"))
+                            throw new Exception("发生了严重错误! 错误信息: " + tmpLine);
+                        else if (tmpLine.contains("录取人数已满") || tmpLine.contains("Unavailable"))
+                            return false;
+
+                        while (scanner.hasNextLine() && (tmpLine = scanner.nextLine()) != null) {
+                            if (tmpLine.contains("对不起，操作出错"))
+                                throw new Exception("发生了严重错误! 错误信息: " + tmpLine);
+                            else if (tmpLine.contains("录取人数已满") || tmpLine.contains("Unavailable"))
+                                return false;
+                        }
+
+                        // FIXME
                         return true;
-                    }
-
-                    if (line.contains("<input")) {
-                        for (String s : keys)
-                            if (line.contains(s)) {
-                                for (int i = line.indexOf(s) + s.length() + 9; line.charAt(i) != '\"' && i < line.length(); i++)
-                                    value += line.charAt(i);
-                                value = value.replaceAll("[\\s\r\n]*", "");
-                                headers[cnt++] = new Header(s, value);
-                                value = "";
-                                break;
-                            }
-
-                        continue;
-                    }
-                }
-
-                //确认提交选课请求
-                confirmSelect = new PostMethod(prefixCourseController);
-                //set bodies
-                confirmSelect.setRequestBody(headers);
-                //set Cookie
-                confirmSelect.setRequestHeader("cookie", userCookie);
-                //post!
-                //超时4s
-                httpClient0.getParams().setConnectionManagerTimeout(4000);
-                httpClient0.executeMethod(confirmSelect);
-
-                //如果满了, 返回的页面是一个值alert弹窗提示: 录取人数已满，请重选其它课程！
-                scanner = new Scanner(new BufferedInputStream(confirmSelect.getResponseBodyAsStream()), "gbk");
-
-                //如果原来就已经录取了或者这次选课成功了, 就是返回到教务处选课首页
-                tmpLine = scanner.nextLine();
-                if (tmpLine.contains("err.jsp?errMsg"))
-                    throw new Exception("发生了严重错误! 错误信息: " + tmpLine);
-                else if (tmpLine.contains("录取人数已满") || tmpLine.contains("Unavailable"))
-                    return false;
-
-                while (scanner.hasNextLine() && (tmpLine = scanner.nextLine()) != null) {
-                    if (tmpLine.contains("对不起，操作出错"))
-                        throw new Exception("发生了严重错误! 错误信息: " + tmpLine);
-                    else if (tmpLine.contains("录取人数已满") || tmpLine.contains("Unavailable"))
+                    } else {
+                        //出现bug: 课程冲突但是给的信息不是6个!
+                        logger.severe("出现bug: 课程冲突但是给的信息不是6个! 视为选课不成功处理.");
                         return false;
+                    }
                 }
+            }
 
-                // FIXME
+            //如果原来就已经录取了或者这次选课成功了, 就是返回到教务处选课首页
+            tmpLine = scanner.nextLine();
+            if (tmpLine.contains("err.jsp?errMsg"))
+                throw new Exception("发生了严重错误! 错误信息: " + tmpLine);
+            else if (tmpLine.contains("录取人数已满") || tmpLine.contains("Unavailable"))
+                return false;
+            else if (tmpLine.contains("这门课已经选了"))
+                //你这门课已经选了,不允许再次选择了！
                 return true;
-            } else {
-                //如果原来就已经录取了或者这次选课成功了, 就是返回到教务处选课首页
-                tmpLine = scanner.nextLine();
-                if (tmpLine.contains("err.jsp?errMsg"))
+
+            while (scanner.hasNextLine() && (tmpLine = scanner.nextLine()) != null) {
+                if (tmpLine.contains("对不起，操作出错"))
                     throw new Exception("发生了严重错误! 错误信息: " + tmpLine);
                 else if (tmpLine.contains("录取人数已满") || tmpLine.contains("Unavailable"))
                     return false;
                 else if (tmpLine.contains("这门课已经选了"))
                     //你这门课已经选了,不允许再次选择了！
                     return true;
-
-                while (scanner.hasNextLine() && (tmpLine = scanner.nextLine()) != null) {
-                    if (tmpLine.contains("对不起，操作出错"))
-                        throw new Exception("发生了严重错误! 错误信息: " + tmpLine);
-                    else if (tmpLine.contains("录取人数已满") || tmpLine.contains("Unavailable"))
-                        return false;
-                    else if (tmpLine.contains("这门课已经选了"))
-                        //你这门课已经选了,不允许再次选择了！
-                        return true;
-                }
-
-                // FIXME
-                return true;
             }
 
+            // FIXME
+            return true;
         } catch (IOException ioe) {
             if (ioe instanceof SocketTimeoutException)  {
                 //网络超时, 可能是教务处卡爆了哦...

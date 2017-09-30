@@ -16,6 +16,8 @@ import java.io.StringWriter;
  */
 public class ExceptionDialog {
     public static void launch(Exception e, String headerText, String contentText) {
+        e.printStackTrace();
+
         //Exception Dialog
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Exception Dialog");

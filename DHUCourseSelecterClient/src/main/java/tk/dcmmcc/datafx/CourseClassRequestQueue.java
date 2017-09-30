@@ -1,12 +1,13 @@
 package tk.dcmmcc.datafx;
 
+import javafx.application.Platform;
+import javafx.beans.binding.BooleanBinding;
 import javafx.beans.binding.IntegerBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import tk.dcmmcc.utils.LoggerUtil;
-import tk.dcmmcc.utils.Pointer;
 import java.util.*;
 import java.util.logging.Logger;
 
@@ -22,7 +23,7 @@ public class CourseClassRequestQueue {
     //成功录取(选择)的课程数目
     private static IntegerProperty selectedCoursesNumberProperty = new SimpleIntegerProperty(0);
     //保证没有重复的课程, 存储着CourseId(保持元素的顺序)和对应的CoursesData
-    private LinkedHashMap<String, CourseData> coursesDataMap = new LinkedHashMap<>();
+    private static LinkedHashMap<String, CourseData> coursesDataMap = new LinkedHashMap<>();
     //started flag
     private static BooleanProperty statedProperty = new SimpleBooleanProperty(false);
     //Logger
@@ -64,13 +65,30 @@ public class CourseClassRequestQueue {
     /* Methods */
 
     /**
+     * 从队列中删除CourseId指定CourseData
+     * @return 被移除的CourseData, 如果没有对应的CourseData或者已经开始选课了就返回null
+     */
+    public static CourseData removeCourseData(String courseId) {
+        //如果已经开始就不能remove
+        if (!statedProperty.get()) {
+            queueCoursesNumberProperty.set(queueCoursesNumberProperty.get() - 1);
+
+            return coursesDataMap.remove(courseId);
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * 添加课程
      * @param courseData 要添加的课程
      * @return 成功就返回添加的这个课程, 失败就返回null
      */
     public CourseData addCoursesData(CourseData courseData) {
         if (existCourse(courseData)) {
-            logger.warning("CourseClassRequestQueue中已经存在了这个Course了!");
+            logger.warning("CourseClassRequestQueue中已经存在了" +
+                    courseData.getCourseType().getCourse().getTextTitle() + "(courseId" +
+                    courseData.getCourseId() + ")" + "这个Course了!");
             return null;
         } else {
             coursesDataMap.put(courseData.getCourseId(), courseData);
@@ -90,7 +108,6 @@ public class CourseClassRequestQueue {
     /**
      * 延迟开始
      * @param date 要延迟开始的时间
-     * @return
      */
     public void startAll(Date date) {
         //绑定那一堆Propertys
@@ -104,14 +121,27 @@ public class CourseClassRequestQueue {
         //记录成功的Course的个数
         SimpleIntegerProperty[] successCountProperty = new SimpleIntegerProperty[coursesDataMap.size()];
 
-        Pointer<Integer> indexPointer = new Pointer<>(0);
+        //Pointer<Integer> indexPointer = new Pointer<>(0);
+        int index = 0;
         for (CourseData courseData : coursesDataMap.values()) {
-            successCountProperty[indexPointer.getP()] = new SimpleIntegerProperty(0);
+            //debug
+            //System.out.println(coursesDataMap.values().size());
+            //System.out.println(successCountProperty.length);
+            //System.out.println(indexPointer.getP());
+
+            //successCountProperty[indexPointer.getP()] = new SimpleIntegerProperty(0);
+            successCountProperty[index] = new SimpleIntegerProperty(0);
+            //copy value
+            int tmp = index;
             courseData.getSelectSuccess().addListener(((observable, oldValue, newValue) -> {
+                //if (newValue)
+                //    successCountProperty[indexPointer.getP()].setValue(1);
+                //indexPointer.setP(indexPointer.getP() + 1);
                 if (newValue)
-                    successCountProperty[indexPointer.getP()].setValue(1);
+                    successCountProperty[tmp].setValue(1);
+                //indexPointer.setP(indexPointer.getP() + 1);
             }));
-            indexPointer.setP(indexPointer.getP() + 1);
+            index++;
         }
 
         if (coursesDataMap.size() == 1) {
@@ -130,9 +160,14 @@ public class CourseClassRequestQueue {
             IntegerBinding courseRequestCountBinding = (IntegerBinding) ((CourseData)courseDatas[0])
                     .getCourseRequestCountProperty()
                     .add(((CourseData)courseDatas[1]).getCourseRequestCountProperty());
-            for (int i = 2; i < courseDatas.length; i++)
+            BooleanBinding allFinishedBinding = ((CourseData)coursesDataMap.values().toArray()[0]).getSelectSuccess()
+                    .and(((CourseData)coursesDataMap.values().toArray()[1]).getSelectSuccess());
+            for (int i = 2; i < courseDatas.length; i++) {
                 courseRequestCountBinding = (IntegerBinding) courseRequestCountBinding.add(
                         ((CourseData)courseDatas[i]).getCourseRequestCountProperty());
+                allFinishedBinding = allFinishedBinding.and(
+                        ((CourseData)courseDatas[i]).getSelectSuccess());
+            }
             courseRequestCountProperty.bind(courseRequestCountBinding);
 
             IntegerBinding successSelected = (IntegerBinding) successCountProperty[0].add(successCountProperty[1]);
@@ -143,7 +178,7 @@ public class CourseClassRequestQueue {
             selectedCoursesNumberProperty.bind(successSelected);
             queueCoursesNumberProperty.bind(new SimpleIntegerProperty(successCountProperty.length)
                 .subtract(successSelected));
-            allFinished.bind(((CourseData)coursesDataMap.values().toArray()[0]).getSelectSuccess());
+            allFinished.bind(allFinishedBinding);
             allFinished.addListener(((observable, oldValue, newValue) -> {
                 if (newValue)
                     statedProperty.setValue(false);
@@ -154,8 +189,12 @@ public class CourseClassRequestQueue {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                for (Object courseData : coursesDataMap.values().toArray())
-                    ((CourseData)courseData).startAll();
+                //解决Timer Not on FX application thread的问题
+                // TODO 将Timer替换为TimeLine
+                Platform.runLater(() -> {
+                    for (Object courseData : coursesDataMap.values().toArray())
+                        ((CourseData)courseData).startAll();
+                });
             }
         }, date);
 
@@ -164,7 +203,9 @@ public class CourseClassRequestQueue {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                timeGoesBy();
+                //解决Timer Not on FX application thread的问题
+                // TODO 将Timer替换为TimeLine
+                Platform.runLater(() -> timeGoesBy());
             }
         }, 0, 1000);
     }
@@ -203,8 +244,12 @@ public class CourseClassRequestQueue {
         return selectedCoursesNumberProperty;
     }
 
-    public LinkedHashMap<String, CourseData> getCoursesDataMap() {
+    public static LinkedHashMap<String, CourseData> getCoursesDataMap() {
         return coursesDataMap;
+    }
+
+    public static void setCoursesDataMap(LinkedHashMap<String, CourseData> coursesDataMap) {
+        CourseClassRequestQueue.coursesDataMap = coursesDataMap;
     }
 
     public IntegerProperty getStartAfterSecondsProperty() {

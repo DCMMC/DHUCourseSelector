@@ -29,6 +29,7 @@ import tk.dcmmcc.*;
 import tk.dcmmcc.utils.DoubleLinkedList;
 import tk.dcmmcc.utils.ExceptionDialog;
 import tk.dcmmcc.utils.LoggerUtil;
+import tk.dcmmcc.utils.Pointer;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -40,8 +41,11 @@ import java.util.*;
 import java.util.logging.Logger;
 
 /**
- * TODO 右侧ListView与课程表的pane绑定
+ * TODO 冲突课程点击要更改那些功能按钮的
+ * TODO 冲突的课程的ListView里面的信息加入课程的在这一天的节次信息
+ * TODO 删课之后刷新页面
  * FIXME 这里假设为1 ~ 18周
+ * FIXME 这些JFXSnackBar是透明的, 有问题, 暂时改成了不自动消失
  * 手撸课程表完成
  * 查看已选课程
  * Created by DCMMC on 2017/9/13.
@@ -50,11 +54,11 @@ public class ViewSelectedCoursesStage {
     // TODO 手动在设置里面设置或者从服务器更新
     //开学第一周的第一天的日期(星期一)
     private static final MonthDay FirstDayWeek = MonthDay.of(9, 11);
-    //存储"week-section"节次和对应的课程表
+    //存储"week-section"周几加节次和对应的课程表
     private static LinkedHashMap<String, CoursePaneNode> coursesMap = new LinkedHashMap<>();
     //存储"courseId-classNo"对应的CoursePaneNodes
     //P.S. getAllSelectedCourses得到的courses中的courseNo为""(空)!!!
-    private static LinkedHashMap<String, DoubleLinkedList<CoursePaneNode>> courseNoAndCoursePanes = new LinkedHashMap<>();
+    private static LinkedHashMap<String, DoubleLinkedList<CoursePaneNode>> courseIdClassNoAndCoursePanes = new LinkedHashMap<>();
     //在已录取的课程的ListView中的元素中"courseId-classNo"的course的与对应的在ListView中的序号
     private static LinkedHashMap<String, Integer> matriculatedListViewMap = new LinkedHashMap<>();
     //在已选择但未录取的课程的ListView中的元素中"courseId-classNo"的course的与对应的在ListView中的序号
@@ -152,7 +156,7 @@ public class ViewSelectedCoursesStage {
                     operates.getChildren().remove(0, operates.getChildren().size());
 
                 coursesMap = new LinkedHashMap<>();
-                courseNoAndCoursePanes = new LinkedHashMap<>();
+                courseIdClassNoAndCoursePanes = new LinkedHashMap<>();
 
                 generateCalendar(courseCalendar, newValue.intValue() + 1, scene, currentUser);
             }));
@@ -367,8 +371,8 @@ public class ViewSelectedCoursesStage {
             if (newValue != null)
                 courseClickAction(newValue.getCourse(), true, currentUser);
             Course tmp = newValue.getCourse();
-            lastClickedCoursePane = courseNoAndCoursePanes.containsKey(tmp.getCourseId() + "-" +
-                    tmp.getClassNo()) ? courseNoAndCoursePanes.get(tmp.getCourseId() + "-" +
+            lastClickedCoursePane = courseIdClassNoAndCoursePanes.containsKey(tmp.getCourseId() + "-" +
+                    tmp.getClassNo()) ? courseIdClassNoAndCoursePanes.get(tmp.getCourseId() + "-" +
                     tmp.getClassNo()) : new DoubleLinkedList<>();
             lastClickedIsMatriculated = true;
         }));
@@ -400,8 +404,8 @@ public class ViewSelectedCoursesStage {
             if (newValue != null)
                 courseClickAction(newValue.getCourse(), false, currentUser);
             Course tmp = newValue.getCourse();
-            lastClickedCoursePane = courseNoAndCoursePanes.containsKey(tmp.getCourseId() + "-" +
-                    tmp.getClassNo()) ? courseNoAndCoursePanes.get(tmp.getCourseId() + "-" +
+            lastClickedCoursePane = courseIdClassNoAndCoursePanes.containsKey(tmp.getCourseId() + "-" +
+                    tmp.getClassNo()) ? courseIdClassNoAndCoursePanes.get(tmp.getCourseId() + "-" +
                     tmp.getClassNo()) : new DoubleLinkedList<>();
             lastClickedIsMatriculated = true;
         }));
@@ -464,12 +468,14 @@ public class ViewSelectedCoursesStage {
                 //if (course.getCourse().getTextTitle().equals("数据结构")) {
                 //    System.out.println("debug");
                 //}
+                Pointer<Course> oldCoursePointer = new Pointer<>(null);
+                //Course oldCourse = null;
 
                 for (int section : sections) {
                     if (coursesMap.containsKey((i + 1) + "-" + section)) {
                         if (!lastConflict.equals(coursesMap
                                 .get((i + 1) + "-" + section).course.getCourseId())) {
-                            Course oldCourse = coursesMap.get((i + 1) + "-" + section).getCourse();
+                            oldCoursePointer.setP(coursesMap.get((i + 1) + "-" + section).getCourse());
 
                             notConflictSections.addLast(currentNotConflict);
                             currentNotConflict = new DoubleLinkedList<>();
@@ -486,27 +492,27 @@ public class ViewSelectedCoursesStage {
                             //处理extraInfo的点击事件, 弹出这一节次其他冲突课程的信息
                             extraInfo.setOnMouseClicked((event -> {
                                 JFXListView<Label> courseListView = new JFXListView<>();
-                                if (!conflictCoursesMap.containsKey(oldCourse.getCourseId()
-                                        + "-" + oldCourse.getClassNo()))
-                                    conflictCoursesMap.put(oldCourse.getCourseId() + "-" + oldCourse.getClassNo(),
-                                        new DoubleLinkedList<>(new Label[]{new Label(oldCourse.getCourse().getTextTitle() + " " +
-                                        (oldCourse.getTeacher() == null ? "" : oldCourse.getTeacher().getTextTitle())
-                                        + "@" + (oldCourse.getPlaces() == null || oldCourse.getPlaces()[0].equals("") ?
-                                        "(无确定教室)" : oldCourse.getPlaces()[0]))}));
-                                else if (!conflictCourseId.contains(oldCourse.getCourseId()
-                                        + "-" + oldCourse.getClassNo()))
-                                    conflictCoursesMap.get(oldCourse.getCourseId()
-                                            + "-" + oldCourse.getClassNo()).addLast(new Label(oldCourse.getCourse().getTextTitle() + " " +
-                                            (oldCourse.getTeacher() == null ? "" : oldCourse.getTeacher().getTextTitle())
-                                            + "@" + (oldCourse.getPlaces() == null || oldCourse.getPlaces()[0].equals("") ?
-                                            "(无确定教室)" : oldCourse.getPlaces()[0])));
+                                if (!conflictCoursesMap.containsKey(oldCoursePointer.getP().getCourseId()
+                                        + "-" + oldCoursePointer.getP().getClassNo()))
+                                    conflictCoursesMap.put(oldCoursePointer.getP().getCourseId() + "-" + oldCoursePointer.getP().getClassNo(),
+                                        new DoubleLinkedList<>(new Label[]{new Label(course.getCourse().getTextTitle() + " " +
+                                        (course.getTeacher() == null ? "" : course.getTeacher().getTextTitle())
+                                        + "@" + (course.getPlaces() == null || course.getPlaces()[0].equals("") ?
+                                        "(无确定教室)" : oldCoursePointer.getP().getPlaces()[0]))}));
+                                else if (!conflictCourseId.contains(oldCoursePointer.getP().getCourseId()
+                                        + "-" + oldCoursePointer.getP().getClassNo()))
+                                    conflictCoursesMap.get(oldCoursePointer.getP().getCourseId()
+                                            + "-" + oldCoursePointer.getP().getClassNo()).addLast(new Label(oldCoursePointer.getP().getCourse().getTextTitle() + " " +
+                                            (oldCoursePointer.getP().getTeacher() == null ? "" : oldCoursePointer.getP().getTeacher().getTextTitle())
+                                            + "@" + (oldCoursePointer.getP().getPlaces() == null || oldCoursePointer.getP().getPlaces()[0].equals("") ?
+                                            "(无确定教室)" : oldCoursePointer.getP().getPlaces()[0])));
 
-                                conflictCourseId.add(oldCourse.getCourseId()
-                                        + "-" + oldCourse.getClassNo());
+                                conflictCourseId.add(oldCoursePointer.getP().getCourseId()
+                                        + "-" + oldCoursePointer.getP().getClassNo());
 
                                 ObservableList<Label> courseList = FXCollections.observableArrayList(
-                                        conflictCoursesMap.get(oldCourse.getCourseId()
-                                                + "-" + oldCourse.getClassNo()).toArray());
+                                        conflictCoursesMap.get(oldCoursePointer.getP().getCourseId()
+                                                + "-" + oldCoursePointer.getP().getClassNo()).toArray());
 
                                 popOverInfo.setAutoHide(true);
 
@@ -531,107 +537,121 @@ public class ViewSelectedCoursesStage {
                 //最后再添加最后一个
                 notConflictSections.addLast(currentNotConflict);
 
-                for (DoubleLinkedList<Integer> sectionsList : notConflictSections) {
-                    if (sectionsList.getSize() == 0)
-                        continue;
-
-                    Integer[] sections1 = sectionsList.toArray();
-
-                    //debug
-                    //if (sections1 == null)
-                    //    System.out.println("debug");
-
-                    CoursePaneNode coursePane = new CoursePaneNode();
-                    coursePane.prefWidthProperty().bind(width);
-                    coursePane.setPrefHeight(singleHeight * sections1.length);
-                    coursePane.setPadding(new Insets(5, 5, 5, 5));
-                    JFXDepthManager.setDepth(coursePane, 4);
-                    VBox content = new VBox(0);
-                    StackPane body = new StackPane();
-                    body.setStyle("-fx-background-color: #" + color + "; -fx-background-radius: 8 8 0 0;");
-                    body.setPrefHeight(singleHeight * sections1.length * 0.7);
-                    Label info = new Label(course.getCourse().getTextTitle() + " " +
+                /*
+                if (oldCoursePointer.getP() != null && notConflictSections.getSize() == 0) {
+                    //如果完全冲突了, 那就把oldCourse的Pane的body的内容改一下
+                    CoursePaneNode oldCoursePane = courseIdClassNoAndCoursePanes.get(oldCoursePointer
+                            .getP().getCourseId() + "-" + oldCoursePointer.getP().getClassNo())
+                            .get(0);
+                    oldCoursePane.setCourse(course);
+                    ((Label) ((StackPane)((VBox) oldCoursePane.getChildren().get(0)).getChildren().get(0)).getChildren()
+                            .get(0)).setText(course.getCourse().getTextTitle() + " " +
                             (course.getTeacher() == null ? "" : course.getTeacher().getTextTitle())
                             + "@" + (course.getPlaces() == null || course.getPlaces()[0].equals("") ?
                             "(无确定教室)" : course.getPlaces()[0]));
-                    info.setFont(Font.font("msyh", 16));
-                    info.setTextFill(Color.WHITE);
-                    info.prefWidthProperty().bind(width);
-                    info.setPrefHeight(singleHeight * sections1.length * 0.6);
-                    //自动换行
-                    info.setWrapText(true);
-                    info.setPadding(new Insets(6.5, 6.5, 6.5, 6.5));
-                    body.getChildren().add(info);
+                } else {
+                 */
+                    for (DoubleLinkedList<Integer> sectionsList : notConflictSections) {
+                        if (sectionsList.getSize() == 0)
+                            continue;
 
-                    coursePane.setCourse(course);
-                    // 处理点击事件, 也就是为operates添加操作按钮
-                    body.setOnMouseClicked((event -> {
-                        //courseClickAction(course, coursePane, body, currentUser);
-                        String tmpStyle = body.getStyle();
+                        Integer[] sections1 = sectionsList.toArray();
 
-                        if (body.getStyle().contains("#81C784")) {
-                            //已入取课程
-                            courseClickAction(course, true, currentUser);
-                            matriculatedCourses.getSelectionModel().select(matriculatedListViewMap.
-                                    get(course.getCourseId() + "-" + course.getClassNo()));
-                        } else {
-                            //已选未录取课程
-                            courseClickAction(course, false, currentUser);
-                            selectedCourses.getSelectionModel().select(selectedListViewMap.
-                                    get(course.getCourseId() + "-" + course.getClassNo()));
+                        //debug
+                        //if (sections1 == null)
+                        //    System.out.println("debug");
+
+                        CoursePaneNode coursePane = new CoursePaneNode();
+                        coursePane.prefWidthProperty().bind(width);
+                        coursePane.setPrefHeight(singleHeight * sections1.length);
+                        coursePane.setPadding(new Insets(5, 5, 5, 5));
+                        JFXDepthManager.setDepth(coursePane, 4);
+                        VBox content = new VBox(0);
+                        StackPane body = new StackPane();
+                        body.setStyle("-fx-background-color: #" + color + "; -fx-background-radius: 8 8 0 0;");
+                        body.setPrefHeight(singleHeight * sections1.length * 0.7);
+                        Label info = new Label(course.getCourse().getTextTitle() + " " +
+                                (course.getTeacher() == null ? "" : course.getTeacher().getTextTitle())
+                                + "@" + (course.getPlaces() == null || course.getPlaces()[0].equals("") ?
+                                "(无确定教室)" : course.getPlaces()[0]));
+                        info.setFont(Font.font("msyh", 16));
+                        info.setTextFill(Color.WHITE);
+                        info.prefWidthProperty().bind(width);
+                        info.setPrefHeight(singleHeight * sections1.length * 0.6);
+                        //自动换行
+                        info.setWrapText(true);
+                        info.setPadding(new Insets(6.5, 6.5, 6.5, 6.5));
+                        body.getChildren().add(info);
+
+                        coursePane.setCourse(course);
+                        // 处理点击事件, 也就是为operates添加操作按钮
+                        body.setOnMouseClicked((event -> {
+                            //courseClickAction(course, coursePane, body, currentUser);
+                            String tmpStyle = body.getStyle();
+
+                            if (body.getStyle().contains("#81C784")) {
+                                //已入取课程
+                                courseClickAction(course, true, currentUser);
+                                matriculatedCourses.getSelectionModel().select(matriculatedListViewMap.
+                                        get(course.getCourseId() + "-" + course.getClassNo()));
+                            } else {
+                                //已选未录取课程
+                                courseClickAction(course, false, currentUser);
+                                selectedCourses.getSelectionModel().select(selectedListViewMap.
+                                        get(course.getCourseId() + "-" + course.getClassNo()));
+                            }
+
+                            lastClickedCoursePane = courseIdClassNoAndCoursePanes.containsKey(course.getCourseId() + "-" +
+                                    course.getClassNo()) ? courseIdClassNoAndCoursePanes.get(course.getCourseId() + "-" +
+                                    course.getClassNo()) : new DoubleLinkedList<>();
+                            lastClickedIsMatriculated =tmpStyle.contains("#81C784");
+                        }));
+
+                        StackPane extraInfo = new StackPane();
+                        extraInfo.setStyle("-fx-background-color: #" + color + "; -fx-background-radius: 0 0 8 8;");
+                        extraInfo.setPrefHeight(singleHeight * sections1.length * 0.4);
+                        content.getChildren().addAll(body, extraInfo);
+                        coursePane.setExtraInfoPane(extraInfo);
+                        //如果没有冲突课程, extraInfo的点击事件与body保持一致
+                        extraInfo.setOnMouseClicked((event -> {
+                            //debug
+                            //System.out.println("operates将出来一堆相关按钮");
+                            String tmpStyle = body.getStyle();
+
+                            courseClickAction(course, body.getStyle().contains("#81C784"), currentUser);
+                            lastClickedCoursePane = courseIdClassNoAndCoursePanes.containsKey(course.getCourseId() + "-" +
+                                    course.getClassNo()) ? courseIdClassNoAndCoursePanes.get(course.getCourseId() + "-" +
+                                    course.getClassNo()) : new DoubleLinkedList<>();
+                            lastClickedIsMatriculated = tmpStyle.contains("#81C784");
+                            //courseClickAction(course, coursePane, body, currentUser);
+                        }));
+                        coursePane.getChildren().addAll(content);
+
+                        //注册进map
+                        for (int section : sections1) {
+                            coursesMap.put((i + 1) + "-" + section, coursePane);
                         }
 
-                        lastClickedCoursePane = courseNoAndCoursePanes.containsKey(course.getCourseId() + "-" +
-                                course.getClassNo()) ? courseNoAndCoursePanes.get(course.getCourseId() + "-" +
-                                course.getClassNo()) : new DoubleLinkedList<>();
-                        lastClickedIsMatriculated =tmpStyle.contains("#81C784");
-                    }));
+                        DoubleLinkedList<CoursePaneNode> coursePaneNodes;
+                        if ((coursePaneNodes = courseIdClassNoAndCoursePanes.get(course.getCourseId() + "-"
+                                + course.getClassNo())) != null) {
+                            coursePaneNodes.addLast(coursePane);
+                        } else {
+                            courseIdClassNoAndCoursePanes.put(course.getCourseId() + "-"
+                                    + course.getClassNo(), new DoubleLinkedList<>(new CoursePaneNode[]{coursePane}));
+                        }
 
-                    StackPane extraInfo = new StackPane();
-                    extraInfo.setStyle("-fx-background-color: #" + color + "; -fx-background-radius: 0 0 8 8;");
-                    extraInfo.setPrefHeight(singleHeight * sections1.length * 0.4);
-                    content.getChildren().addAll(body, extraInfo);
-                    coursePane.setExtraInfoPane(extraInfo);
-                    //如果没有冲突课程, extraInfo的点击事件与body保持一致
-                    extraInfo.setOnMouseClicked((event -> {
-                        //debug
-                        //System.out.println("operates将出来一堆相关按钮");
-                        String tmpStyle = body.getStyle();
-
-                        courseClickAction(course, body.getStyle().contains("#81C784"), currentUser);
-                        lastClickedCoursePane = courseNoAndCoursePanes.containsKey(course.getCourseId() + "-" +
-                                course.getClassNo()) ? courseNoAndCoursePanes.get(course.getCourseId() + "-" +
-                                course.getClassNo()) : new DoubleLinkedList<>();
-                        lastClickedIsMatriculated = tmpStyle.contains("#81C784");
-                        //courseClickAction(course, coursePane, body, currentUser);
-                    }));
-                    coursePane.getChildren().addAll(content);
-
-                    //注册进map
-                    for (int section : sections1) {
-                        coursesMap.put((i + 1) + "-" + section, coursePane);
+                        //添加进ScrollPane
+                        if (sections1[0] > 4 && sections1[0] < 10)
+                            calendar.add(coursePane, i + 1, sections1[0] + 1, 1,
+                                    sections1.length);
+                        else if (sections1[0] > 9)
+                            calendar.add(coursePane, i + 1, sections1[0] + 2, 1,
+                                    sections1.length);
+                        else
+                            calendar.add(coursePane, i + 1, sections1[0], 1,
+                                    sections1.length);
                     }
-
-                    DoubleLinkedList<CoursePaneNode> coursePaneNodes;
-                    if ((coursePaneNodes = courseNoAndCoursePanes.get(course.getCourseId() + "-"
-                            + course.getClassNo())) != null) {
-                        coursePaneNodes.addLast(coursePane);
-                    } else {
-                        courseNoAndCoursePanes.put(course.getCourseId() + "-"
-                                + course.getClassNo(), new DoubleLinkedList<>(new CoursePaneNode[]{coursePane}));
-                    }
-
-                    //添加进ScrollPane
-                    if (sections1[0] > 4 && sections1[0] < 10)
-                        calendar.add(coursePane, i + 1, sections1[0] + 1, 1,
-                                sections1.length);
-                    else if (sections1[0] > 9)
-                        calendar.add(coursePane, i + 1, sections1[0] + 2, 1,
-                                sections1.length);
-                    else
-                        calendar.add(coursePane, i + 1, sections1[0], 1,
-                                sections1.length);
-                }
             }
         }
 
@@ -664,9 +684,9 @@ public class ViewSelectedCoursesStage {
         }
 
         //设置panes为红色
-        if (courseNoAndCoursePanes.containsKey(course.getCourseId() + "-" +
+        if (courseIdClassNoAndCoursePanes.containsKey(course.getCourseId() + "-" +
                 course.getClassNo()))
-            for (CoursePaneNode coursePaneNode : courseNoAndCoursePanes.get(course.getCourseId() + "-" +
+            for (CoursePaneNode coursePaneNode : courseIdClassNoAndCoursePanes.get(course.getCourseId() + "-" +
                     course.getClassNo())) {
                 (((VBox) coursePaneNode.getChildren().get(0)).getChildren().get(0))
                         .setStyle("-fx-background-color: #E91E63; -fx-background-radius: 8 8 0 0;");
@@ -676,8 +696,8 @@ public class ViewSelectedCoursesStage {
 
         //TODO FIXME infoSnackBar的背景是透明的, 不知道为什么
         JFXSnackbar infoSnackBar = new JFXSnackbar();
-        infoSnackBar.registerSnackbarContainer((AnchorPane)((VBox)((BorderPane)root.getChildren().get(0)).getTop())
-            .getChildren().get(0));
+        infoSnackBar.registerSnackbarContainer((StackPane)((AnchorPane)((BorderPane)root.getChildren().get(0)).getBottom())
+                .getChildren().get(0));
 
         JFXButton courseIntro = new JFXButton("查看课程介绍"),
                 courseCalendar = new JFXButton("查看教学日历"),
@@ -730,7 +750,7 @@ public class ViewSelectedCoursesStage {
                 loadURL(teacher.getLink(), currentUser.getUserCookie());
             else
                 infoSnackBar.fireEvent(new JFXSnackbar.SnackbarEvent("没有老师信息!",
-                        "了解", 2000, false,
+                        "了解", 2000, true,
                         b -> infoSnackBar.close()));
         }));
 
@@ -759,12 +779,12 @@ public class ViewSelectedCoursesStage {
                         if (currentUser.deleteMatriculatedCourse(course))
                             infoSnackBar.fireEvent(new JFXSnackbar.SnackbarEvent("课程" +
                                     course.getCourse().getTextTitle() + "删除成功",
-                                    "了解", 2000, false,
+                                    "了解", 2000, true,
                                     b -> infoSnackBar.close()));
                         else
                             infoSnackBar.fireEvent(new JFXSnackbar.SnackbarEvent("课程" +
                                     course.getCourse().getTextTitle() + "删除失败! 请检查日志.",
-                                    "了解", 2000, false,
+                                    "了解", 2000, true,
                                     b -> infoSnackBar.close()));
                     } catch (IllegalCourseException ie) {
                         //course信息有问题
@@ -782,12 +802,12 @@ public class ViewSelectedCoursesStage {
                     if (currentUser.deleteSelectedCourse(course))
                         infoSnackBar.fireEvent(new JFXSnackbar.SnackbarEvent("课程" +
                                 course.getCourse().getTextTitle() + "删除成功",
-                                "了解", 2000, false,
+                                "了解", 2000, true,
                                 b -> infoSnackBar.close()));
                     else
                         infoSnackBar.fireEvent(new JFXSnackbar.SnackbarEvent("课程" +
                                 course.getCourse().getTextTitle() + "删除失败! 请检查日志.",
-                                "了解", 2000, false,
+                                "了解", 2000, true,
                                 b -> infoSnackBar.close()));
                 } catch (IllegalCourseException ie) {
                     //course信息有问题
@@ -807,7 +827,7 @@ public class ViewSelectedCoursesStage {
      * 加载浏览器
      * @param url 链接
      */
-    private static void loadURL(URL url, String cookie) {
+    static void loadURL(URL url, String cookie) {
         Stage webViewStage = new Stage();
 
         JFXProgressBar progressBar = new JFXProgressBar(0);

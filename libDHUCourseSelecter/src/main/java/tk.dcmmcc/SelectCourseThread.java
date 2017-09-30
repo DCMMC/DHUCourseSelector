@@ -144,7 +144,7 @@ public class SelectCourseThread extends Thread {
                 selectCourseSuccess = DHUCurrentUser.selectCourse(course.getCourseNo(), course.getCourseId(), userCookie);
 
                 if (selectCourseSuccess)
-                    successProperty.setValue(selectCourseSuccess);
+                    successProperty.setValue(true);
                 requestCountProperty.setValue(cnt);
 
                 //间隔由构造器传入参数设定
@@ -153,7 +153,7 @@ public class SelectCourseThread extends Thread {
                 //给线程调度器可以切换到其它进程的信号
                 //Thread.yield();
             } catch (InterruptedException ie) {
-                logger.severe("Thread.Sleep的时候收到了中断请求导致InterruptedException");
+                logger.warning("Thread.Sleep的时候收到了中断请求导致InterruptedException");
                 //抛出InterruptedException后中断标志被清除，标准做法是再次调用interrupt恢复中断
                 Thread.currentThread().interrupt();
             } catch (IllegalCourseException courseE) {
@@ -179,6 +179,8 @@ public class SelectCourseThread extends Thread {
      */
     public void stopCurrentSelectCourse() {
         interrupt();
+        //搞错了... successProperty最后还是设置为true, 这样才会把剩余课程数减一, 这个名字有歧义, 下次换一下
+        //successProperty.set(true);
     }
 
 

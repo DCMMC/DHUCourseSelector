@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1"
            xmlns="http://javafx.com/javafx/2.2">
-    <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER">
+    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="ALWAYS">
         <VBox fx:id="vboxRoot" spacing="20">
+            <AnchorPane prefHeight="25" maxHeight="35" style="-fx-background-color: #00AA8D">
+                <Label style="-fx-font-family: msyh;
+                        -fx-font-size: 30.0px; -fx-padding: 14.0px;
+                        -fx-font-weight: bold;
+                        -fx-text-fill: white;"
+                       AnchorPane.leftAnchor="25" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="12">
+                    修改选课队列
+                </Label>
+            </AnchorPane>
+            <StackPane prefHeight="20.0d">
+            </StackPane>
         </VBox>
     </ScrollPane>
 </StackPane>

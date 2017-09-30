@@ -43,8 +43,9 @@ import java.util.*;
 import java.util.logging.Logger;
 
 /**
- * TODO 完成课程控制按钮
- * TODO 选课状态图标大小和自动更换都没有
+ * FIXME 课程队列的查询 startHbox里面的点击之后ListView都不会展开或者收起来
+ * TODO 所有选课线程都结束的时候, 恢复那些disable的按钮
+ * TODO 中止班级线程好像有点问题
  * 选课页面
  * Created by DCMMC on 2017/9/5.
  */
@@ -203,13 +204,12 @@ public class SessionController {
 
         //Search field
         JFXTextField searchField = new JFXTextField();
-        searchField.setPromptText("搜索...");
-        searchField.setPrefWidth(40);
-        AnchorPane.setRightAnchor(searchField, 200.0d);
-        searchField.setFont(Font.font(22));
+        searchField.setPromptText("搜索选课班级...");
+        searchField.setPrefWidth(35);
+        AnchorPane.setRightAnchor(searchField, 150.0d);
+        searchField.setFont(Font.font(18));
         //没有登录不能点
         searchField.disableProperty().bind(SettingData.getLoginFlagProperty().not());
-        // TODO Search
 
         anchorPane.getChildren().addAll(courseQueueOverview, searchField, editCourseClassRequestQueue);
 
@@ -228,10 +228,11 @@ public class SessionController {
 
         vboxRoot.getChildren().addAll(listViewRoot);
 
-        // FIXME debug test
+        // FIXME debug, only for test
         SettingData.getLoginFlagProperty().addListener(((observable, oldValue, newValue) -> {
             if (newValue) {
                 try {
+                    logger.info("仅仅用于测试, 添加了两门课程三个班级");
                     DoubleLinkedList<CourseData> courseDataList = new DoubleLinkedList<>();
                     courseDataList.addLast(new CourseData(CourseType.searchCourse("LINUX系统",
                                     SettingData.getDhuCurrentUser().getUserCookie())[0], new ClassesData(Course.getCourseFromCommonSearch(
@@ -239,10 +240,13 @@ public class SessionController {
                                             SettingData.getDhuCurrentUser().getUserCookie())[0],
                                     SettingData.getDhuCurrentUser().getUserCookie())[0])))
                         .addLast(new CourseData(CourseType.searchCourse("131441",
-                                SettingData.getDhuCurrentUser().getUserCookie())[0], new ClassesData(Course.getCourseFromCommonSearch(
+                                SettingData.getDhuCurrentUser().getUserCookie())[0], new ClassesData[]{new ClassesData(Course.getCourseFromCommonSearch(
                                 CourseType.searchCourse("131441",
                                         SettingData.getDhuCurrentUser().getUserCookie())[0],
-                                SettingData.getDhuCurrentUser().getUserCookie())[0])));
+                                SettingData.getDhuCurrentUser().getUserCookie())[0]), new ClassesData(Course.getCourseFromCommonSearch(
+                                CourseType.searchCourse("131441",
+                                        SettingData.getDhuCurrentUser().getUserCookie())[0],
+                                SettingData.getDhuCurrentUser().getUserCookie())[1])}));
 
                     CourseClassRequestQueue queue = new CourseClassRequestQueue(courseDataList.toArray());
 
@@ -274,17 +278,40 @@ public class SessionController {
         }
 
         listViewRoot.setDepth(4);
+        //单选
+        listViewRoot.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         listViewRoot.setItems(courseDataListViews);
         listViewRoot.setExpanded(true);
         listViewRoot.setMinHeight(350);
 
+        //Search
+        searchField.textProperty().addListener(((observable, oldValue, newValue) -> {
+            if (newValue == null || newValue.equals(""))
+                return;
+
+            listViewRoot.setExpanded(true);
+            for (JFXListView<ClassesDateLabel> subListView : listViewRoot.getItems()) {
+                int index = 0;
+                for (ClassesDateLabel classesDate : subListView.getItems()) {
+                    if (classesDate.getText().contains(newValue)) {
+                        subListView.setExpanded(true);
+                        subListView.getSelectionModel().select(index);
+                        return;
+                    }
+                    index++;
+                }
+            }
+        }));
+
         /* 功能按钮 */
-        // TODO
         //选择的课程或者班级的有关操作
         HBox operateCurrentSelected = new HBox(20);
         operateCurrentSelected.setPrefHeight(40);
         operateCurrentSelected.setAlignment(Pos.CENTER);
+        context.register("operateCurrentSelected", operateCurrentSelected);
+        //vboxRoot.getChildren().add(operateCurrentSelected);
 
+        /*
         listViewRoot.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
             operateCurrentSelected.getChildren().remove(0, operateCurrentSelected.getChildren().size());
             JFXButton delBtn = new JFXButton("中止该课程下面的所有班级线程");
@@ -299,7 +326,12 @@ public class SessionController {
             delBtn.setOnMouseClicked((event -> ((CourseDateLabel)newValue.getGroupnode())
                     .getCourseData()
                     .cancelAll()));
+            //没有登录或者已经开始的话都不能点击
+            delBtn.disableProperty().bind((CourseClassRequestQueue.getStartedProperty().not())
+                    .or(SettingData.getLoginFlagProperty().not()));
+            operateCurrentSelected.getChildren().add(delBtn);
         }));
+        */
 
         for (JFXListView<ClassesDateLabel> listView : listViewRoot.getItems()) {
             listView.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
@@ -313,13 +345,29 @@ public class SessionController {
                         "-fx-background-color: rgb(77, 102, 204);\n" +
                         "-fx-min-width: 200;\n" +
                         "-fx-text-fill: WHITE;");
-                delBtn.setOnMouseClicked((event -> newValue.getClassesDate().cancel()));
+                delBtn.setOnMouseClicked(event -> {
+                    if (newValue.getClassesDate() == null) {
+                        logger.warning("ClassesDate为空!");
+                    } else {
+                        newValue.getClassesDate().cancel();
+                    }
+                });
+                //没有登录或者还没开始的话都不能点击
+                delBtn.disableProperty().bind((CourseClassRequestQueue.getStartedProperty().not())
+                        .or(SettingData.getLoginFlagProperty().not()));
+                operateCurrentSelected.getChildren().add(delBtn);
             }));
         }
 
         //概览界面主要的几个功能按钮
 
         AnchorPane mainButtonsPane = new AnchorPane();
+
+        //operates HBox
+        AnchorPane.setBottomAnchor(operateCurrentSelected, 75.0d);
+        AnchorPane.setLeftAnchor(operateCurrentSelected, 10.0d);
+        mainButtonsPane.getChildren().add(operateCurrentSelected);
+
         //放到bottom上面
         ((BorderPane)((StackPane)context.getRegisteredObject("MainRoot")).getChildren().get(0))
                 .setBottom(mainButtonsPane);
@@ -460,10 +508,18 @@ public class SessionController {
         startDelay.setContentDisplay(ContentDisplay.RIGHT);
 
         startNow.setOnMouseClicked((event -> {
+            //收起来
+            listViewRoot.setExpanded(false);
+            startListView.setExpanded(false);
+
             if (courseClassRequestQueue != null)
                 courseClassRequestQueue.startAll();
         }));
         startDelay.setOnMouseClicked((event -> {
+            //收起来
+            listViewRoot.setExpanded(false);
+            startListView.setExpanded(false);
+
             if (courseClassRequestQueue == null)
                 return;
 
@@ -498,7 +554,7 @@ public class SessionController {
 
                     HBox remainSecondsHBox = new HBox(2);
                     remainSecondsHBox.setPrefHeight(50);
-                    remainSecondsHBox.setPrefWidth(150);
+                    remainSecondsHBox.setMinHeight(250);
                     Label remainSeconds = new Label();
                     remainSeconds.textProperty().bind(courseClassRequestQueue.getStartAfterSecondsProperty()
                             .asString());
@@ -518,6 +574,10 @@ public class SessionController {
         }));
 
         startListView.setOnMouseClicked((e) -> {
+            //收起来
+            listViewRoot.setExpanded(false);
+            startListView.setExpanded(false);
+
             JFXButton selectedLabel = startListView.getSelectionModel().getSelectedItem();
 
             if (selectedLabel.getText().equals("现在开始选课")) {
@@ -587,13 +647,15 @@ public class SessionController {
         startListView.setItems(startButtonList);
 
         mainButtonsPane.getChildren().addAll(viewSelectedCourses, viewLogs, startHBox);
-
-        //我已经把mainButtonsPane放在BorderPane的Bottom那里去了
-        vboxRoot.getChildren().addAll(operateCurrentSelected);
     }
 
+    /**
+     * 生成CourseData对应的ListView
+     */
     private JFXListView<ClassesDateLabel> generateCourseDataListView(CourseData courseData) {
         JFXListView<ClassesDateLabel> courseDataListView = new JFXListView<>();
+        //单选
+        courseDataListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
         CourseType courseType = courseData.getCourseType();
         CourseDateLabel courseInfoLabel = new CourseDateLabel(courseData, courseType.getCourse().getTextTitle() + "  "
@@ -602,6 +664,32 @@ public class SessionController {
         courseInfoLabel.setFont(Font.font("msyh", 17));
 
         postProcessLabel(courseInfoLabel, courseData.getStatus());
+
+        courseInfoLabel.setOnMouseClicked((event -> {
+            HBox operateCurrentSelected = (HBox) context.getRegisteredObject("operateCurrentSelected");
+            operateCurrentSelected.getChildren().remove(0, operateCurrentSelected.getChildren().size());
+            JFXButton delBtn = new JFXButton("中止该课程下面的所有班级线程");
+            delBtn.setStyle("-fx-padding: 0.7em 0.57em;\n" +
+                    "-fx-font-family: msyh;\n" +
+                    "-fx-font-size: 17;\n" +
+                    "-fx-font-weight: bold;\n" +
+                    "-jfx-button-type: RAISED;\n" +
+                    "-fx-background-color: rgb(77, 102, 204);\n" +
+                    "-fx-min-width: 200;\n" +
+                    "-fx-text-fill: WHITE;");
+            delBtn.setOnMouseClicked((event1 -> {
+                if (courseInfoLabel.getCourseData() == null) {
+                    logger.warning("CourseData为空!");
+                } else {
+                    courseInfoLabel.getCourseData().cancelAll();
+                }
+            }));
+            //没有登录或者已经开始的话都不能点击
+            delBtn.disableProperty().bind((CourseClassRequestQueue.getStartedProperty().not())
+                    .or(SettingData.getLoginFlagProperty().not()));
+            operateCurrentSelected.getChildren().add(delBtn);
+        }));
+
         //courseInfoLabel.graphicProperty().bind(courseData.getStatusProperty());
         courseDataListView.setGroupnode(courseInfoLabel);
 
@@ -612,6 +700,31 @@ public class SessionController {
             ClassesDateLabel classDataLabel = new ClassesDateLabel(classesData, course.getTeacher().getTextTitle() + "  "
                 + course.getCourseNo() + " 组班号" + course.getClassNo() + "  " + course.getPlaces()[0]);
             classDataLabel.setFont(Font.font("msyh", 16));
+
+            classDataLabel.setOnMouseClicked((event -> {
+                HBox operateCurrentSelected = (HBox) context.getRegisteredObject("operateCurrentSelected");
+                operateCurrentSelected.getChildren().remove(0, operateCurrentSelected.getChildren().size());
+                JFXButton delBtn = new JFXButton("中止该选课班级线程");
+                delBtn.setStyle("-fx-padding: 0.7em 0.57em;\n" +
+                        "-fx-font-family: msyh;\n" +
+                        "-fx-font-size: 17;\n" +
+                        "-fx-font-weight: bold;\n" +
+                        "-jfx-button-type: RAISED;\n" +
+                        "-fx-background-color: rgb(77, 102, 204);\n" +
+                        "-fx-min-width: 200;\n" +
+                        "-fx-text-fill: WHITE;");
+                delBtn.setOnMouseClicked(event1 -> {
+                    if (classDataLabel.getClassesDate() == null) {
+                        logger.warning("ClassesDate为空!");
+                    } else {
+                        classDataLabel.getClassesDate().cancel();
+                    }
+                });
+                //没有登录或者还没开始的话都不能点击
+                delBtn.disableProperty().bind((CourseClassRequestQueue.getStartedProperty().not())
+                        .or(SettingData.getLoginFlagProperty().not()));
+                operateCurrentSelected.getChildren().add(delBtn);
+            }));
 
             postProcessLabel(classDataLabel, classesData.getStatus());
             //classDataLabel.graphicProperty().bind(classesData.getStatusProperty());
@@ -626,7 +739,7 @@ public class SessionController {
     /**
      * Label that contain Course
      */
-    private static class ClassesDateLabel extends Label {
+    static class ClassesDateLabel extends Label {
         private ClassesData classesData;
 
         ClassesDateLabel(ClassesData classesData, String text) {
@@ -647,7 +760,7 @@ public class SessionController {
     /**
      * Label that contain CourseType
      */
-    private static class CourseDateLabel extends Label {
+    static class CourseDateLabel extends Label {
         private CourseData courseData;
 
         CourseDateLabel(CourseData courseData, String text) {
@@ -667,15 +780,18 @@ public class SessionController {
 
     private void postProcessLabel(Label label, IntegerProperty status) {
         label.setGraphic(getWait());
+        //不runLater也会提示Not on FX application thread; currentThread = Thread-10....
+
         status.addListener(((observable, oldValue, newValue) -> {
-            switch (newValue.intValue()) {
-                case 1 : label.setGraphic(getWait()); break;
-                case 2 : label.setGraphic(getLoading()); break;
-                case 3 : label.setGraphic(getError()); break;
-                case 4 : label.setGraphic(getSuccess()); break;
-                default: // TODO
-                    break;
-            }
+            Platform.runLater(() -> {
+                switch (newValue.intValue()) {
+                    case 1 : label.setGraphic(getWait()); break;
+                    case 2 : label.setGraphic(getLoading()); break;
+                    case 3 : label.setGraphic(getError()); break;
+                    case 4 : label.setGraphic(getSuccess()); break;
+                    default: // TODO
+                        break;
+                }});
         }));
     }
 

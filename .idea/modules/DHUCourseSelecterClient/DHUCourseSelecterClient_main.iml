@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":DHUCourseSelecterClient:main" external.linked.project.path="$MODULE_DIR$/../../../DHUCourseSelecterClient" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="tk.dcmmcc" external.system.module.type="sourceSet" external.system.module.version="0.1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/../../../DHUCourseSelecterClient/build/classes/main" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../DHUCourseSelecterClient/src/main">
+      <sourceFolder url="file://$MODULE_DIR$/../../../DHUCourseSelecterClient/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../DHUCourseSelecterClient/src/main/resources" type="java-resource" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../DHUCourseSelecterClient/libs/controlsfx-8.40.13.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.ideaLibSources/controlsfx-8.40.13-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../DHUCourseSelecterClient/libs/tilesfx-1.4.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../DHUCourseSelecterClient/libs/jfoenix.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../../../../../JFoenix-master/jfoenix/build/dalvik-sdk/samples/HelloWorld/javafx/src/main/java" />
+          <root url="file://$MODULE_DIR$/../../../../../JFoenix-master/jfoenix/src/main/java" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../libDHUCourseSelecter/libs/commons-logging-1.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../libDHUCourseSelecter/libs/jsoup-1.10.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../libDHUCourseSelecter/libs/commons-httpclient-3.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../libDHUCourseSelecter/libs/commons-codec-1.9.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module" module-name="libDHUCourseSelecter_main" />
+    <orderEntry type="library" name="Gradle: io.datafx:datafx:8.0.1" level="project" />
+    <orderEntry type="library" name="Gradle: io.datafx:flow:8.0.1" level="project" />
+    <orderEntry type="library" name="Gradle: de.jensd:fontawesomefx-fontawesome:4.7.0-5" level="project" />
+    <orderEntry type="library" name="Gradle: io.datafx:core:8.0.1" level="project" />
+    <orderEntry type="library" name="Gradle: de.jensd:fontawesomefx-commons:8.15" level="project" />
+  </component>
+</module>

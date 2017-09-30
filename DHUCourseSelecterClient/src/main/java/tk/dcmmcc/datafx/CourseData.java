@@ -3,7 +3,6 @@ package tk.dcmmcc.datafx;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.binding.IntegerBinding;
 import javafx.beans.property.*;
-import javafx.scene.Node;
 import tk.dcmmcc.CourseType;
 import tk.dcmmcc.utils.DoubleLinkedList;
 import tk.dcmmcc.utils.LoggerUtil;
@@ -94,6 +93,7 @@ public class CourseData {
             this.courseId = classesDatas[0].getCourse().getCourseId();
             classesDataMap.put(classesDatas[0].getCourse().getCourseNo(),
                     classesDatas[0]);
+            classesDatas[0].setCourseData(this);
             //courseNoSet.add(classesDatas[0].getCourse().getClassNo());
             //classesDataList.addLast(classesDatas[0]);
 
@@ -135,6 +135,7 @@ public class CourseData {
             logger.warning("该课程班级已经在队列中了!");
             return null;
         } else {
+            classesData.setCourseData(this);
             classesDataMap.put(classesData.getCourse().getCourseNo(), classesData);
             return classesData;
         }
@@ -147,7 +148,7 @@ public class CourseData {
      */
     public ClassesData removeClassData(String courseNo) {
         if (started) {
-            logger.warning("任务已经开始了, 请不要再添加了!");
+            logger.warning("任务已经开始了, 请不要再更改队列了!");
             return null;
         }
 
@@ -157,7 +158,7 @@ public class CourseData {
         }
 
         ClassesData tmp = classesDataMap.get(courseNo);
-
+        tmp.setCourseData(null);
         classesDataMap.remove(courseNo);
 
         return tmp;
@@ -170,6 +171,7 @@ public class CourseData {
     public void startAll() {
         //Node loading = new JFXSpinner();
         setStatus(2);
+        BooleanBinding booleanBinding;
 
         DoubleLinkedList<ClassesData> classesDataList  =
                 new DoubleLinkedList<ClassesData>(classesDataMap.values().toArray());
@@ -188,7 +190,6 @@ public class CourseData {
             return;
         }
 
-        BooleanBinding booleanBinding;
         IntegerBinding integerBinding;
         if (!SettingData.getMultiClassesInSameCourse()) {
             booleanBinding = classesDataList.get(0).getSelectCourseThread().getSuccessProperty()
@@ -223,6 +224,23 @@ public class CourseData {
         }
 
         selectSuccess.bind(booleanBinding);
+        selectSuccess.addListener(((observable, oldValue, newValue) -> {
+            //当前CourseData中没有classes是激活状态的时候(有部分是成功了, 而且还有部分是被用户中止的),
+            //就将设置状态为3(被用户强行中止)
+            if (SettingData.getMultiClassesInSameCourse()) {
+                boolean finishedFlag = true;
+                boolean hasInterrupted = false;
+                for (ClassesData classesData : classesDataMap.values()) {
+                    if (classesData.getStatus().get() <= 2)
+                        //如果有任意一个课程都在选课中, 就是false
+                        finishedFlag = false;
+                    if (classesData.getStatus().get() == 3)
+                        hasInterrupted = true;
+                }
+                if (finishedFlag && hasInterrupted)
+                    setStatus(3);
+            }
+        }));
         courseRequestCountProperty.bind(integerBinding);
     }
 
@@ -230,7 +248,7 @@ public class CourseData {
      * 停止队列中的所有剩余课程班级选课线程
      */
     public void cancelAll() {
-        Node status;
+        //Node status;
         if (selectSuccess.get()) {
             slectStatus.set(4);
             /*
@@ -262,6 +280,13 @@ public class CourseData {
             //classesData.setStatus(status);
             classesData.setStatus(slectStatus.get());
         }
+    }
+
+    /**
+     * 获得该CourseData下的classes数目
+     */
+    public int getClassesNumber() {
+        return classesDataMap.size();
     }
 
     /**

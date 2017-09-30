@@ -3,10 +3,13 @@ package tk.dcmmcc.gui.main;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.JFXPopup.PopupHPosition;
 import com.jfoenix.controls.JFXPopup.PopupVPosition;
+import io.datafx.controller.flow.FlowException;
+import io.datafx.controller.util.VetoException;
 import javafx.concurrent.Task;
 import javafx.geometry.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Pair;
@@ -14,6 +17,7 @@ import org.controlsfx.control.textfield.CustomTextField;
 import tk.dcmmcc.AccountLoginException;
 import tk.dcmmcc.DHUCurrentUser;
 import tk.dcmmcc.JwdepConnectionException;
+import tk.dcmmcc.datafx.CourseClassRequestQueue;
 import tk.dcmmcc.datafx.ExtendedAnimatedFlowContainer;
 import tk.dcmmcc.datafx.SettingData;
 import tk.dcmmcc.gui.sidemenu.SideMenuController;
@@ -30,12 +34,17 @@ import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import org.controlsfx.dialog.LoginDialog;
 import tk.dcmmcc.utils.ExceptionDialog;
+import tk.dcmmcc.utils.LoggerUtil;
+
 import javax.annotation.PostConstruct;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.LinkedHashMap;
 import java.util.Optional;
+import java.util.logging.Logger;
+
 import static io.datafx.controller.flow.container.ContainerAnimations.SWIPE_LEFT;
 
 //导入Header(标题, 汉堡菜单按钮, 右边的那个按钮, 整体的header)和drawer(主要是drawer的宽度)的配置文件
@@ -44,10 +53,8 @@ public final class MainController {
 
     @FXMLViewFlowContext
     private ViewFlowContext context;
-
     @FXML
     private StackPane root;
-
     @FXML
     private StackPane titleBurgerContainer;
     @FXML
@@ -60,8 +67,13 @@ public final class MainController {
     private JFXDrawer drawer;
     @FXML
     private JFXSnackbar infoSnackBar;
-
     private JFXPopup toolbarPopup;
+    //Logger
+    private static Logger logger = Logger.getLogger(SideMenuController.class.getName());
+
+    static {
+        LoggerUtil.initLogger(logger);
+    }
 
     /**
      * init fxml when loaded.
@@ -196,6 +208,7 @@ public final class MainController {
 
         //设置右边的选项按钮的功能
         @FXML
+        @SuppressWarnings("unchecked")
         private void submit() {
             if (toolbarPopupList.getSelectionModel().getSelectedIndex() == 0) {
                 if (SettingData.getDhuCurrentUser() != null) {
@@ -317,6 +330,37 @@ public final class MainController {
 
                 //退出
                 SettingData.signOut();
+                //清楚CourseQueue还有那些选课次数之类的信息
+                //重置成功选课的Course数目
+                CourseClassRequestQueue.getQueueCoursesNumberProperty().set(0);
+                //重置选课次数
+                CourseClassRequestQueue.getSelectedCoursesNumberProperty().set(0);
+                //重置成功选课个数
+                CourseClassRequestQueue.getSelectedCoursesNumberProperty().set(0);
+                CourseClassRequestQueue.getStartedProperty().set(false);
+                //清空Queue
+                CourseClassRequestQueue.setCoursesDataMap(new LinkedHashMap<>());
+                SettingData.setRequestQueue(null);
+
+                JFXListView<Label> sideList = (JFXListView<Label>) context.getRegisteredObject("sideList");
+                if (sideList != null) {
+                    //debug
+                    //System.out.println("稳");
+
+                    if (sideList.getSelectionModel().getSelectedItem().getId().equals("session")) {
+                        //如果当前页面是Session, 就重新加载
+                        FlowHandler contentFlowHandler = (FlowHandler) context
+                                .getRegisteredObject("ContentFlowHandler");
+                        try {
+                            contentFlowHandler.handle("session");
+                        } catch (VetoException | FlowException exc) {
+                            logger.severe("加载Controller session 失败!");
+                            ExceptionDialog.launch(exc, "严重错误", "加载Controller session 失败!");
+                            exc.printStackTrace();
+                        }
+                    }
+                }
+
                 infoSnackBar.fireEvent(new JFXSnackbar.SnackbarEvent("退出成功",
                         "了解", 2000, false,
                         b -> infoSnackBar.close()));

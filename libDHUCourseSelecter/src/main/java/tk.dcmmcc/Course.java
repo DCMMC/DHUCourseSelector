@@ -15,6 +15,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 /**
@@ -394,7 +395,6 @@ public class Course {
                 }
                 responsePage += line + "\n";
             }
-
 
             DoubleLinkedList<HyperlinkURL>[] table = new Table(responsePage, new URL(selectedCourse)).getTable();
 

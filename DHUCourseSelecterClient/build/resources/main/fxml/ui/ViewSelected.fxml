@@ -115,11 +115,12 @@
         </top>
         <bottom>
             <AnchorPane prefHeight="100">
-                <HBox spacing="30">
-                    <HBox fx:id="operates" spacing="15" prefHeight="35" AnchorPane.bottomAnchor="65" AnchorPane.leftAnchor="20">
-                    </HBox>
-                    <JFXButton AnchorPane.bottomAnchor="70" AnchorPane.rightAnchor="90"
-                               fx:id="confirmBtn" style="-fx-padding: 0.7em 0.57em;
+                <StackPane>
+                    <HBox spacing="30">
+                        <HBox fx:id="operates" spacing="15" prefHeight="35" AnchorPane.bottomAnchor="65" AnchorPane.leftAnchor="20">
+                        </HBox>
+                        <JFXButton AnchorPane.bottomAnchor="70" AnchorPane.rightAnchor="90"
+                                   fx:id="confirmBtn" style="-fx-padding: 0.7em 0.57em;
                        -fx-font-family: msyh;
                        -fx-font-size: 18;
                        -fx-font-weight: bold;
@@ -128,8 +129,9 @@
                        -fx-min-width: 100;
                        -fx-min-height: 25;
                        -fx-text-fill: WHITE;" text="确认">
-                    </JFXButton>
-                </HBox>
+                        </JFXButton>
+                    </HBox>
+                </StackPane>
             </AnchorPane>
         </bottom>
     </BorderPane>

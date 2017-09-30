@@ -14,6 +14,8 @@ import java.util.logging.Logger;
  * Created by DCMMC on 2017/9/9.
  */
 public class ClassesData {
+    //所属的CourseData
+    private CourseData courseData;
     private Course course;
     private SelectCourseThread selectCourseThread;
     private static Logger logger = Logger.getLogger(ClassesData.class.getName());
@@ -58,6 +60,7 @@ public class ClassesData {
             this.selectCourseThread.getSuccessProperty().addListener(((observable, oldValue, newValue) -> {
                 if (newValue) {
                     status.setValue(4);
+                    judge();
                     /*
                     this.statusProperty.setValue(new SVGGlyph(0, "success", "M512 1024C229.451852" +
                             " 1024 0 794.548148 0 512S229.451852 0 512 0s512 229.451852 512 512-229.451852 " +
@@ -75,6 +78,40 @@ public class ClassesData {
             //Course连courseId和courseNo都没有
             logger.warning("Course连courseId和courseNo都没有\n");
         }
+    }
+
+    /**
+     * 判断是否所属的CourseData中没有wait或者正在选课的线程了
+     */
+    private void judge() {
+        //如果SettingData中只允许一个Course下成功一个Class就终结其他所有
+        if (!SettingData.getMultiClassesInSameCourse())
+            getCourseData().cancelAll();
+        else {
+            //当前CourseData中没有classes是激活状态的时候(有部分是成功了, 而且还有部分是被用户中止的),
+            //就将设置状态为3(被用户强行中止)
+            if (SettingData.getMultiClassesInSameCourse()) {
+                boolean finishedFlag = true;
+                boolean hasInterrupted = false;
+                for (ClassesData classesData : getCourseData().getClassesDataMap().values()) {
+                    if (classesData.getStatus().get() <= 2)
+                        //如果有任意一个课程都在选课中, 就是false
+                        finishedFlag = false;
+                    if (classesData.getStatus().get() == 3)
+                        hasInterrupted = true;
+                }
+                if (finishedFlag && hasInterrupted)
+                    getCourseData().setStatus(3);
+            }
+        }
+    }
+
+    public CourseData getCourseData() {
+        return courseData;
+    }
+
+    public void setCourseData(CourseData courseData) {
+        this.courseData = courseData;
     }
 
     public SelectCourseThread getSelectCourseThread() {
@@ -95,6 +132,16 @@ public class ClassesData {
     public void cancel() {
         getSelectCourseThread().stopCurrentSelectCourse();
         setStatus(3);
+        //当前CourseData中没有classes是激活状态的时候(有部分是成功了, 而且还有部分是被用户中止的),
+        //就将设置状态为3(被用户强行中止)
+        boolean finishedFlag = true;
+        for (ClassesData classesData : getCourseData().getClassesDataMap().values()) {
+            if (classesData.getStatus().get() <= 2)
+                //如果有任意一个课程都在选课中, 就是false
+                finishedFlag = false;
+        }
+        if (finishedFlag)
+            getCourseData().setStatus(3);
     }
 
     public IntegerProperty getStatus() {
