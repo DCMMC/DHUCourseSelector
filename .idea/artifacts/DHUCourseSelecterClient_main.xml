@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="DHUCourseSelecterClient_main">
+    <output-path>$PROJECT_DIR$/classes/artifacts/DHUCourseSelecterClient_main</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="tk.dcmmcc.Main" />
+        <option name="description" value="DHU 选课软件" />
+        <option name="height" value="800" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="nativeBundle" value="exe" />
+        <option name="title" value="DHU Course Selecter" />
+        <option name="vendor" value="DCMMC" />
+        <option name="version" value="1.0" />
+        <option name="width" value="900" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="DHUCourseSelecterClient_main.jar">
+        <element id="module-output" name="DHUCourseSelecterClient_main" />
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -58,7 +58,7 @@ project(':libDHUCourseSelecter') {
     //mainClassName = 'tk.dcmmcc.DHUCourseSelecterCLI'
     
     dependencies {
-        //本地libs
+        //鏈湴libs
         compile files('libs/commons-codec-1.9.jar',
                 'libs/commons-httpclient-3.1.jar',
                 'libs/commons-logging-1.2.jar',
@@ -74,7 +74,7 @@ project(':DHUCourseSelecterClient') {
     dependencies {
         compile project(':libDHUCourseSelecter')
 
-        //本地libs
+        //鏈湴libs
         compile files('libs/jfoenix.jar', 
                 'libs/controlsfx-8.40.13.jar',
                 'libs/tilesfx-1.4.4.jar')

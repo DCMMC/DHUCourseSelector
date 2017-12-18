@@ -1,18 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="DHUCourseSelecterClient_main" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="2b9ee5cb-d9ad-403b-9740-2d48d1c5d944" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/tableHtml.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/cache.properties" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/cache.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__de_jensd_fontawesomefx_commons_8_15.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__de_jensd_fontawesomefx_commons_8_15.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__de_jensd_fontawesomefx_fontawesome_4_7_0_5.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__de_jensd_fontawesomefx_fontawesome_4_7_0_5.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_datafx_core_8_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_datafx_core_8_0_1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_datafx_datafx_8_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_datafx_datafx_8_0_1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_datafx_flow_8_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_datafx_flow_8_0_1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/build/reports/checkstyle/main.html" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/build/reports/checkstyle/main.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/build/reports/findbugs/main.html" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/build/reports/findbugs/main.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/build/resources/main/css/CLIApplication.css" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/build/resources/main/css/CLIApplication.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/build/resources/main/css/TransparentWindow.css" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/build/resources/main/css/TransparentWindow.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/jp/uphy/javafx/console/ConsoleApplication.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/jp/uphy/javafx/console/ConsoleApplication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/jp/uphy/javafx/console/ConsoleView.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/jp/uphy/javafx/console/ConsoleView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/jp/uphy/javafx/console/KeyBindingUtils.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/jp/uphy/javafx/console/KeyBindingUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/jp/uphy/javafx/console/TextInputControlStream.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/jp/uphy/javafx/console/TextInputControlStream.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/jp/uphy/javafx/example/JavaFXMyCliApplication.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/jp/uphy/javafx/example/JavaFXMyCliApplication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/jp/uphy/javafx/example/MyCliApplication.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/jp/uphy/javafx/example/MyCliApplication.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/ClassesData.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/ClassesData.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/CourseClassRequestQueue.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/CourseClassRequestQueue.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/CourseData.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/CourseData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/AboutController.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/AboutController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/SettingData.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/SettingData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/main/MainController.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/main/MainController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/sidemenu/SideMenuController.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/sidemenu/SideMenuController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/EditCourseClassRequestQueueController.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/EditCourseClassRequestQueueController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/SessionController.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/SessionController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/ViewSelectedCoursesStage.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/ViewSelectedCoursesStage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/utils/ExceptionDialog.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/utils/ExceptionDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/utils/LoggerUtil.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/utils/LoggerUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/resources/css/CLIApplication.css" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/resources/css/CLIApplication.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/resources/css/TransparentWindow.css" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/resources/css/TransparentWindow.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/production/DHUCourseSelecterClient/css/CLIApplication.css" afterPath="$PROJECT_DIR$/classes/production/DHUCourseSelecterClient/css/CLIApplication.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/production/DHUCourseSelecterClient/css/TransparentWindow.css" afterPath="$PROJECT_DIR$/classes/production/DHUCourseSelecterClient/css/TransparentWindow.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradle.properties" afterPath="$PROJECT_DIR$/gradle.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/build/reports/checkstyle/main.html" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/build/reports/checkstyle/main.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/build/reports/findbugs/main.html" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/build/reports/findbugs/main.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/AccountLoginException.java" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/AccountLoginException.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/ClassTime.java" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/ClassTime.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/CommonCourseType.java" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/CommonCourseType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/Course.java" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/Course.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/CourseType.java" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/CourseType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/DHUCourseSelecterCLI.java" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/DHUCourseSelecterCLI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/DHUCurrentUser.java" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/DHUCurrentUser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/IllegalCourseException.java" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/IllegalCourseException.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/JwdepConnectionException.java" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/JwdepConnectionException.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/SelectCourseEvent.java" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/SelectCourseEvent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/SelectCourseListener.java" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/SelectCourseListener.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/SelectCourseThread.java" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/SelectCourseThread.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/Teacher.java" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/Teacher.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/utils/DoubleLinkedList.java" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/utils/DoubleLinkedList.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/utils/HyperlinkURL.java" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/utils/HyperlinkURL.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/utils/Pointer.java" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/utils/Pointer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/utils/Table.java" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/utils/Table.java" />
     </list>
     <ignored path="$PROJECT_DIR$/libDHUCourseSelecter/.gradle/" />
     <ignored path="$PROJECT_DIR$/libDHUCourseSelecter/build/" />
@@ -63,20 +113,6 @@
                 <option name="myItemId" value=":libDHUCourseSelecter" />
                 <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ModuleNode" />
               </PATH_ELEMENT>
-            </PATH>
-            <PATH>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="DHUCourseSelecter" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value=":libDHUCourseSelecter" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ModuleNode" />
-              </PATH_ELEMENT>
               <PATH_ELEMENT>
                 <option name="myItemId" value="Tasks" />
                 <option name="myItemType" value="com.intellij.openapi.externalSystem.view.TasksNode" />
@@ -102,6 +138,20 @@
               <PATH_ELEMENT>
                 <option name="myItemId" value="build" />
                 <option name="myItemType" value="com.intellij.openapi.externalSystem.view.TasksNode$1" />
+              </PATH_ELEMENT>
+            </PATH>
+            <PATH>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="DHUCourseSelecter" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value=":libDHUCourseSelecter" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ModuleNode" />
               </PATH_ELEMENT>
             </PATH>
             <PATH>
@@ -198,6 +248,28 @@
                 <option name="myItemType" value="com.intellij.openapi.externalSystem.view.TasksNode" />
               </PATH_ELEMENT>
               <PATH_ELEMENT>
+                <option name="myItemId" value="distribution" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.TasksNode$1" />
+              </PATH_ELEMENT>
+            </PATH>
+            <PATH>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="DHUCourseSelecter" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value=":DHUCourseSelecterClient" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ModuleNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="Tasks" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.TasksNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
                 <option name="myItemId" value="build" />
                 <option name="myItemType" value="com.intellij.openapi.externalSystem.view.TasksNode$1" />
               </PATH_ELEMENT>
@@ -255,20 +327,6 @@
                 <option name="myItemId" value="DHUCourseSelecter" />
                 <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ModuleNode" />
               </PATH_ELEMENT>
-            </PATH>
-            <PATH>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="DHUCourseSelecter" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="DHUCourseSelecter" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ModuleNode" />
-              </PATH_ELEMENT>
               <PATH_ELEMENT>
                 <option name="myItemId" value="Tasks" />
                 <option name="myItemType" value="com.intellij.openapi.externalSystem.view.TasksNode" />
@@ -318,6 +376,20 @@
                 <option name="myItemType" value="com.intellij.openapi.externalSystem.view.TasksNode$1" />
               </PATH_ELEMENT>
             </PATH>
+            <PATH>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="DHUCourseSelecter" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="DHUCourseSelecter" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ModuleNode" />
+              </PATH_ELEMENT>
+            </PATH>
           </tree_state>
         </projects_view>
       </state>
@@ -328,8 +400,8 @@
       <file leaf-file-name="ViewSelectedCoursesStage.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/ViewSelectedCoursesStage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="667">
-              <caret line="1053" column="6" lean-forward="false" selection-start-line="1053" selection-start-column="6" selection-end-line="1053" selection-end-column="6" />
+            <state relative-caret-position="93">
+              <caret line="289" column="13" lean-forward="true" selection-start-line="289" selection-start-column="13" selection-end-line="289" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -355,6 +427,7 @@
       <find>conflictCoursesMap</find>
       <find>loadURL</find>
       <find>StringW</find>
+      <find>周次</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -1410,6 +1483,32 @@
     <option name="width" value="1938" />
     <option name="height" value="1048" />
   </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Internationalization</id>
+          </State>
+          <State>
+            <id>Internationalization issues</id>
+          </State>
+          <State>
+            <id>Internationalization issuesJava</id>
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+          <State>
+            <id>WebSocket issues</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
+  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -1675,10 +1774,14 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15991317" />
+    <property name="project.structure.side.proportion" value="0.36950904" />
+    <property name="js.eslint.eslintPackage" value="" />
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration default="false" name="DHUCourseSelecterCLI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -1721,42 +1824,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="DHUCourseSelecter:DHUCourseSelecterClient [buildNeeded]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/DHUCourseSelecterClient" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="buildNeeded" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <method />
-    </configuration>
-    <configuration default="false" name="DHUCourseSelecter:DHUCourseSelecterClient [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/DHUCourseSelecterClient" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="buildDependents" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <method />
-    </configuration>
     <configuration default="false" name="DHUCourseSelecter:DHUCourseSelecterClient [check]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -1769,6 +1836,42 @@
         <option name="taskNames">
           <list>
             <option value="check" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="false" name="DHUCourseSelecter:DHUCourseSelecterClient [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/DHUCourseSelecterClient" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="false" name="DHUCourseSelecter:DHUCourseSelecterClient [installDist]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/DHUCourseSelecterClient" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="installDist" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -2174,17 +2277,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.DHUCourseSelecterCLI" />
       <item index="1" class="java.lang.String" itemvalue="Application.Main" />
-      <item index="2" class="java.lang.String" itemvalue="Gradle.DHUCourseSelecter:DHUCourseSelecterClient [buildNeeded]" />
-      <item index="3" class="java.lang.String" itemvalue="Gradle.DHUCourseSelecter:DHUCourseSelecterClient [buildDependents]" />
-      <item index="4" class="java.lang.String" itemvalue="Gradle.DHUCourseSelecter:DHUCourseSelecterClient [check]" />
+      <item index="2" class="java.lang.String" itemvalue="Gradle.DHUCourseSelecter:DHUCourseSelecterClient [check]" />
+      <item index="3" class="java.lang.String" itemvalue="Gradle.DHUCourseSelecter:DHUCourseSelecterClient [build]" />
+      <item index="4" class="java.lang.String" itemvalue="Gradle.DHUCourseSelecter:DHUCourseSelecterClient [installDist]" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Application.Main" />
-        <item index="1" class="java.lang.String" itemvalue="Application.DHUCourseSelecterCLI" />
-        <item index="2" class="java.lang.String" itemvalue="Gradle.DHUCourseSelecter:DHUCourseSelecterClient [check]" />
-        <item index="3" class="java.lang.String" itemvalue="Gradle.DHUCourseSelecter:DHUCourseSelecterClient [buildDependents]" />
-        <item index="4" class="java.lang.String" itemvalue="Gradle.DHUCourseSelecter:DHUCourseSelecterClient [buildNeeded]" />
+        <item index="1" class="java.lang.String" itemvalue="Gradle.DHUCourseSelecter:DHUCourseSelecterClient [installDist]" />
+        <item index="2" class="java.lang.String" itemvalue="Gradle.DHUCourseSelecter:DHUCourseSelecterClient [build]" />
+        <item index="3" class="java.lang.String" itemvalue="Application.DHUCourseSelecterCLI" />
+        <item index="4" class="java.lang.String" itemvalue="Gradle.DHUCourseSelecter:DHUCourseSelecterClient [check]" />
       </list>
     </recent_temporary>
   </component>
@@ -2202,7 +2305,7 @@
       <option name="presentableId" value="Default" />
       <updated>1513566398451</updated>
       <workItem from="1513566403875" duration="2381000" />
-      <workItem from="1513572307518" duration="9603000" />
+      <workItem from="1513572307518" duration="14717000" />
     </task>
     <servers />
   </component>
@@ -2212,7 +2315,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11984000" />
+    <option name="totallyTimeSpent" value="17098000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -2221,14 +2324,14 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.49791667" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2258,7 +2361,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="15" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/ViewSelectedCoursesStage.java</url>
+          <line>317</line>
+          <properties />
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="17" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -2317,14 +2428,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="116">
           <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="74" column="38" lean-forward="false" selection-start-line="74" selection-start-column="38" selection-end-line="74" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -2433,14 +2536,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="22" column="39" lean-forward="true" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -2626,15 +2721,127 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2146">
+          <caret line="74" column="38" lean-forward="false" selection-start-line="74" selection-start-column="38" selection-end-line="74" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradle.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="22" column="39" lean-forward="true" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/ViewSelectedCoursesStage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="1053" column="6" lean-forward="false" selection-start-line="1053" selection-start-column="6" selection-end-line="1053" selection-end-column="6" />
+        <state relative-caret-position="93">
+          <caret line="289" column="13" lean-forward="true" selection-start-line="289" selection-start-column="13" selection-end-line="289" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>DHUCourseSelecterClient_main</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.36950904" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.36950904" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.36950904" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.36950904" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>DHUCourseSelecter_main|DHUCourseSelecter</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.36950904" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Gradle: de.jensd:fontawesomefx-commons:8.15</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.36950904" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

@@ -111,9 +111,7 @@ public class ViewSelectedCoursesStage {
             viewWeek = (JFXComboBox<Label>) loader.getNamespace().get("viewWeek");
             mainVBox = (VBox) loader.getNamespace().get("mainVBox");
 
-            confirmBtn.setOnMouseClicked(event -> {
-                stage.close();
-            });
+            confirmBtn.setOnMouseClicked(event -> stage.close());
 
             scene = new Scene(root, 910, 800);
 
@@ -152,8 +150,11 @@ public class ViewSelectedCoursesStage {
                 if (operates.getChildren().size() > 0)
                     operates.getChildren().remove(0, operates.getChildren().size());
 
+                //reset
                 coursesMap = new LinkedHashMap<>();
                 courseNoAndCoursePanes = new LinkedHashMap<>();
+                conflictCourseId = new LinkedHashSet<>();
+                conflictCoursesMap = new LinkedHashMap<>();
 
                 generateCalendar(courseCalendar, newValue.intValue() + 1, scene, currentUser);
             }));
@@ -186,97 +187,11 @@ public class ViewSelectedCoursesStage {
      */
     private static void generateCalendar(ScrollPane calendarRoot, int week, Scene scene,
                                          DHUCurrentUser currentUser) {
-        if (week < 1 || week > 18)
+        if (week < 1 || week > 18) {
             // TODO 出错
+            logger.severe("周次错误! 只能 1~18周");
             return;
-
-        /* Test */
-        /*
-        ArrayList<AnchorPaneNode> allCalendarDays = new ArrayList<>(35);
-        // Create the calendar grid pane
-        GridPane calendar = new GridPane();
-        calendar.prefWidthProperty().bind(calendarRoot.prefWidthProperty().multiply(0.95));
-        calendar.setMinHeight(5 * 100.0d);
-        //calendar.setGridLinesVisible(true);
-        // Create rows and columns with anchor panes for the calendar
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 7; j++) {
-                if (i == 1 && j == 4)
-                    break;
-
-                if (i == 2 && j == 6) {
-                    AnchorPaneNode ap = new AnchorPaneNode();
-
-                    ap.prefWidthProperty().bind(scene.widthProperty()
-                            .subtract(new SimpleDoubleProperty(190.0d))
-                            .divide(8));
-                    ap.setPrefHeight(100.0d * 3);
-                    ap.setStyle("-fx-background-color: #01A05E; -fx-background-radius: 15 15 15 15;" +
-                            "-fx-opacity: 0.4");
-                    JFXDepthManager.setDepth(ap, 4);
-                    calendar.add(ap, j, i, 1, 3);
-                    allCalendarDays.add(ap);
-                    break;
-                }
-
-                if (j == 6 && (i == 3 || i == 4)) {
-                    break;
-                }
-
-                if (i == 4) {
-                    AnchorPaneNode ap = new AnchorPaneNode();
-
-                    ap.prefWidthProperty().bind(scene.widthProperty()
-                            .subtract(new SimpleDoubleProperty(190.0d)));
-                    ap.setPrefHeight(100.0d);
-                    ap.setStyle("-fx-background-color: #01A05E; -fx-background-radius: 15 15 15 15;" +
-                            "-fx-opacity: 0.4");
-                    JFXDepthManager.setDepth(ap, 4);
-                    calendar.add(ap, j, i, 7, 1);
-                    allCalendarDays.add(ap);
-                    break;
-                }
-
-                AnchorPaneNode ap = new AnchorPaneNode();
-                DoubleBinding prefWidth = calendarRoot.prefWidthProperty()
-                        .divide(new SimpleDoubleProperty(8.0d));
-                ap.prefWidthProperty().bind(prefWidth);
-                //debug
-                //prefWidth.addListener(((observable, oldValue, newValue) -> {
-                //    System.out.println("debug: new stackPane pref width: " + newValue);
-                //}));
-                //Make the binding valid...
-                prefWidth.getValue();
-                ap.setPrefHeight(100.0d);
-                calendar.add(ap, j, i);
-                allCalendarDays.add(ap);
-            }
         }
-
-        YearMonth yearMonth = YearMonth.now();
-        // Get the date we want to start with on the calendar
-        LocalDate calendarDate = LocalDate.of(yearMonth.getYear(), yearMonth.getMonthValue(), 1);
-        // Dial back the day until it is SUNDAY (unless the month starts on a sunday)
-        while (!calendarDate.getDayOfWeek().toString().equals("SUNDAY") ) {
-            calendarDate = calendarDate.minusDays(1);
-        }
-        // Populate the calendar with day numbers
-        for (AnchorPaneNode ap : allCalendarDays) {
-            if (ap.getChildren().size() != 0) {
-                ap.getChildren().remove(0);
-            }
-            Text txt = new Text(String.valueOf(calendarDate.getDayOfMonth()));
-            txt.setTextAlignment(TextAlignment.CENTER);
-            txt.setFont(Font.font("msyh", FontWeight.BOLD, 18));
-            ap.setDate(calendarDate);
-            ap.setTopAnchor(txt, ap.getPrefHeight() / 2);
-            ap.setLeftAnchor(txt, ap.getPrefWidth() / 2);
-            ap.getChildren().add(txt);
-            calendarDate = calendarDate.plusDays(1);
-        }
-
-        calendarRoot.setContent(calendar);
-        */
 
         GridPane calendar = new GridPane();
         calendar.prefWidthProperty().bind(calendarRoot.prefWidthProperty().multiply(0.95));
@@ -365,13 +280,15 @@ public class ViewSelectedCoursesStage {
         matriculatedCourses.setItems(matriculatedList);
         matriculatedCourses.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
             //最开始的时候是没有选择的选项的
-            if (newValue != null)
+            if (newValue != null) {
                 courseClickAction(newValue.getCourse(), true, currentUser);
-            Course tmp = newValue.getCourse();
-            lastClickedCoursePane = courseNoAndCoursePanes.containsKey(tmp.getCourseId() + "-" +
-                    tmp.getClassNo()) ? courseNoAndCoursePanes.get(tmp.getCourseId() + "-" +
-                    tmp.getClassNo()) : new DoubleLinkedList<>();
-            lastClickedIsMatriculated = true;
+                Course tmp = newValue.getCourse();
+                lastClickedCoursePane = courseNoAndCoursePanes.containsKey(tmp.getCourseId() + "-" +
+                        tmp.getClassNo()) ? courseNoAndCoursePanes.get(tmp.getCourseId() + "-" +
+                        tmp.getClassNo()) : new DoubleLinkedList<>();
+                lastClickedIsMatriculated = true;
+            }
+
         }));
 
         index = 0;
@@ -398,13 +315,14 @@ public class ViewSelectedCoursesStage {
         selectedCourses.setItems(selectedList);
         selectedCourses.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
             //最开始的时候是没有选择的选项的
-            if (newValue != null)
+            if (newValue != null) {
                 courseClickAction(newValue.getCourse(), false, currentUser);
-            Course tmp = newValue.getCourse();
-            lastClickedCoursePane = courseNoAndCoursePanes.containsKey(tmp.getCourseId() + "-" +
-                    tmp.getClassNo()) ? courseNoAndCoursePanes.get(tmp.getCourseId() + "-" +
-                    tmp.getClassNo()) : new DoubleLinkedList<>();
-            lastClickedIsMatriculated = true;
+                Course tmp = newValue.getCourse();
+                lastClickedCoursePane = courseNoAndCoursePanes.containsKey(tmp.getCourseId() + "-" +
+                        tmp.getClassNo()) ? courseNoAndCoursePanes.get(tmp.getCourseId() + "-" +
+                        tmp.getClassNo()) : new DoubleLinkedList<>();
+                lastClickedIsMatriculated = false;
+            }
         }));
     }
 
