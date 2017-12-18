@@ -70,7 +70,7 @@ public class DHUCurrentUser {
     //HttpClient
     private HttpClient httpClient = new HttpClient();
     //log
-    private static Logger logger = Logger.getLogger(DHUCurrentUser.class.getName());
+    private static Logger logger = Logger.getLogger("DHUCourseSelecter");
 
       /* 静态实例初始化 */
     static {

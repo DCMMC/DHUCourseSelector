@@ -30,7 +30,7 @@ public class SelectCourseThread extends Thread {
     //该选课线程是否选课成功
     private SimpleBooleanProperty successProperty = new SimpleBooleanProperty(false);
 
-    private static Logger logger = Logger.getLogger(SelectCourseThread.class.getName());
+    private static Logger logger = Logger.getLogger("DHUCourseSelecter");
 
     static {
         initLogger(logger);

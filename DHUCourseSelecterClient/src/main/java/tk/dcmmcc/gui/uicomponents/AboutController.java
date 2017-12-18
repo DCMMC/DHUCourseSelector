@@ -1,6 +1,5 @@
 package tk.dcmmcc.gui.uicomponents;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXScrollPane;
 import io.datafx.controller.ViewController;
@@ -11,7 +10,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-
 import javax.annotation.PostConstruct;
 
 /**

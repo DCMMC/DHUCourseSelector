@@ -23,7 +23,7 @@ public class CourseData {
     //课程的courseId
     private String courseId = "";
     //Logger
-    private static Logger logger = Logger.getLogger(CourseData.class.getName());
+    private static Logger logger = Logger.getLogger("DHUCourseSelecter");
     //start flag
     private boolean started = false;
     //设置当前课程是否选课成功的

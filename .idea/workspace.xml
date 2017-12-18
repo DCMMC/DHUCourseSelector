@@ -2,22 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b9ee5cb-d9ad-403b-9740-2d48d1c5d944" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/cache.properties.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.1/tasks/_DHUCourseSelecterClient_compileJava/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/3.1/tasks/_DHUCourseSelecterClient_compileJava/localClassSetAnalysis/localClassSetAnalysis.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.1/tasks/_DHUCourseSelecterClient_compileJava/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/3.1/tasks/_DHUCourseSelecterClient_compileJava/localClassSetAnalysis/localClassSetAnalysis.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.1/tasks/_DHUCourseSelecterClient_compileJava/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/3.1/tasks/_DHUCourseSelecterClient_compileJava/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.1/tasks/_libDHUCourseSelecter_compileJava/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/3.1/tasks/_libDHUCourseSelecter_compileJava/localClassSetAnalysis/localClassSetAnalysis.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.1/tasks/_libDHUCourseSelecter_compileJava/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/3.1/tasks/_libDHUCourseSelecter_compileJava/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/build/libs/libDHUCourseSelecter-0.1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/build/libs/libDHUCourseSelecter-0.1.0-SNAPSHOT.jar" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/tableHtml.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/ClassesData.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/ClassesData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/CourseClassRequestQueue.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/CourseClassRequestQueue.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/CourseData.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/CourseData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/AboutController.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/AboutController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/SessionController.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/SessionController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/ViewSelectedCoursesStage.java" afterPath="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/ViewSelectedCoursesStage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/build/reports/checkstyle/main.html" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/build/reports/checkstyle/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/build/reports/findbugs/main.html" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/build/reports/findbugs/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/ClassTime.java" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/ClassTime.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/Course.java" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/Course.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/DHUCurrentUser.java" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/DHUCurrentUser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/SelectCourseThread.java" afterPath="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/SelectCourseThread.java" />
     </list>
     <ignored path="$PROJECT_DIR$/libDHUCourseSelecter/.gradle/" />
     <ignored path="$PROJECT_DIR$/libDHUCourseSelecter/build/" />
@@ -330,34 +325,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Course.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/Course.java">
+      <file leaf-file-name="ViewSelectedCoursesStage.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/ViewSelectedCoursesStage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="610">
-              <caret line="416" column="0" lean-forward="true" selection-start-line="416" selection-start-column="0" selection-end-line="416" selection-end-column="0" />
+            <state relative-caret-position="667">
+              <caret line="1053" column="6" lean-forward="false" selection-start-line="1053" selection-start-column="6" selection-end-line="1053" selection-end-column="6" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewSelectedCoursesStage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/ViewSelectedCoursesStage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="499" column="19" lean-forward="false" selection-start-line="499" selection-start-column="19" selection-end-line="499" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClassTime.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/ClassTime.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1798">
-              <caret line="4" column="15" lean-forward="false" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -378,6 +353,8 @@
       <find>coursesMap</find>
       <find>conflictCourseId</find>
       <find>conflictCoursesMap</find>
+      <find>loadURL</find>
+      <find>StringW</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -1407,11 +1384,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/SessionController.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/ClassesData.java" />
         <option value="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/ClassTime.java" />
         <option value="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/Course.java" />
+        <option value="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/AboutController.java" />
+        <option value="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/SessionController.java" />
+        <option value="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/ClassesData.java" />
+        <option value="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/CourseClassRequestQueue.java" />
+        <option value="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/CourseData.java" />
+        <option value="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/DHUCurrentUser.java" />
+        <option value="$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/SelectCourseThread.java" />
         <option value="$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/ViewSelectedCoursesStage.java" />
       </list>
     </option>
@@ -1452,6 +1434,72 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="DHUCourseSelecter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DHUCourseSelecter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DHUCourseSelecter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libDHUCourseSelecter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DHUCourseSelecter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DHUCourseSelecter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libDHUCourseSelecter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DHUCourseSelecter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DHUCourseSelecter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libDHUCourseSelecter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tk.dcmmcc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2154,7 +2202,7 @@
       <option name="presentableId" value="Default" />
       <updated>1513566398451</updated>
       <workItem from="1513566403875" duration="2381000" />
-      <workItem from="1513572307518" duration="7324000" />
+      <workItem from="1513572307518" duration="9603000" />
     </task>
     <servers />
   </component>
@@ -2164,7 +2212,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9705000" />
+    <option name="totallyTimeSpent" value="11984000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -2210,7 +2258,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="14" />
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -2269,32 +2317,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="116">
           <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/ClassesData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="16" column="16" lean-forward="false" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="22" column="39" lean-forward="true" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/DHUCourseSelecterCLI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -2373,36 +2395,241 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/AboutController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/EditCourseClassRequestQueueController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/ExitController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/SessionController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="340" column="0" lean-forward="false" selection-start-line="340" selection-start-column="0" selection-end-line="340" selection-end-column="0" />
+        <state relative-caret-position="377">
+          <caret line="58" column="71" lean-forward="false" selection-start-line="58" selection-start-column="52" selection-end-line="58" selection-end-column="71" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/ClassTime.java">
+    <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/SettingController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1798">
-          <caret line="4" column="15" lean-forward="false" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+        <state relative-caret-position="0">
+          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/ViewSelectedCoursesStage.java">
+    <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="499" column="19" lean-forward="false" selection-start-line="499" selection-start-column="19" selection-end-line="499" selection-end-column="19" />
+        <state relative-caret-position="116">
+          <caret line="22" column="39" lean-forward="true" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/TODO.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-783">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/utils/ExceptionDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/sidemenu/SideMenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/main/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="42" column="19" lean-forward="false" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/utils/LoggerUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/CourseClassRequestQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="28" column="71" lean-forward="false" selection-start-line="28" selection-start-column="71" selection-end-line="28" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/CourseData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="25" column="71" lean-forward="false" selection-start-line="25" selection-start-column="71" selection-end-line="25" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/ExtendedAnimatedFlowContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/SettingData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1421">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/AccountLoginException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/ClassTime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/CommonCourseType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-155">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/Course.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="610">
-          <caret line="416" column="0" lean-forward="true" selection-start-line="416" selection-start-column="0" selection-end-line="416" selection-end-column="0" />
+        <state relative-caret-position="-1015">
+          <caret line="18" column="3" lean-forward="true" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/datafx/ClassesData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2128">
+          <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/CourseType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-416">
+          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/DHUCourseSelecterCLI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3635">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/DHUCurrentUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="72" column="71" lean-forward="false" selection-start-line="72" selection-start-column="71" selection-end-line="72" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/JwdepConnectionException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/SelectCourseEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="7" column="6" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/SelectCourseThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="35" column="27" lean-forward="true" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/tableHtml.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libDHUCourseSelecter/src/main/java/tk.dcmmcc/Teacher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-69">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DHUCourseSelecterClient/src/main/java/tk/dcmmcc/gui/uicomponents/ViewSelectedCoursesStage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="1053" column="6" lean-forward="false" selection-start-line="1053" selection-start-column="6" selection-end-line="1053" selection-end-column="6" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

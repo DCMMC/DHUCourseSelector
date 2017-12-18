@@ -28,12 +28,10 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import tk.dcmmcc.Course;
 import tk.dcmmcc.CourseType;
-import tk.dcmmcc.IllegalCourseException;
 import tk.dcmmcc.datafx.ClassesData;
 import tk.dcmmcc.datafx.CourseClassRequestQueue;
 import tk.dcmmcc.datafx.CourseData;
 import tk.dcmmcc.datafx.SettingData;
-import tk.dcmmcc.utils.DoubleLinkedList;
 import tk.dcmmcc.utils.ExceptionDialog;
 import tk.dcmmcc.utils.LoggerUtil;
 import javax.annotation.PostConstruct;
@@ -58,7 +56,7 @@ public class SessionController {
     private ScrollPane scrollPane;
     @FXML
     private VBox vboxRoot;
-    private static Logger logger = Logger.getLogger(SettingData.class.getName());
+    private static Logger logger = Logger.getLogger("DHUCourseSelecter");
 
     static {
         LoggerUtil.initLogger(logger);

@@ -8,7 +8,6 @@ import org.apache.commons.httpclient.methods.PostMethod;
 import tk.dcmmcc.utils.DoubleLinkedList;
 import tk.dcmmcc.utils.HyperlinkURL;
 import tk.dcmmcc.utils.Table;
-
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;

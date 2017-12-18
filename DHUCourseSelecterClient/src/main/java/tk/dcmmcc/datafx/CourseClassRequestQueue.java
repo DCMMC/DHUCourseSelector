@@ -26,7 +26,7 @@ public class CourseClassRequestQueue {
     //started flag
     private static BooleanProperty statedProperty = new SimpleBooleanProperty(false);
     //Logger
-    private static Logger logger = Logger.getLogger(CourseClassRequestQueue.class.getName());
+    private static Logger logger = Logger.getLogger("DHUCourseSelecter");
     //all courses finished flag
     private BooleanProperty allFinished  = new SimpleBooleanProperty(false);
     //还有多少s开始自动选课

@@ -38,6 +38,7 @@ import java.time.YearMonth;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.logging.Logger;
+import java.io.*;
 
 /**
  * TODO 右侧ListView与课程表的pane绑定
@@ -76,7 +77,7 @@ public class ViewSelectedCoursesStage {
     //冲突课程的"courseId-classNo"
     private static LinkedHashSet<String> conflictCourseId = new LinkedHashSet<>();
     private static StackPane root;
-    private static Logger logger = Logger.getLogger(ViewSelectedCoursesStage.class.getName());
+    private static Logger logger = Logger.getLogger("DHUCourseSelecter");
 
     static {
         LoggerUtil.initLogger(logger);
@@ -822,6 +823,11 @@ public class ViewSelectedCoursesStage {
      * @param url 链接
      */
     private static void loadURL(URL url, String cookie) {
+        if (url == null) {
+            logger.warning("url为空, 不打开浏览器");
+            return;
+        }
+
         Stage webViewStage = new Stage();
 
         JFXProgressBar progressBar = new JFXProgressBar(0);
@@ -846,8 +852,11 @@ public class ViewSelectedCoursesStage {
         try {
             java.net.CookieManager.getDefault().put(url.toURI(), headers);
         } catch (URISyntaxException | IOException ioe) {
-            // TODO ....
-
+            logger.warning("处理url和Cookie出现问题: " + ioe.getMessage());
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            ioe.printStackTrace(pw);
+            logger.warning("StackTrace: " + pw);
         }
 
         webEngine.load(url.toString());

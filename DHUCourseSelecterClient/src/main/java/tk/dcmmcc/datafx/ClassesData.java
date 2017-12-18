@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class ClassesData {
     private Course course;
     private SelectCourseThread selectCourseThread;
-    private static Logger logger = Logger.getLogger(ClassesData.class.getName());
+    private static Logger logger = Logger.getLogger("DHUCourseSelecter");
     /**
      * Status Property
      * 总有4个数值:
