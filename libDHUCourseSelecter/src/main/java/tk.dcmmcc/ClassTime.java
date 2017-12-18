@@ -2,6 +2,7 @@ package tk.dcmmcc;
 
 /**
  * 封装上课时间的信息
+ * TODO !!!处理单双周模式!!!
  * Created by DCMMC on 2017/8/28.
  */
 public class ClassTime {
@@ -19,6 +20,11 @@ public class ClassTime {
 
     private int weekStart = 0;
     private int weekEnd = 0;
+
+    //单双周模式?
+    private boolean isSingleDoubleWeekMode = false;
+    //单周还是双周, true为单周
+    private boolean isSingleWeek = true;
 
 
     /**
@@ -49,7 +55,17 @@ public class ClassTime {
         for (int i = 0; i < dayAndClass.length; i += 2) {
             classesEachDay[Integer.valueOf(dayAndClass[i]) - 1] = dayAndClass[i + 1];
         }
+    }
 
+    /**
+     * 单双周模式
+     * @param isSingleWeek 是单周还是双周? true为单周, false为双周
+     */
+    public ClassTime(boolean isSingleWeek, int weekStart, int weekEnd, String ... dayAndClass) {
+        this(weekStart, weekEnd, dayAndClass);
+
+        this.isSingleWeek = isSingleWeek;
+        this.isSingleDoubleWeekMode = true;
     }
 
     /**

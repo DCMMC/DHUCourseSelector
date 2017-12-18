@@ -19,6 +19,8 @@ import java.util.Scanner;
 
 /**
  * 封装Course的各类信息, Course指的是具体某个老师开的这个节次的课
+ * TODO 对表格的处理应该大改一波, 不能按照每一列都是绝对的数据来了, 因为每个学期都可能会更新一点点
+ *  必须按照先对第一行进行解析, 来动态的得到每一列的意义...
  * Created by DCMMC on 2017/8/28.
  */
 public class Course {
@@ -368,6 +370,9 @@ public class Course {
         try {
             httpClient.executeMethod(selected);
 
+            //debug
+            //String strDebug = selected.getResponseBodyAsString();
+
             Scanner scanner = new Scanner(new BufferedInputStream(selected.getResponseBodyAsStream()), "gbk");
             String responsePage = "";
             //已经录取课程数量
@@ -380,6 +385,7 @@ public class Course {
             double selectedScore = 0.0d;
             //按照html代码, 上述是个变量在页面中分别是count count0 count1 count2 count3的innerText成员
 
+
             String line;
             while (scanner.hasNextLine()) {
                 if ((line = scanner.nextLine()).contains(".innerText=")) {
@@ -387,9 +393,9 @@ public class Course {
                         matriculateCount = Integer.valueOf(line.replaceAll("[^\\d.]+", "").substring(1));
                     else if (line.contains("count0"))
                         matriculateScore = Double.valueOf(line.replaceAll("[^\\d.]+", "").substring(2));
-                    else if (line.contains("count1"))
+                    else if (line.contains("count2"))
                         selectedCount = Integer.valueOf(line.replaceAll("[^\\d.]+", "").substring(2));
-                    else
+                    else if (line.contains("count3"))
                         selectedScore = Double.valueOf(line.replaceAll("[^\\d.]+", "").substring(2));
                 }
                 responsePage += line + "\n";
@@ -412,11 +418,28 @@ public class Course {
             // UPDATE: 教务处在关闭选课的时候查看选课列表中的删除按钮就没了
             boolean selectClosed = DHUCurrentUser.getCurrentInfo(userCookie).equals("教务处已经停止选课!");
 
-            //前面三行, 后面三行都是无用的
-            for (int i = 3; i < 3 + matriculateCount + selectedCount; i++) {
+            //一般有意义的表格行的元素个数为13或者16的样子， 那些元素个数为0或者1的就是无效的
+            //记录当前存入的课程数目， 如果大于已录取数目, 就代表正在处理已选择但是未录取的课程
+            int courseLoadedCount = 0;
+            //是否是单双周模式
+            boolean isSingleDoubleWeekMode = false;
+            //FIXME 默认单周
+            boolean isSingleWeek = true;
+            //FIXME 如果每一行元素布局改变(教务处更新的话), 程序将会出错!!!
+            for (int i = 0; i < table.length; i++) {
+                // FIXME 这样的假设不够严谨, 是不是要设置阀值为别的会更加好一点?
+                //如果该行元素只有1个或者0个或者6个(6个是已选择但是未录取那一个表格的第一行的内容), 就说明是无用行
+                if (table[i].getSize() < 8)
+                    continue;
+
+                //这门课将被读取
+                courseLoadedCount++;
+
                 thisCourseId = table[i].popFirst().getTextTitle();
                 thisCourse = table[i].popFirst();
                 thisScore = Double.valueOf(table[i].popFirst().getTextTitle());
+                //优选专业
+                table[i].popFirst();
                 //课程类别
                 table[i].popFirst();
                 thisClassNo = table[i].popFirst().getTextTitle();
@@ -429,6 +452,11 @@ public class Course {
                     //如果不是删除按钮, 就add回去
                     table[i].addFirst(delLink);
                 }
+
+                //教务处第一次选课的时候, 会在这里多一个是否录取的一列
+                //暴力判断一波
+                if (table[i].getFirst().getTextTitle().matches("[是否]{1}"))
+                    table[i].popFirst();
 
                 HyperlinkURL teacher = table[i].popFirst();
 
@@ -458,9 +486,21 @@ public class Course {
 
                     classTime = table[i].popFirst().getTextTitle();
 
+                    //debug
+                    //if (weekRange.contains("单周")) {
+                    //    System.out.println("单周");
+                    //}
+
                     //解析周次
                     int weekStart, weekEnd;
                     weekRange = weekRange.replace("周", "");
+                    //有些可能是单双周的
+                    if (weekRange.matches(".*\\([单双]\\).*")) {
+                        isSingleDoubleWeekMode = true;
+                        isSingleWeek = weekRange.matches(".*单.*");
+                        weekRange = weekRange.replaceFirst("\\(.*\\)", "");
+                    }
+
                     if (weekRange.equals("")) {
                         //如果为空, 就把weekStart和weekEnd都令为-1
                         weekEnd = -1;
@@ -472,7 +512,7 @@ public class Course {
 
 
                     //解析节次
-                    classTime = classTime.replace("周", "").replace("节", "");
+                    classTime = classTime.replaceFirst("周", "").replace("节", "");
                     int day;
                     if (classTime.equals("")) {
                         day = -1;
@@ -495,7 +535,9 @@ public class Course {
                     //lastWeekStartAndEnd[0] != 0 表示不是第一次解析
                     if (lastWeekStartAndEnd[0] != 0 && (lastWeekStartAndEnd[0] != weekStart
                             || lastWeekStartAndEnd[1] != weekEnd)) {
-                        ClassTime ct = new ClassTime(lastWeekStartAndEnd[0], lastWeekStartAndEnd[1]
+                        ClassTime ct = isSingleDoubleWeekMode ? new ClassTime(isSingleWeek, lastWeekStartAndEnd[0],
+                                lastWeekStartAndEnd[1], dayAndClass.toArray())
+                                : new ClassTime(lastWeekStartAndEnd[0], lastWeekStartAndEnd[1]
                                 , dayAndClass.toArray());
                         coursesTimeList.addLast(ct);
                         places.addLast(lastPlace);
@@ -512,7 +554,8 @@ public class Course {
 
                     //该行的最后一个时间表了
                     if (table[i].isEmpty()) {
-                        ClassTime ct = new ClassTime(weekStart, weekEnd, dayAndClass.toArray());
+                        ClassTime ct = isSingleDoubleWeekMode ? new ClassTime(isSingleWeek, weekStart, weekEnd, dayAndClass.toArray())
+                            : new ClassTime(weekStart, weekEnd, dayAndClass.toArray());
                         coursesTimeList.addLast(ct);
                         places.addLast(lastPlace);
                     }
@@ -531,16 +574,17 @@ public class Course {
                         maxWeekEnd = c.getWeekRange()[1];
                 }
 
-                if (i < 3 + matriculateCount)
+
+                if (courseLoadedCount <= matriculateCount)
                     //创建该行对应的Course对象
-                    matriculatedCourse[i - 3] = new Course(thisCourse, thisCourseId, "", thisClassNo, thisTeacher, thisScore,
+                    matriculatedCourse[courseLoadedCount - 1] = new Course(thisCourse, thisCourseId, "", thisClassNo, thisTeacher, thisScore,
                             0, 0, 0, minWeekStart, maxWeekEnd,
                             coursesTimeList.getSize() == 0 ? new ClassTime[]{new ClassTime(-1, -1)}
                             : coursesTimeList.toArray(),
                             places.toArray()).setCalendarURL(thisCalendar);
                 else
                     //创建该行对应的Course对象
-                    selectedCourse[i - 3 - matriculateCount] = new Course(thisCourse, thisCourseId, "", thisClassNo, thisTeacher, thisScore,
+                    selectedCourse[courseLoadedCount - matriculateCount - 1] = new Course(thisCourse, thisCourseId, "", thisClassNo, thisTeacher, thisScore,
                             0, 0, 0, minWeekStart, maxWeekEnd,
                             coursesTimeList.getSize() == 0 ? new ClassTime[]{new ClassTime(-1, -1)}
                                     : coursesTimeList.toArray(), places.toArray()).setCalendarURL(thisCalendar);

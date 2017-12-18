@@ -474,6 +474,36 @@ public class ViewSelectedCoursesStage {
                             notConflictSections.addLast(currentNotConflict);
                             currentNotConflict = new DoubleLinkedList<>();
 
+                            if (!conflictCoursesMap.containsKey(oldCourse.getCourseId()
+                                    + "-" + oldCourse.getClassNo())) {
+                                conflictCoursesMap.put(oldCourse.getCourseId() + "-" + oldCourse.getClassNo(),
+                                        new DoubleLinkedList<>(new Label[]{new Label(oldCourse.getCourse().getTextTitle() + " " +
+                                                (oldCourse.getTeacher() == null ? "" : oldCourse.getTeacher().getTextTitle())
+                                                + "@" + (oldCourse.getPlaces() == null || oldCourse.getPlaces()[0].equals("") ?
+                                                "(无确定教室)" : oldCourse.getPlaces()[0]))}));
+                                conflictCourseId.add(oldCourse.getCourseId()
+                                        + "-" + oldCourse.getClassNo());
+                            }
+
+                            /*
+                            else if (!conflictCourseId.contains(oldCourse.getCourseId()
+                                    + "-" + oldCourse.getClassNo()))
+                                conflictCoursesMap.get(oldCourse.getCourseId()
+                                        + "-" + oldCourse.getClassNo()).addLast(new Label(oldCourse.getCourse().getTextTitle() + " " +
+                                        (oldCourse.getTeacher() == null ? "" : oldCourse.getTeacher().getTextTitle())
+                                        + "@" + (oldCourse.getPlaces() == null || oldCourse.getPlaces()[0].equals("") ?
+                                        "(无确定教室)" : oldCourse.getPlaces()[0])));
+                            */
+
+                            //把当前班级添加到冲突表里面
+                            conflictCourseId.add(course.getCourseId()
+                                    + "-" + course.getClassNo());
+                            conflictCoursesMap.get(oldCourse.getCourseId()
+                                    + "-" + oldCourse.getClassNo()).addLast(new Label(course.getCourse().getTextTitle() + " " +
+                                    (course.getTeacher() == null ? "" : course.getTeacher().getTextTitle())
+                                    + "@" + (course.getPlaces() == null || course.getPlaces()[0].equals("") ?
+                                    "(无确定教室)" : course.getPlaces()[0])));
+
                             StackPane extraInfo = coursesMap.get((i + 1) + "-" + section).getExtraInfoPane();
                             Label label = new Label("有冲突课程, 点击查看!");
                             label.setFont(Font.font("msyh", FontWeight.BOLD, 16));
@@ -486,23 +516,6 @@ public class ViewSelectedCoursesStage {
                             //处理extraInfo的点击事件, 弹出这一节次其他冲突课程的信息
                             extraInfo.setOnMouseClicked((event -> {
                                 JFXListView<Label> courseListView = new JFXListView<>();
-                                if (!conflictCoursesMap.containsKey(oldCourse.getCourseId()
-                                        + "-" + oldCourse.getClassNo()))
-                                    conflictCoursesMap.put(oldCourse.getCourseId() + "-" + oldCourse.getClassNo(),
-                                        new DoubleLinkedList<>(new Label[]{new Label(oldCourse.getCourse().getTextTitle() + " " +
-                                        (oldCourse.getTeacher() == null ? "" : oldCourse.getTeacher().getTextTitle())
-                                        + "@" + (oldCourse.getPlaces() == null || oldCourse.getPlaces()[0].equals("") ?
-                                        "(无确定教室)" : oldCourse.getPlaces()[0]))}));
-                                else if (!conflictCourseId.contains(oldCourse.getCourseId()
-                                        + "-" + oldCourse.getClassNo()))
-                                    conflictCoursesMap.get(oldCourse.getCourseId()
-                                            + "-" + oldCourse.getClassNo()).addLast(new Label(oldCourse.getCourse().getTextTitle() + " " +
-                                            (oldCourse.getTeacher() == null ? "" : oldCourse.getTeacher().getTextTitle())
-                                            + "@" + (oldCourse.getPlaces() == null || oldCourse.getPlaces()[0].equals("") ?
-                                            "(无确定教室)" : oldCourse.getPlaces()[0])));
-
-                                conflictCourseId.add(oldCourse.getCourseId()
-                                        + "-" + oldCourse.getClassNo());
 
                                 ObservableList<Label> courseList = FXCollections.observableArrayList(
                                         conflictCoursesMap.get(oldCourse.getCourseId()
@@ -528,6 +541,7 @@ public class ViewSelectedCoursesStage {
                         currentNotConflict.addLast(section);
                     }
                 }
+
                 //最后再添加最后一个
                 notConflictSections.addLast(currentNotConflict);
 

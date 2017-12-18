@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: io.datafx:flow:8.0.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.datafx/flow/8.0.1/eb5efe930962872fd9f27c7c751b806ab3965bca/flow-8.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.datafx/flow/8.0.1/9ac732cd2049451f3fd37e3d32ffe9e039ca3e27/flow-8.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

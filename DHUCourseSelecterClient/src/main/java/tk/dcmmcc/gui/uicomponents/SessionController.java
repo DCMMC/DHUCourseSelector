@@ -231,6 +231,7 @@ public class SessionController {
         // FIXME debug test
         SettingData.getLoginFlagProperty().addListener(((observable, oldValue, newValue) -> {
             if (newValue) {
+                /*
                 try {
                     DoubleLinkedList<CourseData> courseDataList = new DoubleLinkedList<>();
                     courseDataList.addLast(new CourseData(CourseType.searchCourse("LINUX系统",
@@ -243,13 +244,13 @@ public class SessionController {
                                 CourseType.searchCourse("131441",
                                         SettingData.getDhuCurrentUser().getUserCookie())[0],
                                 SettingData.getDhuCurrentUser().getUserCookie())[0])));
-
                     CourseClassRequestQueue queue = new CourseClassRequestQueue(courseDataList.toArray());
 
                     SettingData.setRequestQueue(queue);
                 } catch (IllegalCourseException ie) {
                     //....
                 }
+                */
             }
         }));
 
