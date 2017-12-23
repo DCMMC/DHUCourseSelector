@@ -71,7 +71,8 @@ public class ViewSelectedCoursesStage {
     //已选择但未录取课程
     private static JFXListView<CourseLabel> selectedCourses;
     //冲突课程 String为"courseId-classNo"
-    private static LinkedHashMap<String, DoubleLinkedList<Label>> conflictCoursesMap = new LinkedHashMap<>();
+    //private static LinkedHashMap<String, DoubleLinkedList<Label>> conflictCoursesMap = new LinkedHashMap<>();
+	private static LinkedHashMap<String, LinkedHashSet<Label>> conflictCoursesMap = new LinkedHashMap<>();
     private static Scene scene;
     private static PopOver popOverInfo = new PopOver();
     //冲突课程的"courseId-classNo"
@@ -389,17 +390,29 @@ public class ViewSelectedCoursesStage {
                         if (!lastConflict.equals(coursesMap
                                 .get((i + 1) + "-" + section).course.getCourseId())) {
                             Course oldCourse = coursesMap.get((i + 1) + "-" + section).getCourse();
+							
+							//有可能已录取和已选择但未录取都有同一个班级的情况
+							if (oldCourse.getCourseId().equals(course.getCourseId()) && oldCourse.getClassNo().equals(course.getClassNo()))
+								continue;
+							
+							//debug
+							System.out.println(oldCourse.getCourse().getTextTitle() + ", " + oldCourse.getCourseId() 
+								+ ", " + oldCourse.getClassNo() + "\n" + 
+								course.getCourse().getTextTitle() + ", " + course.getCourseId() 
+								+ ", " + course.getClassNo() + "\n");
 
                             notConflictSections.addLast(currentNotConflict);
                             currentNotConflict = new DoubleLinkedList<>();
 
                             if (!conflictCoursesMap.containsKey(oldCourse.getCourseId()
                                     + "-" + oldCourse.getClassNo())) {
-                                conflictCoursesMap.put(oldCourse.getCourseId() + "-" + oldCourse.getClassNo(),
-                                        new DoubleLinkedList<>(new Label[]{new Label(oldCourse.getCourse().getTextTitle() + " " +
+								LinkedHashSet<Label> set = new LinkedHashSet<>();
+								set.add(new Label(oldCourse.getCourse().getTextTitle() + " " +
                                                 (oldCourse.getTeacher() == null ? "" : oldCourse.getTeacher().getTextTitle())
                                                 + "@" + (oldCourse.getPlaces() == null || oldCourse.getPlaces()[0].equals("") ?
-                                                "(无确定教室)" : oldCourse.getPlaces()[0]))}));
+                                                "(无确定教室)" : oldCourse.getPlaces()[0])));
+                                conflictCoursesMap.put(oldCourse.getCourseId() + "-" + oldCourse.getClassNo(),
+                                        set);
                                 conflictCourseId.add(oldCourse.getCourseId()
                                         + "-" + oldCourse.getClassNo());
                             }
@@ -415,10 +428,10 @@ public class ViewSelectedCoursesStage {
                             */
 
                             //把当前班级添加到冲突表里面
-                            conflictCourseId.add(course.getCourseId()
-                                    + "-" + course.getClassNo());
-                            conflictCoursesMap.get(oldCourse.getCourseId()
-                                    + "-" + oldCourse.getClassNo()).addLast(new Label(course.getCourse().getTextTitle() + " " +
+                            if (conflictCourseId.add(course.getCourseId()
+                                    + "-" + course.getClassNo()))
+								conflictCoursesMap.get(oldCourse.getCourseId()
+                                    + "-" + oldCourse.getClassNo()).add(new Label(course.getCourse().getTextTitle() + " " +
                                     (course.getTeacher() == null ? "" : course.getTeacher().getTextTitle())
                                     + "@" + (course.getPlaces() == null || course.getPlaces()[0].equals("") ?
                                     "(无确定教室)" : course.getPlaces()[0])));
@@ -436,9 +449,9 @@ public class ViewSelectedCoursesStage {
                             extraInfo.setOnMouseClicked((event -> {
                                 JFXListView<Label> courseListView = new JFXListView<>();
 
-                                ObservableList<Label> courseList = FXCollections.observableArrayList(
+                                ObservableList<Label> courseList = FXCollections.observableArrayList( 
                                         conflictCoursesMap.get(oldCourse.getCourseId()
-                                                + "-" + oldCourse.getClassNo()).toArray());
+                                                + "-" + oldCourse.getClassNo()).toArray(new Label[0]));
 
                                 popOverInfo.setAutoHide(true);
 
