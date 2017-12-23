@@ -11,6 +11,10 @@
 
 > 09/30/17: 项目处于暂停状态, 将在下次开放选课的时候重启项目, 完成所有的TODOs
 
+# Issues
+
+OpenJDK not include JavaFX in Arch Linux (or other linux distrubutions), please install java-openjfx (AUR) or same packages in your linux distrubution.
+
 # TODO List
 
 * 智能导入课程(让用户按照类别和学分选课课程)

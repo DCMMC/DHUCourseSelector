@@ -437,8 +437,9 @@ public class Course {
                 thisCourseId = table[i].popFirst().getTextTitle();
                 thisCourse = table[i].popFirst();
                 thisScore = Double.valueOf(table[i].popFirst().getTextTitle());
-                //优选专业
-                table[i].popFirst();
+                //优选专业, 只会在已选但是未录取里面有
+				if (courseLoadedCount > matriculateCount)
+					table[i].popFirst();
                 //课程类别
                 table[i].popFirst();
                 thisClassNo = table[i].popFirst().getTextTitle();
