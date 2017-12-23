@@ -340,7 +340,7 @@ public class SessionController {
         }));
 
         viewSelectedCourses.disableProperty().bind(CourseClassRequestQueue.getStartedProperty()
-            .or(SettingData.getLoginFlagProperty().not()));
+            .or(SettingData.getLoginFlagProperty().not().and(SettingData.getJwStopSelectCourses().not())));
         AnchorPane.setLeftAnchor(viewSelectedCourses, 30.0d);
         AnchorPane.setBottomAnchor(viewSelectedCourses, 20.0d);
 

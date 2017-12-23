@@ -27,6 +27,8 @@ public class SettingData {
             "你当前还没有登录, 请点击右上角的按钮选择登录");
     //记录登录状态
     private static BooleanProperty loginFlagProperty = new SimpleBooleanProperty(false);
+	//记录教务处是否停止选课
+	private static BooleanProperty jwStopSelectCourses = new SimpleBooleanProperty(false);
     //任务队列
     private static CourseClassRequestQueue requestQueue = null;
 
@@ -35,10 +37,13 @@ public class SettingData {
         dhuCurrentUser = currentUser;
         currentInfoProperty.setValue(currentUser.getCurrentInfo());
         // UPDATE: 如果教务处选课系统关闭了, 还是设置为未登录状态
-        if (currentInfoProperty.getValue().equals("教务处已经停止选课!"))
+        if (currentInfoProperty.getValue().equals("教务处已经停止选课!")) {
             loginFlagProperty.setValue(false);
-        else
+			jwStopSelectCourses.setValue(true);
+		} else {
             loginFlagProperty.setValue(true);
+			jwStopSelectCourses.setValue(false);
+		}
 
         // debug
         //loginFlagProperty.setValue(true);
@@ -104,6 +109,10 @@ public class SettingData {
     public static CourseClassRequestQueue getRequestQueue() {
         return requestQueue;
     }
+
+	public static BooleanProperty getJwStopSelectCourses() {
+		return jwStopSelectCourses;
+	}
 
     public static void setRequestQueue(CourseClassRequestQueue requestQueue) {
         SettingData.requestQueue = requestQueue;
