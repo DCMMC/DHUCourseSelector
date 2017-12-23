@@ -396,10 +396,10 @@ public class ViewSelectedCoursesStage {
 								continue;
 							
 							//debug
-							System.out.println(oldCourse.getCourse().getTextTitle() + ", " + oldCourse.getCourseId() 
-								+ ", " + oldCourse.getClassNo() + "\n" + 
-								course.getCourse().getTextTitle() + ", " + course.getCourseId() 
-								+ ", " + course.getClassNo() + "\n");
+							//System.out.println(oldCourse.getCourse().getTextTitle() + ", " + oldCourse.getCourseId() 
+							//	+ ", " + oldCourse.getClassNo() + "\n" + 
+							//	course.getCourse().getTextTitle() + ", " + course.getCourseId() 
+							//	+ ", " + course.getClassNo() + "\n");
 
                             notConflictSections.addLast(currentNotConflict);
                             currentNotConflict = new DoubleLinkedList<>();
