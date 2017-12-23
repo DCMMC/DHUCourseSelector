@@ -27,3 +27,5 @@ out/
 build/
 
 .idea/
+
+.gradle/
