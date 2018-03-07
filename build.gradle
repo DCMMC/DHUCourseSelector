@@ -11,7 +11,7 @@ plugins {
     id 'me.tatarka.retrolambda' version '3.6.0' apply false
     id 'com.github.hierynomus.license' version '0.13.1' apply false
     id 'net.nemerosa.versioning' version '2.6.0' apply false
-    id "org.sonarqube" version "2.2"
+    id "org.sonarqube" version "2.6.1"
 }
 
 allprojects {
@@ -43,12 +43,8 @@ subprojects {
     apply from: rootProject.file('gradle/findbugs.gradle')
     apply from: rootProject.file('gradle/javafx.gradle')
 
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
-
-    tasks.withType(JavaCompile) {
-        options.incremental = true
-    }
+    sourceCompatibility = 1.9
+    targetCompatibility = 1.9
 }
 
 project(':libDHUCourseSelecter') {
@@ -56,7 +52,7 @@ project(':libDHUCourseSelecter') {
     //apply plugin: 'application'
 
     //mainClassName = 'tk.dcmmcc.DHUCourseSelecterCLI'
-    
+
     dependencies {
         //本地libs
         compile files('libs/commons-codec-1.9.jar',
@@ -70,21 +66,40 @@ project(':DHUCourseSelecterClient') {
     apply plugin: 'application'
 
     mainClassName = 'tk.dcmmcc.Main'
+    
+    // support for java9
+    compileJava {
+        options.compilerArgs += ["--add-modules", "java.xml.bind,java.xml.ws.annotation"]
+    }
 
+    compileTestJava {
+        options.compilerArgs += ["--add-modules", "java.xml.bind,java.xml.ws.annotation"]
+    }
+
+    test {
+        jvmArgs += ["--add-modules", "java.xml.bind,java.xml.ws.annotation"]
+    }
+    
+    tasks.withType(JavaExec) {
+        jvmArgs += ["--add-modules", "java.xml.bind,java.xml.ws.annotation"]
+    }
+    
     dependencies {
         compile project(':libDHUCourseSelecter')
 
-        //本地libs
-        compile files('libs/jfoenix.jar', 
-                'libs/controlsfx-8.40.13.jar',
-                'libs/tilesfx-1.4.4.jar')
+          //本地libs
+        compile files('libs/tilesfx-1.4.4.jar')
+        
+        compile 'org.controlsfx:controlsfx:9.0.0+'
+	    compile 'com.jfoenix:jfoenix:9.0.1+'
 
         // NOTE: the latest version _is_ 8.0.1!
         // 8.0.7 was published by mistake
-        compile 'io.datafx:datafx:8.0.1'
-        compile 'io.datafx:flow:8.0.1'
+        compile 'io.datafx:datafx:8.0.1+'
+        compile 'io.datafx:flow:8.0.1+'
 
         // FontAwesome (Bintray)
-        compile 'de.jensd:fontawesomefx-fontawesome:4.7.0-5'
+        compile 'de.jensd:fontawesomefx-fontawesome:4.7.0-5+'
+        compile 'de.jensd:fontawesomefx-commons:9.1.2+'
     }
 }

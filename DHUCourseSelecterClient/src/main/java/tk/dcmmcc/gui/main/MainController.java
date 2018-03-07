@@ -70,7 +70,7 @@ public final class MainController {
     public void init() throws Exception {
 
         //设置提示snackBar的Container
-        infoSnackBar.registerSnackbarContainer(root);
+	//infoSnackBar.registerSnackbarContainer(root);
 
         //设置左边的汉堡菜单按钮变形的动画
         // init the title hamburger icon
@@ -263,7 +263,6 @@ public final class MainController {
                     //不能点确认
                     dialogPane.lookupButton(ButtonType.APPLY).setDisable(true);
                     JFXSpinner loading = new JFXSpinner();
-                    loading.setAlignment(Pos.CENTER);
                     final StackPane content = new StackPane(loading);
                     content.setAlignment(Pos.CENTER);
                     dialogPane.setContent(content);
