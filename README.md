@@ -109,6 +109,14 @@ $ gradlew run
 $ ./gradlew.sh run
 ```
 
+or 
+
+```
+$ gradle run
+```
+
+if you have local Gradle distribution in your OS.
+
 其他`tasks`请执行`gradlew tasks`查看.
 
 # Author
