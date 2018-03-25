@@ -213,14 +213,14 @@ public class DHUCourseSelecterCLI {
                     continue;
                 }
 
-                Course targerCourse = null;
+                Course targetCourse = null;
 
                 for (Course course : courses)
                     if (course.getCourseNo().equals(courseNo))
-                        targerCourse = course;
+                        targetCourse = course;
 
-                if (targerCourse != null)
-                    selectCourseThreads.addLast(new SelectCourseThread(targerCourse, 5,
+                if (targetCourse != null)
+                    selectCourseThreads.addLast(new SelectCourseThread(targetCourse, 5,
                             dhuCurrentUser.getUserCookie()));
                 else {
                     o("选课序号错误!");
@@ -245,10 +245,13 @@ public class DHUCourseSelecterCLI {
         } catch (AccountLoginException ae) {
             o("帐号或密码错误! 请核对: userName: " + loginUser + ", userPassword: " + loginPwd +
                 " " + ae.getMessage());
+            main(args);
         } catch (JwdepConnectionException je) {
             o("网络错误! 请检查网络. " + je.getMessage());
+            main(args);
         } catch (IllegalCourseException ie) {
             o("courseType必须最少提供提供courseId!");
+            main(args);
         }
 
     }

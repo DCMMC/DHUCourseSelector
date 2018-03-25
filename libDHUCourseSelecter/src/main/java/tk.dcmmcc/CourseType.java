@@ -132,9 +132,9 @@ public class CourseType {
             return result;
         } catch (Exception e) {
             //debug
-            throw new RuntimeException(e);
+            //throw new RuntimeException(e);
             //任何异常都相当于没有找到任何CourseType
-            //return null;
+            return null;
         }
 
     }

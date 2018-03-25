@@ -81,7 +81,6 @@ public class Main extends Application {
             exitDialog.show();
         });
 
-
         //允许最大化
         decorator.setCustomMaximize(true);
         //900x900窗口大小
