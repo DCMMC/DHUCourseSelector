@@ -49,9 +49,9 @@ subprojects {
 
 project(':libDHUCourseSelecter') {
     //just for test
-    //apply plugin: 'application'
+    apply plugin: 'application'
 
-    //mainClassName = 'tk.dcmmcc.DHUCourseSelecterCLI'
+    mainClassName = 'tk.dcmmcc.DHUCourseSelecterCLI'
 
     dependencies {
         //本地libs
