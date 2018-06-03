@@ -32,24 +32,6 @@ allprojects {
 	 */
 	compileJava.options.encoding = "UTF-8"
 	compileTestJava.options.encoding = "UTF-8"
-
-	// support for java9/java10
-	compileJava {
-	    if(JavaVersion.current() == JavaVersion.VERSION_1_9 || JavaVersion.current() ==
-	            JavaVersion.VERSION_1_10) {
-	        options.compilerArgs += ["--add-modules", "java.xml.bind"]
-	        options.compilerArgs += ["--add-exports", "java.xml.bind/com.sun.istack.internal=ALL-UNNAMED"]
-	    }
-	}
-
-	compileTestJava {
-	    if(JavaVersion.current() == JavaVersion.VERSION_1_9 || JavaVersion.current() == 
-			JavaVersion.VERSION_1_10) {
-	        options.compilerArgs += ["--add-modules", "java.xml.bind"]
-	        options.compilerArgs += ["--add-exports", "java.xml.bind/com.sun.istack.internal=ALL-UNNAMED"]
-	    }
-	}
-
 }
 
 subprojects {
@@ -103,6 +85,25 @@ project(':DHUCourseSelecterClient') {
     apply plugin: 'application'
 
     mainClassName = 'tk.dcmmcc.Main'
+
+    // support for java9/java10
+    compileJava {
+        if(JavaVersion.current() == JavaVersion.VERSION_1_9 || JavaVersion.current() ==
+                JavaVersion.VERSION_1_10) {
+            options.compilerArgs += ["--add-modules", "java.xml.bind"]
+            options.compilerArgs += ["--add-exports", "java.xml.bind/com.sun.istack.internal=ALL-UNNAMED"]
+            options.compilerArgs += ["--add-modules", "java.xml.ws.annotation"]
+        }
+    }
+
+    compileTestJava {
+        if(JavaVersion.current() == JavaVersion.VERSION_1_9 || JavaVersion.current() == 
+            JavaVersion.VERSION_1_10) {
+            options.compilerArgs += ["--add-modules", "java.xml.bind"]
+            options.compilerArgs += ["--add-exports", "java.xml.bind/com.sun.istack.internal=ALL-UNNAMED"]
+            options.compilerArgs += ["--add-modules", "java.xml.ws.annotation"]
+        }
+    }
     
     dependencies {
         compile project(':libDHUCourseSelecter')
@@ -120,7 +121,7 @@ project(':DHUCourseSelecterClient') {
             compile 'de.jensd:fontawesomefx-fontawesome:4.7.0-5'
             compile 'de.jensd:fontawesomefx-commons:9.1.2'
         } else if(JavaVersion.current() == JavaVersion.VERSION_1_8) {
-        	compile 'org.controlsfx:controlsfx:8.20.9'
+        	compile 'org.controlsfx:controlsfx:8.40.13'
         	compile 'com.jfoenix:jfoenix:8.0.3' // Java 8
             // FontAwesome (Bintray)
             compile 'de.jensd:fontawesomefx-fontawesome:4.7.0-5'
@@ -131,5 +132,9 @@ project(':DHUCourseSelecterClient') {
         // 8.0.7 was published by mistake
         compile 'io.datafx:datafx:8.0.1'
         compile 'io.datafx:flow:8.0.1'
+
+        // annotation
+        compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
+        compile group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.1'
     }
 }
