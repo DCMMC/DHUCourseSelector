@@ -44,5 +44,5 @@
             </JFXDrawer>
         </center>
     </BorderPane>
-    <JFXSnackbar fx:id="infoSnackBar" prefWidth="300"/>
+    <!--<JFXSnackbar fx:id="infoSnackBar" prefWidth="300"/>-->
 </StackPane>

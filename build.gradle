@@ -5,6 +5,7 @@ buildscript {
     }
 }
 
+
 plugins {
     id 'com.jfrog.bintray' version '1.7.3' apply false
     id 'com.github.ben-manes.versions' version '0.14.0' apply false
@@ -14,12 +15,41 @@ plugins {
     id "org.sonarqube" version "2.6.1"
 }
 
+task wrapper(type: Wrapper) {
+   gradleVersion = '4.6' //version required
+}
+
 allprojects {
     apply plugin: 'idea'
-    apply plugin: "java"
+    apply plugin: 'java'
+
     tasks.withType(JavaCompile) {
         options.encoding = "UTF-8"
     }
+
+    /**
+	 * 1st approach: Setting encoding during compilation in Java and Test classes
+	 */
+	compileJava.options.encoding = "UTF-8"
+	compileTestJava.options.encoding = "UTF-8"
+
+	// support for java9/java10
+	compileJava {
+	    if(JavaVersion.current() == JavaVersion.VERSION_1_9 || JavaVersion.current() ==
+	            JavaVersion.VERSION_1_10) {
+	        options.compilerArgs += ["--add-modules", "java.xml.bind"]
+	        options.compilerArgs += ["--add-exports", "java.xml.bind/com.sun.istack.internal=ALL-UNNAMED"]
+	    }
+	}
+
+	compileTestJava {
+	    if(JavaVersion.current() == JavaVersion.VERSION_1_9 || JavaVersion.current() == 
+			JavaVersion.VERSION_1_10) {
+	        options.compilerArgs += ["--add-modules", "java.xml.bind"]
+	        options.compilerArgs += ["--add-exports", "java.xml.bind/com.sun.istack.internal=ALL-UNNAMED"]
+	    }
+	}
+
 }
 
 subprojects {
@@ -43,8 +73,15 @@ subprojects {
     apply from: rootProject.file('gradle/findbugs.gradle')
     apply from: rootProject.file('gradle/javafx.gradle')
 
-    sourceCompatibility = 1.9
-    targetCompatibility = 1.9
+    if(JavaVersion.current() == JavaVersion.VERSION_1_9 || JavaVersion.current() ==
+            JavaVersion.VERSION_1_10) {
+        sourceCompatibility = 1.9
+        targetCompatibility = 1.9
+    } else if(JavaVersion.current() == JavaVersion.VERSION_1_8) {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
 }
 
 project(':libDHUCourseSelecter') {
@@ -67,39 +104,32 @@ project(':DHUCourseSelecterClient') {
 
     mainClassName = 'tk.dcmmcc.Main'
     
-    // support for java9
-    compileJava {
-        options.compilerArgs += ["--add-modules", "java.xml.bind,java.xml.ws.annotation"]
-    }
-
-    compileTestJava {
-        options.compilerArgs += ["--add-modules", "java.xml.bind,java.xml.ws.annotation"]
-    }
-
-    test {
-        jvmArgs += ["--add-modules", "java.xml.bind,java.xml.ws.annotation"]
-    }
-    
-    tasks.withType(JavaExec) {
-        jvmArgs += ["--add-modules", "java.xml.bind,java.xml.ws.annotation"]
-    }
-    
     dependencies {
         compile project(':libDHUCourseSelecter')
 
-          //本地libs
-        compile files('libs/tilesfx-1.4.4.jar')
-        
-        compile 'org.controlsfx:controlsfx:9.0.0+'
-	    compile 'com.jfoenix:jfoenix:9.0.1+'
+        //本地libs
+        // compile files('libs/tilesfx-1.4.4.jar')
+	
+		compile 'eu.hansolo:tilesfx:1.5.5'
+
+        if(JavaVersion.current() == JavaVersion.VERSION_1_9 || JavaVersion.current() == 
+			JavaVersion.VERSION_1_10) {
+        	compile 'com.jfoenix:jfoenix:9.0.3' // Java 9
+        	compile 'org.controlsfx:controlsfx:9.0.0'
+            // FontAwesome (Bintray)
+            compile 'de.jensd:fontawesomefx-fontawesome:4.7.0-5'
+            compile 'de.jensd:fontawesomefx-commons:9.1.2'
+        } else if(JavaVersion.current() == JavaVersion.VERSION_1_8) {
+        	compile 'org.controlsfx:controlsfx:8.20.9'
+        	compile 'com.jfoenix:jfoenix:8.0.3' // Java 8
+            // FontAwesome (Bintray)
+            compile 'de.jensd:fontawesomefx-fontawesome:4.7.0-5'
+            compile 'de.jensd:fontawesomefx-commons:8.11'
+        }
 
         // NOTE: the latest version _is_ 8.0.1!
         // 8.0.7 was published by mistake
-        compile 'io.datafx:datafx:8.0.1+'
-        compile 'io.datafx:flow:8.0.1+'
-
-        // FontAwesome (Bintray)
-        compile 'de.jensd:fontawesomefx-fontawesome:4.7.0-5+'
-        compile 'de.jensd:fontawesomefx-commons:9.1.2+'
+        compile 'io.datafx:datafx:8.0.1'
+        compile 'io.datafx:flow:8.0.1'
     }
 }

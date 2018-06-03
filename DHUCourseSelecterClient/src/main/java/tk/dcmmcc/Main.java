@@ -9,7 +9,6 @@ import io.datafx.controller.flow.container.DefaultFlowContainer;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.ViewFlowContext;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -51,35 +50,34 @@ public class Main extends Application {
         //主窗体
         //后期可更改为是否后台运行还是退出
         JFXDecorator decorator = new JFXDecorator(stage, container.getView());
-        decorator.setOnCloseButtonAction(() -> {
-            JFXDialogLayout dialogLayout = new JFXDialogLayout();
-            Label heading = new Label("是否确认退出?");
-            heading.setFont(Font.loadFont(Main.class
+        JFXDialogLayout dialogLayout = new JFXDialogLayout();
+        Label heading = new Label("是否确认退出?");
+        heading.setFont(Font.loadFont(Main.class
                 .getResourceAsStream("/fonts/SourceHanSansCN-Regular.otf"), 26));
-            dialogLayout.setHeading(heading);
-            Label body = new Label("\n退出将会结束当前选课, 您可以选择后台运行.\n");
-            body.setFont(Font.loadFont(Main.class
+        dialogLayout.setHeading(heading);
+        Label body = new Label("\n退出将会结束当前选课, 您可以选择后台运行.\n");
+        body.setFont(Font.loadFont(Main.class
                 .getResourceAsStream("/fonts/SourceHanSansCN-Regular.otf"), 24));
-            dialogLayout.setBody(body);
-            JFXButton confirmBtn = new JFXButton("确认退出")
+        dialogLayout.setBody(body);
+        JFXButton confirmBtn = new JFXButton("确认退出")
                 , backgraoundBtn = new JFXButton("后台运行")
                 , cancelBtn = new JFXButton("取消");
-            confirmBtn.setFont(Font.font("msyh", FontWeight.BOLD, 28));
-            backgraoundBtn.setFont(Font.font("msyh", FontWeight.BOLD, 28));
-            cancelBtn.setFont(Font.font("msyh", FontWeight.BOLD, 28));
-            confirmBtn.setTextFill(Color.DARKBLUE);
-            backgraoundBtn.setTextFill(Color.DARKBLUE);
-            cancelBtn.setTextFill(Color.DARKBLUE);
-            confirmBtn.setOnMouseClicked((e) ->
+        confirmBtn.setFont(Font.font("msyh", FontWeight.BOLD, 28));
+        backgraoundBtn.setFont(Font.font("msyh", FontWeight.BOLD, 28));
+        cancelBtn.setFont(Font.font("msyh", FontWeight.BOLD, 28));
+        confirmBtn.setTextFill(Color.DARKBLUE);
+        backgraoundBtn.setTextFill(Color.DARKBLUE);
+        cancelBtn.setTextFill(Color.DARKBLUE);
+        confirmBtn.setOnMouseClicked((e) ->
                 System.exit(0));
-            // TODO 后台运行
-            backgraoundBtn.setOnMouseClicked( (e) -> {});
-            dialogLayout.setActions(cancelBtn, confirmBtn, backgraoundBtn);
-            JFXDialog exitDialog = new JFXDialog(stackPane, dialogLayout, JFXDialog.DialogTransition.CENTER);
-            cancelBtn.setOnMouseClicked((e) ->
+        // TODO 后台运行
+        backgraoundBtn.setOnMouseClicked( (e) -> {});
+        dialogLayout.setActions(cancelBtn, confirmBtn, backgraoundBtn);
+        JFXDialog exitDialog = new JFXDialog(stackPane, dialogLayout, JFXDialog.DialogTransition.CENTER);
+        cancelBtn.setOnMouseClicked((e) ->
                 exitDialog.close());
-            exitDialog.show();
-        });
+        decorator.setOnCloseButtonAction(
+            exitDialog::show);
 
         //允许最大化
         decorator.setCustomMaximize(true);

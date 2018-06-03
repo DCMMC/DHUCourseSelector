@@ -58,8 +58,8 @@ public final class MainController {
     private JFXRippler optionsRippler;
     @FXML
     private JFXDrawer drawer;
-    @FXML
-    private JFXSnackbar infoSnackBar;
+    // @FXML
+    private JFXSnackbar infoSnackBar = new JFXSnackbar();
 
     private JFXPopup toolbarPopup;
 
@@ -70,7 +70,7 @@ public final class MainController {
     public void init() throws Exception {
 
         //设置提示snackBar的Container
-	//infoSnackBar.registerSnackbarContainer(root);
+	    infoSnackBar.registerSnackbarContainer(root);
 
         //设置左边的汉堡菜单按钮变形的动画
         // init the title hamburger icon
@@ -85,7 +85,7 @@ public final class MainController {
             animation.play();
         });
         titleBurgerContainer.setOnMouseClicked(e -> {
-            if (drawer.isHidden() || drawer.isHiding()) {
+            if (drawer.isClosed() || drawer.isClosing()) {
                 drawer.open();
             } else {
                 drawer.close();

@@ -459,7 +459,7 @@ public class ViewSelectedCoursesStage {
                                 StackPane stackPane = new StackPane(courseListView);
                                 stackPane.setPrefSize(350, 400);
                                 popOverInfo.setContentNode(stackPane);
-                                popOverInfo.setTitle("所有与该课程冲突的课程");
+                                popOverInfo.setDetachedTitle("所有与该课程冲突的课程");
                                 popOverInfo.setPrefSize(350, 400);
                                 popOverInfo.setDetachable(false);
                                 popOverInfo.setArrowIndent(5);
