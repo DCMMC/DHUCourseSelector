@@ -13,6 +13,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import tk.dcmmcc.datafx.SettingData;
 import javax.annotation.PostConstruct;
+import java.util.Objects;
 
 /**
  * 设置界面
@@ -38,8 +39,8 @@ public class SettingController {
      */
     @PostConstruct
     public void init() {
-        ((BorderPane) ((StackPane) context.getRegisteredObject("MainRoot")).getChildren().get(0))
-                .setBottom(null);
+        Objects.requireNonNull(context, "context");
+        ((BorderPane) context.getRegisteredObject("borderPane")).setBottom(null);
 
         //输入只能是-1或者大于0的整数
         maxTryCount.setValidators(maxTryCount.getValidators().get(0), new ValidatorBase() {

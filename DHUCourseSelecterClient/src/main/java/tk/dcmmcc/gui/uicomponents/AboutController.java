@@ -11,6 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javax.annotation.PostConstruct;
+import java.util.Objects;
 
 /**
  * TODO 完善关于信息
@@ -33,8 +34,8 @@ public class AboutController {
      */
     @PostConstruct
     public void init() {
-        ((BorderPane)((StackPane)context.getRegisteredObject("MainRoot")).getChildren().get(0))
-                .setBottom(null);
+        Objects.requireNonNull(context, "context");
+        ((BorderPane) context.getRegisteredObject("borderPane")).setBottom(null);
 
         //设置页面最大高度
         aboutVBox.setMaxHeight(3000);

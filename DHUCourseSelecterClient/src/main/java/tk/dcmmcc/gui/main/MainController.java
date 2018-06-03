@@ -7,6 +7,7 @@ import javafx.concurrent.Task;
 import javafx.geometry.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Dialog;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Pair;
@@ -58,6 +59,8 @@ public final class MainController {
     private JFXRippler optionsRippler;
     @FXML
     private JFXDrawer drawer;
+    @FXML
+    private BorderPane borderPane;
     // @FXML
     private JFXSnackbar infoSnackBar = new JFXSnackbar();
 
@@ -68,10 +71,6 @@ public final class MainController {
      */
     @PostConstruct
     public void init() throws Exception {
-
-        //设置提示snackBar的Container
-	    infoSnackBar.registerSnackbarContainer(root);
-
         //设置左边的汉堡菜单按钮变形的动画
         // init the title hamburger icon
         drawer.setOnDrawerOpening(e -> {
@@ -111,7 +110,8 @@ public final class MainController {
 
         //Create by DCMMC
         context.register("MainRoot", root);
-        // set the default controller
+        context.register("borderPane", borderPane);
+       // set the default controller
         //默认controller是选课界面
         Flow innerFlow = new Flow(SessionController.class);
 
@@ -124,6 +124,9 @@ public final class MainController {
         context.register("ContentPane", drawer.getContent().get(0));
         context.register("drawer", drawer);
         context.register("titleBurger", titleBurger);
+        //设置提示snackBar的Container
+        infoSnackBar.registerSnackbarContainer(root);
+        context.register("infoSnackBar", infoSnackBar);
 
         // side controller will add links to the content flow
         //设置汉堡菜单点击后的sideMenu中的控件
@@ -156,7 +159,7 @@ public final class MainController {
     /**
      * 加载Controllers
      */
-    public final class InputController {
+    private final class InputController {
         private void networkErr() {
             //网络错误
             Alert networkErrAlert = new Alert(Alert.AlertType.ERROR);

@@ -17,6 +17,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -28,10 +29,13 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import tk.dcmmcc.Course;
 import tk.dcmmcc.CourseType;
+import tk.dcmmcc.IllegalCourseException;
 import tk.dcmmcc.datafx.ClassesData;
 import tk.dcmmcc.datafx.CourseClassRequestQueue;
 import tk.dcmmcc.datafx.CourseData;
 import tk.dcmmcc.datafx.SettingData;
+import tk.dcmmcc.gui.main.MainController;
+import tk.dcmmcc.utils.DoubleLinkedList;
 import tk.dcmmcc.utils.ExceptionDialog;
 import tk.dcmmcc.utils.LoggerUtil;
 import javax.annotation.PostConstruct;
@@ -182,8 +186,7 @@ public class SessionController {
                     EditCourseClassRequestQueueController.class);
             FlowHandler contentFlowHandler = (FlowHandler) context.getRegisteredObject("ContentFlowHandler");
             try {
-                ((BorderPane)(((StackPane)context.getRegisteredObject("MainRoot")).getChildren().get(0)))
-                        .setBottom(null);
+                ((BorderPane)context.getRegisteredObject("borderPane")).setBottom(null);
                 //加载修改选课队列界面
                 contentFlowHandler.handle(editCourseClassRequestQueue.getId());
             } catch (VetoException | FlowException vfe) {
@@ -226,31 +229,30 @@ public class SessionController {
 
         vboxRoot.getChildren().addAll(listViewRoot);
 
-        // FIXME debug test
-        SettingData.getLoginFlagProperty().addListener(((observable, oldValue, newValue) -> {
-            if (newValue) {
-                /*
-                try {
-                    DoubleLinkedList<CourseData> courseDataList = new DoubleLinkedList<>();
-                    courseDataList.addLast(new CourseData(CourseType.searchCourse("LINUX系统",
-                                    SettingData.getDhuCurrentUser().getUserCookie())[0], new ClassesData(Course.getCourseFromCommonSearch(
-                                    CourseType.searchCourse("LINUX系统",
-                                            SettingData.getDhuCurrentUser().getUserCookie())[0],
-                                    SettingData.getDhuCurrentUser().getUserCookie())[0])))
-                        .addLast(new CourseData(CourseType.searchCourse("131441",
-                                SettingData.getDhuCurrentUser().getUserCookie())[0], new ClassesData(Course.getCourseFromCommonSearch(
-                                CourseType.searchCourse("131441",
-                                        SettingData.getDhuCurrentUser().getUserCookie())[0],
-                                SettingData.getDhuCurrentUser().getUserCookie())[0])));
-                    CourseClassRequestQueue queue = new CourseClassRequestQueue(courseDataList.toArray());
-
-                    SettingData.setRequestQueue(queue);
-                } catch (IllegalCourseException ie) {
-                    //....
-                }
-                */
-            }
-        }));
+        // TODO unit test
+//        SettingData.getLoginFlagProperty().addListener(((observable, oldValue, newValue) -> {
+//            if (newValue) {
+//                try {
+//                    DoubleLinkedList<CourseData> courseDataList = new DoubleLinkedList<>();
+//                    courseDataList.addLast(new CourseData(CourseType.searchCourse("LINUX系统",
+//                                    SettingData.getDhuCurrentUser().getUserCookie())[0], new ClassesData(Course.getCourseFromCommonSearch(
+//                                    CourseType.searchCourse("LINUX系统",
+//                                            SettingData.getDhuCurrentUser().getUserCookie())[0],
+//                                    SettingData.getDhuCurrentUser().getUserCookie())[0])))
+//                        .addLast(new CourseData(CourseType.searchCourse("131441",
+//                                SettingData.getDhuCurrentUser().getUserCookie())[0], new ClassesData(Course.getCourseFromCommonSearch(
+//                                CourseType.searchCourse("131441",
+//                                        SettingData.getDhuCurrentUser().getUserCookie())[0],
+//                                SettingData.getDhuCurrentUser().getUserCookie())[0])));
+//                    CourseClassRequestQueue queue = new CourseClassRequestQueue(courseDataList.toArray());
+//
+//                    SettingData.setRequestQueue(queue);
+//                } catch (IllegalCourseException ie) {
+//                    //....
+//                }
+//
+//            }
+//        }));
 
         CourseClassRequestQueue courseClassRequestQueue =
                 SettingData.getRequestQueue();
@@ -318,10 +320,14 @@ public class SessionController {
 
         //概览界面主要的几个功能按钮
 
-        AnchorPane mainButtonsPane = new AnchorPane();
+        HBox mainButtonsPane = new HBox();
+        mainButtonsPane.setFillHeight(true);
+        mainButtonsPane.setSpacing(60);
+        mainButtonsPane.setPrefHeight(80);
+        mainButtonsPane.setAlignment(Pos.CENTER_LEFT);
+
         //放到bottom上面
-        ((BorderPane)((StackPane)context.getRegisteredObject("MainRoot")).getChildren().get(0))
-                .setBottom(mainButtonsPane);
+        ((BorderPane)context.getRegisteredObject("borderPane")).setBottom(mainButtonsPane);
 
         //查看当前已选课程
         JFXButton viewSelectedCourses = new JFXButton("查看已选课程");
@@ -333,6 +339,7 @@ public class SessionController {
                 "-fx-background-color: rgb(77, 102, 204);\n" +
                 "-fx-min-width: 150;\n" +
                 "-fx-text-fill: WHITE;");
+        viewSelectedCourses.setPadding(new Insets(20));
 
         //查看已选课程
         viewSelectedCourses.setOnMouseClicked((event -> {
@@ -384,155 +391,115 @@ public class SessionController {
         JFXButton start = new JFXButton("选课");
         start.setStyle("-fx-padding: 0.7em 0.57em;\n" +
                 "-fx-font-family: msyh;\n" +
-                "-fx-font-size: 16;\n" +
-                "-fx-font-weight: bold;\n" +
-                "-jfx-button-type: RAISED;\n" +
-                "-fx-background-color: rgb(77, 102, 204);\n" +
-                "-fx-min-width: 150;\n" +
-                "-fx-text-fill: WHITE;");
-        startListView.setGroupnode(start);
-
-        JFXButton startNow = new JFXButton("现在开始选课");
-        startNow.setStyle("-fx-padding: 0.7em 0.57em;\n" +
-                "-fx-font-family: msyh;\n" +
-                "-fx-font-size: 16;\n" +
+                "-fx-font-size: 18;\n" +
                 "-fx-font-weight: bold;\n" +
                 "-jfx-button-type: RAISED;\n" +
                 "-fx-background-color: rgb(77, 102, 204);\n" +
                 "-fx-min-width: 150;\n" +
                 "-fx-text-fill: WHITE;");
 
-        startListView.disableProperty().bind(CourseClassRequestQueue.getStartedProperty());
+        // Time Picker
         JFXTimePicker timePicker = new JFXTimePicker(LocalTime.now());
         timePicker.setDialogParent(root);
-        JFXButton startDelay = new JFXButton("指定时间开始");
-        startDelay.setStyle("-fx-padding: 0.7em 0.57em;\n" +
-                "-fx-font-family: msyh;\n" +
-                "-fx-font-size: 16;\n" +
-                "-fx-font-weight: bold;\n" +
-                "-jfx-button-type: RAISED;\n" +
-                "-fx-background-color: rgb(77, 102, 204);\n" +
-                "-fx-min-width: 150;\n" +
-                "-fx-text-fill: WHITE;");
-
-        JFXListView<JFXListView> startListViewRoot = new JFXListView<>();
-        startListViewRoot.disableProperty().bind(CourseClassRequestQueue.getStartedProperty()
+        // 设置选课按钮 PopUp
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ui/popup/SelecterPopup.fxml"));
+        loader.setController(new SelecterPopupController(courseClassRequestQueue, timePicker, mainButtonsPane));
+        JFXHamburger selecterBurger = new JFXHamburger();
+        selecterBurger.setPadding(new Insets(10,5,10,5));
+        JFXPopup selecterPopup = new JFXPopup(loader.load());
+        selecterPopup.setHeight(200);
+        selecterPopup.setWidth(150);
+        StackPane startPane = new StackPane();
+        startPane.getChildren().add(start);
+        start.setOnMouseClicked((e) -> selecterPopup.show(startPane, JFXPopup.PopupVPosition.BOTTOM,
+                JFXPopup.PopupHPosition.RIGHT));
+        start.disableProperty().bind(CourseClassRequestQueue.getStartedProperty()
                 .or(SettingData.getLoginFlagProperty().not()));
-        startListViewRoot.setDepth(4);
-        startListViewRoot.setPrefHeight(80);
-        startListViewRoot.setPrefWidth(210);
-        ObservableList<JFXListView> listViews = FXCollections.observableArrayList();
-        listViews.addAll(startListView);
-        startListViewRoot.setItems(listViews);
-        startHBox.getChildren().addAll(startListViewRoot);
 
-        timePicker.setPrefHeight(1);
-        timePicker.setPrefWidth(1);
-        timePicker.setEditable(false);
-        //妈的 java的DateParse真他妈的垃圾, 去你妈的Locale
-        timePicker.setConverter(new StringConverter<LocalTime>() {
-            @Override
-            public String toString(LocalTime object) {
-                return object.format(new DateTimeFormatterBuilder()
-                        .parseCaseInsensitive()
-                        .appendPattern("h:mm a")
-                        .toFormatter(Locale.US));
-            }
+        Label empty = new Label("    ");
+        mainButtonsPane.getChildren().addAll(empty, viewSelectedCourses, viewLogs, startPane);
 
-            @Override
-            public LocalTime fromString(String string) {
-                return LocalTime.parse(string, new DateTimeFormatterBuilder()
-                        .parseCaseInsensitive()
-                        .appendPattern("h:mm a")
-                        .toFormatter(Locale.US));
-            }
-        });
+        //我已经把mainButtonsPane放在BorderPane的Bottom那里去了
+        vboxRoot.getChildren().addAll(operateCurrentSelected);
+    }
 
-        //debug
-        //logger.info(LocalTime.parse("2:19 AM", new DateTimeFormatterBuilder()
-        //        .parseCaseInsensitive()
-        //        .appendPattern("h:mm a")
-        //        .toFormatter(Locale.US)).toString());
+    private JFXListView<ClassesDateLabel> generateCourseDataListView(CourseData courseData) {
+        JFXListView<ClassesDateLabel> courseDataListView = new JFXListView<>();
 
-        // timePicker.hide();
-        startDelay.setGraphic(timePicker);
-        startDelay.setContentDisplay(ContentDisplay.RIGHT);
+        CourseType courseType = courseData.getCourseType();
+        CourseDateLabel courseInfoLabel = new CourseDateLabel(courseData, courseType.getCourse().getTextTitle() + "  "
+            + courseType.getCourseId() + "  " + courseType.getScore() + "  " + courseType.getMajor()
+            + "  " + courseType.getRemark());
+        courseInfoLabel.setFont(Font.font("msyh", 17));
 
-        startNow.setOnMouseClicked((event -> {
-            if (courseClassRequestQueue != null)
-                courseClassRequestQueue.startAll();
-        }));
-        startDelay.setOnMouseClicked((event -> {
-            if (courseClassRequestQueue == null)
-                return;
+        postProcessLabel(courseInfoLabel, courseData.getStatus());
+        //courseInfoLabel.graphicProperty().bind(courseData.getStatusProperty());
+        courseDataListView.setGroupnode(courseInfoLabel);
 
-            timePicker.show();
+        ObservableList<ClassesDateLabel> classDataList = FXCollections.observableArrayList();
+        for (ClassesData classesData : courseData.getClassesDataMap().values()) {
+            Course course = classesData.getCourse();
 
-            timePicker.showingProperty().addListener(((observable, oldValue, newValue) -> {
-                if (!newValue) {
-                    //debug
-                    //logger.info("debug...");
+            ClassesDateLabel classDataLabel = new ClassesDateLabel(classesData, course.getTeacher().getTextTitle() + "  "
+                + course.getCourseNo() + " 组班号" + course.getClassNo() + "  " + course.getPlaces()[0]);
+            classDataLabel.setFont(Font.font("msyh", 16));
 
-                    //get Date
-                    LocalDate nowDate = LocalDate.now();
-                    Date now = new Date();
-                    Date startDate = Date.from(timePicker.getValue().atDate(nowDate).
-                            atZone(ZoneId.systemDefault()).toInstant());
+            postProcessLabel(classDataLabel, classesData.getStatus());
+            //classDataLabel.graphicProperty().bind(classesData.getStatusProperty());
+            classDataList.add(classDataLabel);
+        }
 
-                    //debug
-                    // startDate = new Date();
-                    //logger.info("now: " + now.getTime() + " start: " + startDate.getTime());
+        courseDataListView.setItems(classDataList);
 
-                    if (now.getTime() >= startDate.getTime() - 1000) {
-                        //设置的时间有问题, 不能早于当前时间的后一秒
-                        JFXSnackbar wrongTime = new JFXSnackbar();
-                        wrongTime.registerSnackbarContainer(root);
-                        wrongTime.fireEvent(new JFXSnackbar.SnackbarEvent("你输入的时间有问题! 不能早于当前时间的后一秒.",
-                                "了解", 2000, false,
-                                b -> wrongTime.close()));
-                        return;
-                    }
+        return courseDataListView;
+    }
 
-                    courseClassRequestQueue.startAll(startDate);
+    /**
+     * 开始按钮组的控制器
+     */
+    public final class SelecterPopupController {
+        @FXML
+        private JFXListView<?> selecterPopupList;
+        private CourseClassRequestQueue courseClassRequestQueue;
+        private JFXTimePicker timePicker;
+        private HBox mainButtonsPane;
 
-                    HBox remainSecondsHBox = new HBox(2);
-                    remainSecondsHBox.setPrefHeight(50);
-                    remainSecondsHBox.setPrefWidth(150);
-                    Label remainSeconds = new Label();
-                    remainSeconds.textProperty().bind(courseClassRequestQueue.getStartAfterSecondsProperty()
-                            .asString());
-                    remainSeconds.setFont(Font.font("msyh", 22));
-                    Label prefix = new Label("程序将会在");
-                    prefix.setFont(Font.font("msyh", 18));
-                    Label suffix = new Label("秒后开始选课.");
-                    suffix.setFont(Font.font("msyh", 18));
-                    remainSecondsHBox.getChildren().addAll(prefix, remainSeconds, suffix);
-                    startHBox.getChildren().add(remainSecondsHBox);
-                    courseClassRequestQueue.getStartAfterSecondsProperty().addListener(((observable1, oldValue1, newValue1) -> {
-                        if (newValue1.equals(0))
-                            startHBox.getChildren().remove(1);
-                    }));
-                }
-            }));
-        }));
+        SelecterPopupController(CourseClassRequestQueue courseClassRequestQueue, JFXTimePicker timePicker,
+                                HBox mainButtonsPane) {
+            this.courseClassRequestQueue = courseClassRequestQueue;
+            this.timePicker = timePicker;
+            this.mainButtonsPane = mainButtonsPane;
+        }
 
-        startListView.setOnMouseClicked((e) -> {
-            JFXButton selectedLabel = startListView.getSelectionModel().getSelectedItem();
-
-            if (selectedLabel.getText().equals("现在开始选课")) {
+        @FXML
+        private void submit() {
+            if (selecterPopupList.getSelectionModel().getSelectedIndex() == 0) {
+                // 现在开始
                 if (courseClassRequestQueue != null)
                     courseClassRequestQueue.startAll();
-            } else {
-                if (courseClassRequestQueue == null)
+                else
+                {
+                    JFXSnackbar infoSnackBar =
+                            (JFXSnackbar)context.getRegisteredObject("infoSnackBar");
+                    infoSnackBar.fireEvent(new JFXSnackbar.SnackbarEvent("选课队列为空!",
+                            "了解", 2000, false,
+                            b -> infoSnackBar.close()));
+                }
+            } else if (selecterPopupList.getSelectionModel().getSelectedIndex() == 1) {
+                // 延迟开始
+                if (courseClassRequestQueue == null) {
+                    JFXSnackbar infoSnackBar =
+                            (JFXSnackbar)context.getRegisteredObject("infoSnackBar");
+                    infoSnackBar.fireEvent(new JFXSnackbar.SnackbarEvent("选课队列为空!",
+                            "了解", 2000, false,
+                            b -> infoSnackBar.close()));
                     return;
+                }
 
                 timePicker.show();
 
                 timePicker.showingProperty().addListener(((observable, oldValue, newValue) -> {
                     if (!newValue) {
-                        //debug
-                        //logger.info("debug...");
-
                         //get Date
                         LocalDate nowDate = LocalDate.now();
                         Date now = new Date();
@@ -570,56 +537,15 @@ public class SessionController {
                         suffix.setPrefWidth(120);
                         suffix.setFont(Font.font("msyh", 18));
                         remainSecondsHBox.getChildren().addAll(prefix, remainSeconds, suffix);
-                        startHBox.getChildren().add(remainSecondsHBox);
+                        mainButtonsPane.getChildren().add(remainSecondsHBox);
                         courseClassRequestQueue.getStartAfterSecondsProperty().addListener(((observable1, oldValue1, newValue1) -> {
                             if (newValue1.equals(0))
-                                startHBox.getChildren().remove(1);
+                                mainButtonsPane.getChildren().remove(1);
                         }));
                     }
                 }));
             }
-        });
-
-
-        ObservableList<JFXButton> startButtonList = FXCollections.observableArrayList();
-        startButtonList.addAll(startNow, startDelay);
-        startListView.setItems(startButtonList);
-
-        mainButtonsPane.getChildren().addAll(viewSelectedCourses, viewLogs, startHBox);
-
-        //我已经把mainButtonsPane放在BorderPane的Bottom那里去了
-        vboxRoot.getChildren().addAll(operateCurrentSelected);
-    }
-
-    private JFXListView<ClassesDateLabel> generateCourseDataListView(CourseData courseData) {
-        JFXListView<ClassesDateLabel> courseDataListView = new JFXListView<>();
-
-        CourseType courseType = courseData.getCourseType();
-        CourseDateLabel courseInfoLabel = new CourseDateLabel(courseData, courseType.getCourse().getTextTitle() + "  "
-            + courseType.getCourseId() + "  " + courseType.getScore() + "  " + courseType.getMajor()
-            + "  " + courseType.getRemark());
-        courseInfoLabel.setFont(Font.font("msyh", 17));
-
-        postProcessLabel(courseInfoLabel, courseData.getStatus());
-        //courseInfoLabel.graphicProperty().bind(courseData.getStatusProperty());
-        courseDataListView.setGroupnode(courseInfoLabel);
-
-        ObservableList<ClassesDateLabel> classDataList = FXCollections.observableArrayList();
-        for (ClassesData classesData : courseData.getClassesDataMap().values()) {
-            Course course = classesData.getCourse();
-
-            ClassesDateLabel classDataLabel = new ClassesDateLabel(classesData, course.getTeacher().getTextTitle() + "  "
-                + course.getCourseNo() + " 组班号" + course.getClassNo() + "  " + course.getPlaces()[0]);
-            classDataLabel.setFont(Font.font("msyh", 16));
-
-            postProcessLabel(classDataLabel, classesData.getStatus());
-            //classDataLabel.graphicProperty().bind(classesData.getStatusProperty());
-            classDataList.add(classDataLabel);
         }
-
-        courseDataListView.setItems(classDataList);
-
-        return courseDataListView;
     }
 
     /**
