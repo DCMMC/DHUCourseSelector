@@ -25,7 +25,6 @@ OpenJDK not include JavaFX in Arch Linux (or other linux distrubutions), please 
 * 把所有的System.out的输出改成logger输出
 * 将CourseClassRequestQueue中的Timer重构成TimeLine
 * 完善关于界面中的信息
-* FIXME 在SessionController中课程队列的查询 startHbox里面的点击之后ListView都不会展开或者收起来
 * FIXME 在SessionController中所有选课线程都结束的时候, 恢复那些disable的按钮
 * ViewSelectedCoursesStage中冲突课程的那个ListView中的元素的点击绑定那些功能按钮
 * ViewSelectedCoursesStage中冲突的课程的ListView里面的信息加入课程的在这一天的节次信息
@@ -45,6 +44,7 @@ OpenJDK not include JavaFX in Arch Linux (or other linux distrubutions), please 
 # Changelog
 
 * v0.1.0 Alpha 所有功能已经封装在了`libDHUCourseSelecter`这个库里面了, CLI测试程序已经完成, GUI方面除了修改选课之外都差不多完善好了.
+* v0.1.10 增加对 `Java10` 的支持, 修改 `build.gradle` 和第三方库的版本支持. 现在可以运行在 Java8 ~ Java10 上.
 
 > Still coding...
 
